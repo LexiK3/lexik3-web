@@ -5,6 +5,7 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 import LoginForm from './components/auth/LoginForm';
+import RegistrationForm from './components/auth/RegistrationForm';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Learning from './pages/Learning';
@@ -19,7 +20,7 @@ function App() {
             <Routes>
               {/* Public routes */}
               <Route path="/login" element={<LoginForm />} />
-              <Route path="/register" element={<div>Register Page - Coming Soon</div>} />
+              <Route path="/register" element={<RegistrationForm />} />
               
               {/* Protected routes */}
               <Route 

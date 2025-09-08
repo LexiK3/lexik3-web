@@ -5,7 +5,6 @@ import { useAppDispatch, useAppSelector } from '../../store/hooks';
 import { loginUser, clearError } from '../../store/slices/authSlice';
 import { useNavigate, useLocation } from 'react-router-dom';
 import Button from '../common/Button';
-import Input from '../common/Input';
 import Card from '../common/Card';
 
 interface LoginFormData {
