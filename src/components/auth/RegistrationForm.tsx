@@ -6,6 +6,7 @@ import { registerUser, clearError } from '../../store/slices/authSlice';
 import { useNavigate } from 'react-router-dom';
 import Button from '../common/Button';
 import Card from '../common/Card';
+import ErrorMessage from '../common/ErrorMessage';
 
 interface RegistrationFormData {
   firstName: string;
@@ -59,9 +60,14 @@ const RegistrationForm: React.FC = () => {
       </div>
       
       {displayError && (
-        <div className="mb-4 p-3 bg-red-50 border border-red-200 rounded-lg">
-          <p className="text-sm text-red-600">{displayError}</p>
-        </div>
+        <ErrorMessage
+          error={displayError}
+          onDismiss={() => {
+            setLocalError('');
+            dispatch(clearError());
+          }}
+          className="mb-4"
+        />
       )}
       
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">

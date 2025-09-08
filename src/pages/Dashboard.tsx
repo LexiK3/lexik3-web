@@ -1,21 +1,42 @@
 // pages/Dashboard.tsx
 import React, { useEffect } from 'react';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchBooks } from '../store/slices/booksSlice';
-import { fetchUserProgress } from '../store/slices/progressSlice';
+import { fetchBooks, clearError as clearBooksError } from '../store/slices/booksSlice';
+import { fetchUserProgress, clearError as clearProgressError } from '../store/slices/progressSlice';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
+import LoadingSpinner from '../components/common/LoadingSpinner';
+import LoadingCard from '../components/common/LoadingCard';
+import ErrorMessage from '../components/common/ErrorMessage';
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
   const { user } = useAppSelector((state) => state.auth);
-  const { books, isLoading: booksLoading } = useAppSelector((state) => state.books);
-  const { userProgress, isLoading: progressLoading } = useAppSelector((state) => state.progress);
+  const { 
+    books, 
+    isLoading: booksLoading, 
+    error: booksError 
+  } = useAppSelector((state) => state.books);
+  const { 
+    userProgress, 
+    isLoading: progressLoading, 
+    error: progressError 
+  } = useAppSelector((state) => state.progress);
 
   useEffect(() => {
     dispatch(fetchBooks({}));
     dispatch(fetchUserProgress({}));
   }, [dispatch]);
+
+  const handleRetryBooks = () => {
+    dispatch(clearBooksError());
+    dispatch(fetchBooks({}));
+  };
+
+  const handleRetryProgress = () => {
+    dispatch(clearProgressError());
+    dispatch(fetchUserProgress({}));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -43,10 +64,24 @@ const Dashboard: React.FC = () => {
           <div className="lg:col-span-2">
             <Card>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Your Progress</h2>
+              
+              {progressError && (
+                <ErrorMessage
+                  error={progressError}
+                  onRetry={handleRetryProgress}
+                  onDismiss={() => dispatch(clearProgressError())}
+                  className="mb-4"
+                />
+              )}
+              
               {progressLoading ? (
-                <div className="animate-pulse space-y-4">
-                  <div className="h-4 bg-gray-200 rounded w-3/4"></div>
-                  <div className="h-4 bg-gray-200 rounded w-1/2"></div>
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  {[1, 2, 3, 4].map((i) => (
+                    <div key={i} className="text-center">
+                      <div className="h-8 bg-gray-200 rounded w-16 mx-auto mb-2 animate-pulse"></div>
+                      <div className="h-4 bg-gray-200 rounded w-20 mx-auto animate-pulse"></div>
+                    </div>
+                  ))}
                 </div>
               ) : userProgress ? (
                 <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -106,13 +141,51 @@ const Dashboard: React.FC = () => {
         <div className="mt-8">
           <Card>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Available Books</h2>
+            
+            {booksError && (
+              <ErrorMessage
+                error={booksError}
+                onRetry={handleRetryBooks}
+                onDismiss={() => dispatch(clearBooksError())}
+                className="mb-4"
+              />
+            )}
+            
             {booksLoading ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {[1, 2, 3].map((i) => (
-                  <Card key={i} loading>
-                    <div></div>
-                  </Card>
+                  <LoadingCard
+                    key={i}
+                    lines={3}
+                    showButton={true}
+                    className="p-4"
+                  />
                 ))}
+              </div>
+            ) : books.length === 0 ? (
+              <div className="text-center py-12">
+                <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-gray-100 mb-4">
+                  <svg
+                    className="h-6 w-6 text-gray-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.746 0 3.332.477 4.5 1.253v13C19.832 18.477 18.246 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"
+                    />
+                  </svg>
+                </div>
+                <h3 className="text-lg font-medium text-gray-900 mb-2">No books available</h3>
+                <p className="text-gray-500 mb-4">
+                  There are no books available at the moment. Please check back later.
+                </p>
+                <Button onClick={handleRetryBooks}>
+                  Refresh
+                </Button>
               </div>
             ) : (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">

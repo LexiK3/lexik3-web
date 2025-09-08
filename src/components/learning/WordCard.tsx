@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import { Word, SessionWord } from '../../types/learning';
 import Card from '../common/Card';
 import Button from '../common/Button';
+import LoadingSpinner from '../common/LoadingSpinner';
 
 interface WordCardProps {
   word: SessionWord;
@@ -11,6 +12,8 @@ interface WordCardProps {
   isAnswered?: boolean;
   showAnswer?: boolean;
   disabled?: boolean;
+  isLoading?: boolean;
+  error?: string | null;
 }
 
 const WordCard: React.FC<WordCardProps> = ({
@@ -20,6 +23,8 @@ const WordCard: React.FC<WordCardProps> = ({
   isAnswered = false,
   showAnswer = false,
   disabled = false,
+  isLoading = false,
+  error = null,
 }) => {
   const [userAnswer, setUserAnswer] = useState('');
   const [confidence, setConfidence] = useState(3);
@@ -47,6 +52,50 @@ const WordCard: React.FC<WordCardProps> = ({
       default: return 'text-gray-600 bg-gray-100';
     }
   };
+
+  if (isLoading) {
+    return (
+      <Card className="max-w-2xl mx-auto">
+        <div className="space-y-6">
+          <div className="animate-pulse">
+            <div className="h-8 bg-gray-200 rounded w-3/4 mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/2 mb-6"></div>
+            <div className="h-32 bg-gray-200 rounded mb-4"></div>
+            <div className="h-4 bg-gray-200 rounded w-1/3"></div>
+          </div>
+        </div>
+      </Card>
+    );
+  }
+
+  if (error) {
+    return (
+      <Card className="max-w-2xl mx-auto">
+        <div className="text-center py-8">
+          <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+            <svg
+              className="h-6 w-6 text-red-600"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.964-.833-2.732 0L3.732 16.5c-.77.833.192 2.5 1.732 2.5z"
+              />
+            </svg>
+          </div>
+          <h3 className="text-lg font-medium text-gray-900 mb-2">Error loading word</h3>
+          <p className="text-gray-500 mb-4">{error}</p>
+          <Button onClick={() => window.location.reload()}>
+            Try Again
+          </Button>
+        </div>
+      </Card>
+    );
+  }
 
   return (
     <Card className="max-w-2xl mx-auto">
