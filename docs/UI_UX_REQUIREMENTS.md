@@ -333,6 +333,265 @@ const Card: React.FC<CardProps> = ({
 };
 ```
 
+### Loading States & Error Handling Components
+
+#### 1. Loading Spinner Component
+
+```typescript
+// components/common/LoadingSpinner.tsx
+interface LoadingSpinnerProps {
+  size?: 'sm' | 'md' | 'lg';
+  color?: 'primary' | 'secondary' | 'white' | 'gray';
+  text?: string;
+  className?: string;
+}
+
+const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
+  size = 'md',
+  color = 'primary',
+  text,
+  className = '',
+}) => {
+  const sizeClasses = {
+    sm: 'h-4 w-4',
+    md: 'h-8 w-8',
+    lg: 'h-12 w-12',
+  };
+
+  const colorClasses = {
+    primary: 'text-blue-600',
+    secondary: 'text-gray-600',
+    white: 'text-white',
+    gray: 'text-gray-400',
+  };
+
+  return (
+    <div className={`flex flex-col items-center justify-center ${className}`}>
+      <svg
+        className={`animate-spin ${sizeClasses[size]} ${colorClasses[color]}`}
+        fill="none"
+        viewBox="0 0 24 24"
+      >
+        <circle
+          className="opacity-25"
+          cx="12"
+          cy="12"
+          r="10"
+          stroke="currentColor"
+          strokeWidth="4"
+        />
+        <path
+          className="opacity-75"
+          fill="currentColor"
+          d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"
+        />
+      </svg>
+      {text && (
+        <p className={`mt-2 text-sm ${colorClasses[color]}`}>
+          {text}
+        </p>
+      )}
+    </div>
+  );
+};
+```
+
+#### 2. Error Message Component
+
+```typescript
+// components/common/ErrorMessage.tsx
+interface ErrorMessageProps {
+  error: string | null;
+  onRetry?: () => void;
+  onDismiss?: () => void;
+  variant?: 'error' | 'warning' | 'info';
+  className?: string;
+}
+
+const ErrorMessage: React.FC<ErrorMessageProps> = ({
+  error,
+  onRetry,
+  onDismiss,
+  variant = 'error',
+  className = '',
+}) => {
+  if (!error) return null;
+
+  const variantClasses = {
+    error: 'bg-red-50 border-red-200 text-red-800',
+    warning: 'bg-yellow-50 border-yellow-200 text-yellow-800',
+    info: 'bg-blue-50 border-blue-200 text-blue-800',
+  };
+
+  return (
+    <div
+      className={`rounded-md border p-4 ${variantClasses[variant]} ${className}`}
+    >
+      <div className="flex">
+        <div className="flex-shrink-0">
+          {/* Error icon based on variant */}
+        </div>
+        <div className="ml-3 flex-1">
+          <p className="text-sm font-medium">{error}</p>
+        </div>
+        <div className="ml-auto pl-3">
+          <div className="-mx-1.5 -my-1.5 flex space-x-2">
+            {onRetry && (
+              <button
+                type="button"
+                onClick={onRetry}
+                className="inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              >
+                <span className="sr-only">Retry</span>
+                {/* Retry icon */}
+              </button>
+            )}
+            {onDismiss && (
+              <button
+                type="button"
+                onClick={onDismiss}
+                className="inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2"
+              >
+                <span className="sr-only">Dismiss</span>
+                {/* Dismiss icon */}
+              </button>
+            )}
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+```
+
+#### 3. Error Boundary Component
+
+```typescript
+// components/common/ErrorBoundary.tsx
+interface Props {
+  children: ReactNode;
+  fallback?: ReactNode;
+  onError?: (error: Error, errorInfo: ErrorInfo) => void;
+}
+
+interface State {
+  hasError: boolean;
+  error?: Error;
+}
+
+class ErrorBoundary extends Component<Props, State> {
+  constructor(props: Props) {
+    super(props);
+    this.state = { hasError: false };
+  }
+
+  static getDerivedStateFromError(error: Error): State {
+    return { hasError: true, error };
+  }
+
+  componentDidCatch(error: Error, errorInfo: ErrorInfo) {
+    console.error('ErrorBoundary caught an error:', error, errorInfo);
+    
+    if (this.props.onError) {
+      this.props.onError(error, errorInfo);
+    }
+  }
+
+  handleRetry = () => {
+    this.setState({ hasError: false, error: undefined });
+  };
+
+  render() {
+    if (this.state.hasError) {
+      if (this.props.fallback) {
+        return this.props.fallback;
+      }
+
+      return (
+        <div className="min-h-screen flex items-center justify-center bg-gray-50">
+          <Card className="max-w-md mx-auto p-8 text-center">
+            <div className="mb-6">
+              <div className="mx-auto flex items-center justify-center h-12 w-12 rounded-full bg-red-100 mb-4">
+                {/* Error icon */}
+              </div>
+              <h2 className="text-xl font-semibold text-gray-900 mb-2">
+                Something went wrong
+              </h2>
+              <p className="text-gray-600 mb-6">
+                We're sorry, but something unexpected happened. Please try again.
+              </p>
+            </div>
+            <div className="flex flex-col sm:flex-row gap-3">
+              <Button onClick={this.handleRetry} className="flex-1">
+                Try Again
+              </Button>
+              <Button
+                variant="outline"
+                onClick={() => window.location.reload()}
+                className="flex-1"
+              >
+                Reload Page
+              </Button>
+            </div>
+          </Card>
+        </div>
+      );
+    }
+
+    return this.props.children;
+  }
+}
+```
+
+#### 4. Loading Card Component
+
+```typescript
+// components/common/LoadingCard.tsx
+interface LoadingCardProps {
+  lines?: number;
+  className?: string;
+  showImage?: boolean;
+  showButton?: boolean;
+}
+
+const LoadingCard: React.FC<LoadingCardProps> = ({
+  lines = 3,
+  className = '',
+  showImage = false,
+  showButton = false,
+}) => {
+  return (
+    <Card className={`animate-pulse ${className}`}>
+      {showImage && (
+        <div className="h-48 bg-gray-200 rounded mb-4"></div>
+      )}
+      
+      <div className="space-y-3">
+        {/* Title line */}
+        <div className="h-4 bg-gray-200 rounded w-3/4"></div>
+        
+        {/* Description lines */}
+        {Array.from({ length: lines - 1 }).map((_, index) => (
+          <div
+            key={index}
+            className={`h-3 bg-gray-200 rounded ${
+              index === lines - 2 ? 'w-1/2' : 'w-full'
+            }`}
+          ></div>
+        ))}
+        
+        {/* Button skeleton */}
+        {showButton && (
+          <div className="pt-4">
+            <div className="h-8 bg-gray-200 rounded w-24"></div>
+          </div>
+        )}
+      </div>
+    </Card>
+  );
+};
+```
+
 ### Learning-Specific Components
 
 #### 1. Word Card Component

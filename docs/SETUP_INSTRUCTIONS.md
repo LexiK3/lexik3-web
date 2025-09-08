@@ -1075,6 +1075,91 @@ describe('Learning Flow Integration', () => {
 });
 ```
 
+## 🔄 Loading States & Error Handling
+
+### Overview
+
+The LexiK3 application includes comprehensive loading states and error handling components to provide a professional user experience. These components ensure users always have clear feedback about the application state.
+
+### Available Components
+
+#### 1. LoadingSpinner
+- **Location**: `src/components/common/LoadingSpinner.tsx`
+- **Purpose**: Displays loading indicators with customizable size and color
+- **Usage**:
+```typescript
+import LoadingSpinner from '../components/common/LoadingSpinner';
+
+// Basic usage
+<LoadingSpinner />
+
+// With custom props
+<LoadingSpinner 
+  size="lg" 
+  color="primary" 
+  text="Loading books..." 
+/>
+```
+
+#### 2. ErrorMessage
+- **Location**: `src/components/common/ErrorMessage.tsx`
+- **Purpose**: Displays user-friendly error messages with retry/dismiss options
+- **Usage**:
+```typescript
+import ErrorMessage from '../components/common/ErrorMessage';
+
+<ErrorMessage
+  error={error}
+  onRetry={() => retryOperation()}
+  onDismiss={() => clearError()}
+  variant="error"
+/>
+```
+
+#### 3. ErrorBoundary
+- **Location**: `src/components/common/ErrorBoundary.tsx`
+- **Purpose**: Catches React errors and displays fallback UI
+- **Usage**:
+```typescript
+import ErrorBoundary from '../components/common/ErrorBoundary';
+
+<ErrorBoundary onError={(error, errorInfo) => logError(error, errorInfo)}>
+  <YourComponent />
+</ErrorBoundary>
+```
+
+#### 4. LoadingCard
+- **Location**: `src/components/common/LoadingCard.tsx`
+- **Purpose**: Skeleton loading states for cards and content
+- **Usage**:
+```typescript
+import LoadingCard from '../components/common/LoadingCard';
+
+<LoadingCard 
+  lines={3} 
+  showImage={true} 
+  showButton={true} 
+/>
+```
+
+### Implementation in Pages
+
+All major pages (Dashboard, Learning, Progress) now include:
+- Loading states during API calls
+- Error handling with retry functionality
+- Empty states with helpful guidance
+- Skeleton loading for better perceived performance
+
+### Testing Loading States
+
+```bash
+# Test loading states
+npm test -- --testPathPattern="LoadingSpinner|ErrorMessage"
+
+# Test with slow network simulation
+REACT_APP_MOCK_DELAY=3000 npm start
+```
+
 ### Development Workflow
 
 #### Starting with Mock Service
