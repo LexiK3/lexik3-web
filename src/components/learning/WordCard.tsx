@@ -1,0 +1,178 @@
+// components/learning/WordCard.tsx
+import React, { useState } from 'react';
+import { Word, SessionWord } from '../../types/learning';
+import Card from '../common/Card';
+import Button from '../common/Button';
+
+interface WordCardProps {
+  word: SessionWord;
+  onAnswer: (answer: string, responseTime: number, confidence: number) => void;
+  onHint: () => void;
+  isAnswered?: boolean;
+  showAnswer?: boolean;
+  disabled?: boolean;
+}
+
+const WordCard: React.FC<WordCardProps> = ({
+  word,
+  onAnswer,
+  onHint,
+  isAnswered = false,
+  showAnswer = false,
+  disabled = false,
+}) => {
+  const [userAnswer, setUserAnswer] = useState('');
+  const [confidence, setConfidence] = useState(3);
+  const [startTime] = useState(Date.now());
+  const [hintsUsed, setHintsUsed] = useState(0);
+
+  const handleSubmit = () => {
+    if (!userAnswer.trim() || disabled) return;
+    
+    const responseTime = (Date.now() - startTime) / 1000;
+    onAnswer(userAnswer.trim(), responseTime, confidence);
+  };
+
+  const handleHint = () => {
+    setHintsUsed(prev => prev + 1);
+    onHint();
+  };
+
+  const getDifficultyColor = (difficulty: string) => {
+    switch (difficulty) {
+      case 'Beginner': return 'text-green-600 bg-green-100';
+      case 'Intermediate': return 'text-yellow-600 bg-yellow-100';
+      case 'Advanced': return 'text-orange-600 bg-orange-100';
+      case 'Expert': return 'text-red-600 bg-red-100';
+      default: return 'text-gray-600 bg-gray-100';
+    }
+  };
+
+  return (
+    <Card className="max-w-2xl mx-auto">
+      <div className="space-y-6">
+        {/* Word Header */}
+        <div className="flex justify-between items-start">
+          <div>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">
+              {word.term}
+            </h2>
+            <div className="flex items-center space-x-2">
+              <span className={`px-2 py-1 rounded-full text-xs font-medium ${getDifficultyColor(word.difficulty)}`}>
+                {word.difficulty}
+              </span>
+              <span className="text-sm text-gray-500 capitalize">
+                {word.partOfSpeech}
+              </span>
+            </div>
+          </div>
+          
+          {word.pronunciation && (
+            <div className="text-sm text-gray-500">
+              /{word.pronunciation}/
+            </div>
+          )}
+        </div>
+
+        {/* Definition */}
+        {showAnswer && (
+          <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
+            <h3 className="font-semibold text-blue-900 mb-2">Definition:</h3>
+            <p className="text-blue-800">{word.definition}</p>
+          </div>
+        )}
+
+        {/* Examples */}
+        {showAnswer && word.examples.length > 0 && (
+          <div className="bg-gray-50 border border-gray-200 rounded-lg p-4">
+            <h3 className="font-semibold text-gray-900 mb-2">Examples:</h3>
+            <ul className="space-y-1">
+              {word.examples.map((example, index) => (
+                <li key={index} className="text-gray-700 text-sm">
+                  • {example}
+                </li>
+              ))}
+            </ul>
+          </div>
+        )}
+
+        {/* Answer Input */}
+        {!isAnswered && (
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                What does this word mean?
+              </label>
+              <textarea
+                value={userAnswer}
+                onChange={(e) => setUserAnswer(e.target.value)}
+                placeholder="Enter your answer here..."
+                className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                rows={3}
+                disabled={disabled}
+              />
+            </div>
+
+            {/* Confidence Slider */}
+            <div>
+              <label className="block text-sm font-medium text-gray-700 mb-2">
+                How confident are you? ({confidence}/5)
+              </label>
+              <input
+                type="range"
+                min="1"
+                max="5"
+                value={confidence}
+                onChange={(e) => setConfidence(Number(e.target.value))}
+                className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                disabled={disabled}
+              />
+              <div className="flex justify-between text-xs text-gray-500 mt-1">
+                <span>Not sure</span>
+                <span>Very confident</span>
+              </div>
+            </div>
+
+            {/* Action Buttons */}
+            <div className="flex justify-between items-center">
+              <Button
+                variant="outline"
+                onClick={handleHint}
+                disabled={disabled || hintsUsed >= 2}
+                size="sm"
+              >
+                Hint ({hintsUsed}/2)
+              </Button>
+              
+              <Button
+                onClick={handleSubmit}
+                disabled={!userAnswer.trim() || disabled}
+                size="lg"
+              >
+                Submit Answer
+              </Button>
+            </div>
+          </div>
+        )}
+
+        {/* Progress Indicator */}
+        {word.userProgress && (
+          <div className="bg-gray-100 rounded-lg p-3">
+            <div className="flex justify-between text-sm text-gray-600 mb-1">
+              <span>Mastery Level</span>
+              <span>{word.userProgress.masteryLevel}/5</span>
+            </div>
+            <div className="w-full bg-gray-200 rounded-full h-2">
+              <div 
+                className="bg-blue-600 h-2 rounded-full transition-all duration-300"
+                style={{ width: `${(word.userProgress.masteryLevel / 5) * 100}%` }}
+              />
+            </div>
+          </div>
+        )}
+      </div>
+    </Card>
+  );
+};
+
+export default WordCard;
