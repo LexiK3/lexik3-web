@@ -531,6 +531,641 @@ REACT_APP_DEBUG=true npm start
 # Open browser DevTools > Network tab
 ```
 
+## 🧪 Mock Service Implementation
+
+### Overview
+
+The LexiK3 frontend includes a comprehensive mock service implementation for testing and development purposes. This allows developers to work on the frontend without requiring a running backend API, enabling faster development cycles and more reliable testing.
+
+### Mock Service Features
+
+- **Complete API Simulation**: All endpoints from the API specification are implemented
+- **Realistic Data**: Mock data that closely resembles production data structures
+- **Configurable Responses**: Ability to simulate different scenarios (success, errors, edge cases)
+- **State Persistence**: Mock data persists across browser sessions during development
+- **Performance Simulation**: Configurable delays to simulate network latency
+- **Error Simulation**: Built-in error scenarios for testing error handling
+
+### Mock Service Structure
+
+```
+src/
+├── services/
+│   ├── api/
+│   │   ├── mockApiClient.ts      # Mock API client implementation
+│   │   ├── mockData/             # Mock data generators
+│   │   │   ├── authMockData.ts
+│   │   │   ├── booksMockData.ts
+│   │   │   ├── learningMockData.ts
+│   │   │   └── progressMockData.ts
+│   │   └── mockEndpoints/        # Individual endpoint implementations
+│   │       ├── authEndpoints.ts
+│   │       ├── booksEndpoints.ts
+│   │       ├── learningEndpoints.ts
+│   │       └── progressEndpoints.ts
+│   └── mockService.ts            # Main mock service orchestrator
+```
+
+### Environment Configuration
+
+#### Enable Mock Service
+
+```bash
+# .env.development
+REACT_APP_MOCK_API=true
+REACT_APP_MOCK_DELAY=500
+REACT_APP_MOCK_ERROR_RATE=0.1
+```
+
+#### Mock Service Configuration
+
+```typescript
+// src/services/mockService.ts
+export interface MockServiceConfig {
+  enabled: boolean;
+  delay: number; // milliseconds
+  errorRate: number; // 0-1, probability of errors
+  persistData: boolean;
+  scenarios: {
+    networkSlow: boolean;
+    serverErrors: boolean;
+    authExpired: boolean;
+  };
+}
+
+export const defaultMockConfig: MockServiceConfig = {
+  enabled: process.env.REACT_APP_MOCK_API === 'true',
+  delay: parseInt(process.env.REACT_APP_MOCK_DELAY || '500'),
+  errorRate: parseFloat(process.env.REACT_APP_MOCK_ERROR_RATE || '0.1'),
+  persistData: true,
+  scenarios: {
+    networkSlow: false,
+    serverErrors: false,
+    authExpired: false,
+  },
+};
+```
+
+### Mock Data Implementation
+
+#### Authentication Mock Data
+
+```typescript
+// src/services/api/mockData/authMockData.ts
+import { User, AuthResponse, LoginRequest, RegisterRequest } from '../../../types/auth';
+
+export const mockUsers: User[] = [
+  {
+    id: '1',
+    email: 'demo@lexik3.com',
+    firstName: 'Demo',
+    lastName: 'User',
+    createdAt: '2024-01-01T00:00:00Z',
+    lastLoginAt: '2024-01-15T10:30:00Z',
+    preferences: {
+      language: 'en',
+      dailyGoal: 20,
+      notifications: true,
+    },
+  },
+  {
+    id: '2',
+    email: 'test@lexik3.com',
+    firstName: 'Test',
+    lastName: 'User',
+    createdAt: '2024-01-02T00:00:00Z',
+    lastLoginAt: '2024-01-14T15:45:00Z',
+    preferences: {
+      language: 'es',
+      dailyGoal: 15,
+      notifications: false,
+    },
+  },
+];
+
+export const generateAuthResponse = (user: User): AuthResponse => ({
+  token: `mock-jwt-token-${user.id}`,
+  refreshToken: `mock-refresh-token-${user.id}`,
+  expiresAt: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
+  user,
+});
+
+export const validateLoginRequest = (request: LoginRequest): User | null => {
+  return mockUsers.find(user => 
+    user.email === request.email && 
+    request.password === 'password123' // Mock password validation
+  ) || null;
+};
+
+export const validateRegisterRequest = (request: RegisterRequest): boolean => {
+  return request.password === request.confirmPassword && 
+         request.password.length >= 8 &&
+         !mockUsers.some(user => user.email === request.email);
+};
+```
+
+#### Books Mock Data
+
+```typescript
+// src/services/api/mockData/booksMockData.ts
+import { Book, BookDetail, BooksResponse, PaginationInfo } from '../../../types/books';
+
+export const mockBooks: Book[] = [
+  {
+    id: '1',
+    title: 'Essential English Vocabulary',
+    description: 'Core vocabulary for everyday English communication',
+    language: 'en',
+    totalWords: 500,
+    difficulty: 'beginner',
+    createdAt: '2024-01-01T00:00:00Z',
+    isPublic: true,
+    author: 'LexiK3 Team',
+    categories: ['general', 'beginner'],
+    estimatedTime: '2 weeks',
+    userProgress: {
+      isEnrolled: true,
+      wordsLearned: 150,
+      currentStreak: 7,
+      lastStudied: '2024-01-15T10:30:00Z',
+    },
+  },
+  {
+    id: '2',
+    title: 'Business Spanish Vocabulary',
+    description: 'Professional Spanish terms for business communication',
+    language: 'es',
+    totalWords: 300,
+    difficulty: 'intermediate',
+    createdAt: '2024-01-02T00:00:00Z',
+    isPublic: true,
+    author: 'LexiK3 Team',
+    categories: ['business', 'intermediate'],
+    estimatedTime: '3 weeks',
+    userProgress: {
+      isEnrolled: false,
+      wordsLearned: 0,
+      currentStreak: 0,
+      lastStudied: null,
+    },
+  },
+];
+
+export const generateBooksResponse = (
+  page: number = 1,
+  pageSize: number = 10,
+  filters?: any
+): BooksResponse => {
+  let filteredBooks = [...mockBooks];
+  
+  // Apply filters
+  if (filters?.language) {
+    filteredBooks = filteredBooks.filter(book => book.language === filters.language);
+  }
+  
+  if (filters?.difficulty) {
+    filteredBooks = filteredBooks.filter(book => book.difficulty === filters.difficulty);
+  }
+  
+  if (filters?.search) {
+    const searchTerm = filters.search.toLowerCase();
+    filteredBooks = filteredBooks.filter(book => 
+      book.title.toLowerCase().includes(searchTerm) ||
+      book.description.toLowerCase().includes(searchTerm)
+    );
+  }
+  
+  const totalItems = filteredBooks.length;
+  const totalPages = Math.ceil(totalItems / pageSize);
+  const startIndex = (page - 1) * pageSize;
+  const endIndex = startIndex + pageSize;
+  
+  const pagination: PaginationInfo = {
+    page,
+    pageSize,
+    totalItems,
+    totalPages,
+    hasNext: page < totalPages,
+    hasPrevious: page > 1,
+  };
+  
+  return {
+    books: filteredBooks.slice(startIndex, endIndex),
+    pagination,
+  };
+};
+```
+
+### Mock API Client Implementation
+
+```typescript
+// src/services/api/mockApiClient.ts
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
+import { MockServiceConfig } from '../mockService';
+
+export class MockApiClient {
+  private config: MockServiceConfig;
+  private mockData: Map<string, any> = new Map();
+
+  constructor(config: MockServiceConfig) {
+    this.config = config;
+    this.initializeMockData();
+  }
+
+  private initializeMockData(): void {
+    // Initialize with default mock data
+    this.mockData.set('users', mockUsers);
+    this.mockData.set('books', mockBooks);
+    this.mockData.set('sessions', []);
+    this.mockData.set('progress', mockProgress);
+  }
+
+  async get<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.simulateRequest<T>('GET', url, undefined, config);
+  }
+
+  async post<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.simulateRequest<T>('POST', url, data, config);
+  }
+
+  async put<T>(url: string, data?: any, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.simulateRequest<T>('PUT', url, data, config);
+  }
+
+  async delete<T>(url: string, config?: AxiosRequestConfig): Promise<AxiosResponse<T>> {
+    return this.simulateRequest<T>('DELETE', url, undefined, config);
+  }
+
+  private async simulateRequest<T>(
+    method: string,
+    url: string,
+    data?: any,
+    config?: AxiosRequestConfig
+  ): Promise<AxiosResponse<T>> {
+    // Simulate network delay
+    await this.delay(this.config.delay);
+
+    // Simulate random errors
+    if (Math.random() < this.config.errorRate) {
+      throw this.createMockError('NETWORK_ERROR', 'Simulated network error');
+    }
+
+    // Route to appropriate mock endpoint
+    const response = await this.routeRequest(method, url, data);
+    
+    return {
+      data: response,
+      status: 200,
+      statusText: 'OK',
+      headers: {},
+      config: config || {},
+    } as AxiosResponse<T>;
+  }
+
+  private async routeRequest(method: string, url: string, data?: any): Promise<any> {
+    // Authentication endpoints
+    if (url.includes('/api/auth/login')) {
+      return this.handleLogin(data);
+    }
+    
+    if (url.includes('/api/auth/register')) {
+      return this.handleRegister(data);
+    }
+    
+    if (url.includes('/api/auth/refresh')) {
+      return this.handleRefreshToken(data);
+    }
+    
+    if (url.includes('/api/auth/logout')) {
+      return this.handleLogout();
+    }
+
+    // Books endpoints
+    if (url.includes('/api/books') && method === 'GET') {
+      return this.handleGetBooks(url);
+    }
+    
+    if (url.includes('/api/books/') && method === 'GET') {
+      return this.handleGetBookById(url);
+    }
+
+    // Learning endpoints
+    if (url.includes('/api/learning-sessions') && method === 'POST') {
+      return this.handleStartSession(data);
+    }
+
+    // Default response
+    return { message: 'Mock endpoint not implemented' };
+  }
+
+  private handleLogin(data: any): any {
+    const user = validateLoginRequest(data);
+    if (!user) {
+      throw this.createMockError('AUTHENTICATION_FAILED', 'Invalid credentials');
+    }
+    
+    return {
+      success: true,
+      data: generateAuthResponse(user),
+      message: 'Login successful',
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  private handleRegister(data: any): any {
+    if (!validateRegisterRequest(data)) {
+      throw this.createMockError('VALIDATION_ERROR', 'Invalid registration data');
+    }
+    
+    const newUser: User = {
+      id: Date.now().toString(),
+      email: data.email,
+      firstName: data.firstName,
+      lastName: data.lastName,
+      createdAt: new Date().toISOString(),
+      lastLoginAt: null,
+      preferences: {
+        language: 'en',
+        dailyGoal: 20,
+        notifications: true,
+      },
+    };
+    
+    this.mockData.set('users', [...this.mockData.get('users'), newUser]);
+    
+    return {
+      success: true,
+      data: {
+        userId: newUser.id,
+        email: newUser.email,
+        firstName: newUser.firstName,
+        lastName: newUser.lastName,
+        emailConfirmed: false,
+      },
+      message: 'Registration successful',
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  private handleGetBooks(url: string): any {
+    const urlObj = new URL(url, 'http://localhost');
+    const page = parseInt(urlObj.searchParams.get('page') || '1');
+    const pageSize = parseInt(urlObj.searchParams.get('pageSize') || '10');
+    const language = urlObj.searchParams.get('language');
+    const search = urlObj.searchParams.get('search');
+    
+    const filters = { language, search };
+    const response = generateBooksResponse(page, pageSize, filters);
+    
+    return {
+      success: true,
+      data: response,
+      message: 'Books retrieved successfully',
+      timestamp: new Date().toISOString(),
+    };
+  }
+
+  private createMockError(code: string, message: string): Error {
+    const error = new Error(message) as any;
+    error.response = {
+      data: {
+        success: false,
+        error: { code, message },
+        timestamp: new Date().toISOString(),
+      },
+      status: 400,
+    };
+    return error;
+  }
+
+  private delay(ms: number): Promise<void> {
+    return new Promise(resolve => setTimeout(resolve, ms));
+  }
+}
+```
+
+### Service Integration
+
+```typescript
+// src/services/api/apiClient.ts
+import axios, { AxiosInstance } from 'axios';
+import { MockApiClient } from './mockApiClient';
+import { mockServiceConfig } from '../mockService';
+
+class ApiClient {
+  private client: AxiosInstance | MockApiClient;
+
+  constructor() {
+    if (mockServiceConfig.enabled) {
+      this.client = new MockApiClient(mockServiceConfig);
+    } else {
+      this.client = axios.create({
+        baseURL: process.env.REACT_APP_API_URL,
+        timeout: 10000,
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+    }
+  }
+
+  get<T>(url: string, config?: any) {
+    return this.client.get<T>(url, config);
+  }
+
+  post<T>(url: string, data?: any, config?: any) {
+    return this.client.post<T>(url, data, config);
+  }
+
+  put<T>(url: string, data?: any, config?: any) {
+    return this.client.put<T>(url, data, config);
+  }
+
+  delete<T>(url: string, config?: any) {
+    return this.client.delete<T>(url, config);
+  }
+}
+
+export const apiClient = new ApiClient();
+```
+
+### Testing with Mock Service
+
+#### Unit Tests
+
+```typescript
+// src/services/__tests__/authService.test.ts
+import { AuthService } from '../auth/authService';
+import { mockServiceConfig } from '../mockService';
+
+// Enable mock service for tests
+beforeAll(() => {
+  mockServiceConfig.enabled = true;
+  mockServiceConfig.errorRate = 0; // Disable random errors for tests
+});
+
+describe('AuthService with Mock API', () => {
+  it('should login successfully with valid credentials', async () => {
+    const credentials = {
+      email: 'demo@lexik3.com',
+      password: 'password123',
+    };
+
+    const result = await AuthService.login(credentials);
+    
+    expect(result.user.email).toBe('demo@lexik3.com');
+    expect(result.token).toBeDefined();
+    expect(result.isAuthenticated).toBe(true);
+  });
+
+  it('should fail login with invalid credentials', async () => {
+    const credentials = {
+      email: 'demo@lexik3.com',
+      password: 'wrongpassword',
+    };
+
+    await expect(AuthService.login(credentials)).rejects.toThrow();
+  });
+});
+```
+
+#### Integration Tests
+
+```typescript
+// src/__tests__/integration/learningFlow.test.ts
+import { render, screen, waitFor } from '@testing-library/react';
+import { Provider } from 'react-redux';
+import { store } from '../../store';
+import LearningSession from '../../components/learning/LearningSession';
+import { mockServiceConfig } from '../../services/mockService';
+
+beforeAll(() => {
+  mockServiceConfig.enabled = true;
+  mockServiceConfig.delay = 0; // No delay for tests
+});
+
+describe('Learning Flow Integration', () => {
+  it('should complete a learning session', async () => {
+    render(
+      <Provider store={store}>
+        <LearningSession />
+      </Provider>
+    );
+
+    // Start session
+    const startButton = screen.getByText('Start Learning');
+    startButton.click();
+
+    await waitFor(() => {
+      expect(screen.getByText('Word 1 of 10')).toBeInTheDocument();
+    });
+
+    // Submit answers
+    const answerInput = screen.getByRole('textbox');
+    answerInput.value = 'test answer';
+    
+    const submitButton = screen.getByText('Submit');
+    submitButton.click();
+
+    // Complete session
+    await waitFor(() => {
+      expect(screen.getByText('Session Complete!')).toBeInTheDocument();
+    });
+  });
+});
+```
+
+### Development Workflow
+
+#### Starting with Mock Service
+
+```bash
+# Start development server with mock API
+REACT_APP_MOCK_API=true npm start
+
+# Start with specific mock configuration
+REACT_APP_MOCK_API=true REACT_APP_MOCK_DELAY=1000 npm start
+
+# Start with error simulation
+REACT_APP_MOCK_API=true REACT_APP_MOCK_ERROR_RATE=0.3 npm start
+```
+
+#### Switching Between Mock and Real API
+
+```typescript
+// src/services/mockService.ts
+export const toggleMockService = (enabled: boolean) => {
+  mockServiceConfig.enabled = enabled;
+  
+  // Reload the page to reinitialize API client
+  window.location.reload();
+};
+
+// Development helper
+if (process.env.NODE_ENV === 'development') {
+  (window as any).toggleMockService = toggleMockService;
+}
+```
+
+### Mock Data Management
+
+#### Adding New Mock Data
+
+```typescript
+// src/services/api/mockData/customMockData.ts
+export const addMockBook = (book: Book) => {
+  const books = mockData.get('books') || [];
+  mockData.set('books', [...books, book]);
+};
+
+export const updateMockUserProgress = (userId: string, progress: UserProgress) => {
+  const users = mockData.get('users') || [];
+  const updatedUsers = users.map(user => 
+    user.id === userId ? { ...user, progress } : user
+  );
+  mockData.set('users', updatedUsers);
+};
+```
+
+#### Data Persistence
+
+```typescript
+// src/services/api/mockData/mockDataPersistence.ts
+export const saveMockData = () => {
+  const data = Object.fromEntries(mockData);
+  localStorage.setItem('lexik3-mock-data', JSON.stringify(data));
+};
+
+export const loadMockData = () => {
+  const saved = localStorage.getItem('lexik3-mock-data');
+  if (saved) {
+    const data = JSON.parse(saved);
+    Object.entries(data).forEach(([key, value]) => {
+      mockData.set(key, value);
+    });
+  }
+};
+
+// Auto-save on data changes
+export const enableAutoSave = () => {
+  const originalSet = mockData.set.bind(mockData);
+  mockData.set = (key: string, value: any) => {
+    originalSet(key, value);
+    saveMockData();
+  };
+};
+```
+
+### Best Practices
+
+1. **Keep Mock Data Realistic**: Use data that closely resembles production data
+2. **Test Error Scenarios**: Include mock endpoints that return various error conditions
+3. **Maintain Data Consistency**: Ensure relationships between mock data entities are valid
+4. **Document Mock Scenarios**: Clearly document what each mock endpoint simulates
+5. **Version Control Mock Data**: Include mock data in version control for consistency
+6. **Performance Testing**: Use mock service to test performance with large datasets
+7. **Edge Case Testing**: Include mock data that tests edge cases and boundary conditions
+
 ## 🛠️ Development Tools
 
 ### VS Code Extensions
