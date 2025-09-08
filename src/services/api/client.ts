@@ -1,6 +1,7 @@
 // services/api/client.ts
 import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse, AxiosError } from 'axios';
 import { ApiResponse, ApiError } from '../../types/common';
+import { getApiClient, isMockMode } from './apiServiceFactory';
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
@@ -10,6 +11,44 @@ const apiClient: AxiosInstance = axios.create({
     'Content-Type': 'application/json',
   },
 });
+
+// Override the axios instance methods to prevent API calls in mock mode
+const originalGet = apiClient.get.bind(apiClient);
+const originalPost = apiClient.post.bind(apiClient);
+const originalPut = apiClient.put.bind(apiClient);
+const originalDelete = apiClient.delete.bind(apiClient);
+
+apiClient.get = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+  if (isMockMode()) {
+    console.warn('🚫 API call blocked in mock mode:', 'GET', url);
+    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
+  }
+  return originalGet<T, R, D>(url, config);
+};
+
+apiClient.post = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+  if (isMockMode()) {
+    console.warn('🚫 API call blocked in mock mode:', 'POST', url);
+    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
+  }
+  return originalPost<T, R, D>(url, data, config);
+};
+
+apiClient.put = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
+  if (isMockMode()) {
+    console.warn('🚫 API call blocked in mock mode:', 'PUT', url);
+    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
+  }
+  return originalPut<T, R, D>(url, data, config);
+};
+
+apiClient.delete = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
+  if (isMockMode()) {
+    console.warn('🚫 API call blocked in mock mode:', 'DELETE', url);
+    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
+  }
+  return originalDelete<T, R, D>(url, config);
+};
 
 // Request interceptor - Add auth token
 apiClient.interceptors.request.use(
