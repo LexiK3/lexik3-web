@@ -34,7 +34,7 @@ export interface AuthState {
 export interface BooksState {
   books: Book[];
   currentBook: Book | null;
-  enrolledBooks: Book[];
+  enrolledBooks: any[]; // BookEnrollment[]
   isLoading: boolean;
   error: string | null;
   pagination: PaginationInfo;
@@ -49,6 +49,7 @@ export interface BookFilters {
   language?: LanguageCode;
   difficulty?: string;
   category?: string;
+  categories?: string[];
   isPublic?: boolean;
   hasProgress?: boolean;
   tags?: string[];

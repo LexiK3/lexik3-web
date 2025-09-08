@@ -1,7 +1,8 @@
 // store/slices/learningSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { LearningSession, SessionAnswer, SessionResult, StartSessionRequest } from '../../types/learning';
+import { LearningSession, SessionAnswer, SessionResult, StartSessionRequest, AnswerSubmission, AnswerResponse, SessionHistory } from '../../types/learning';
 import { LearningState } from '../../types/store';
+import { LearningService } from '../../services/learning/learningService';
 
 const initialState: LearningState = {
   currentSession: null,
@@ -24,39 +25,13 @@ const initialState: LearningState = {
   totalHints: 0,
 };
 
-// Mock async thunks for now - will be replaced with actual API calls
+// Async thunks using real API service
 export const startSession = createAsyncThunk(
   'learning/startSession',
   async (sessionData: StartSessionRequest, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      const mockSession: LearningSession = {
-        id: 'session-1',
-        userId: 'user-1',
-        bookId: sessionData.bookId,
-        day: sessionData.day,
-        sessionType: sessionData.sessionType,
-        startedAt: new Date().toISOString(),
-        totalWords: 10,
-        words: [],
-        answers: [],
-        results: [],
-        statistics: {
-          totalWords: 10,
-          correctAnswers: 0,
-          accuracy: 0,
-          averageResponseTime: 0,
-          totalTime: 0,
-          newWords: 5,
-          reviewWords: 5,
-          hintsUsed: 0,
-          score: 0,
-          improvement: 0,
-        },
-        isActive: true,
-        createdAt: new Date().toISOString(),
-      };
-      return mockSession;
+      const session = await LearningService.startSession(sessionData);
+      return session;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to start session');
     }
@@ -65,22 +40,10 @@ export const startSession = createAsyncThunk(
 
 export const submitAnswer = createAsyncThunk(
   'learning/submitAnswer',
-  async ({ sessionId, answer }: { sessionId: string; answer: SessionAnswer }, { rejectWithValue }) => {
+  async ({ sessionId, answer }: { sessionId: string; answer: AnswerSubmission }, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      const mockResult: SessionResult = {
-        wordId: answer.wordId,
-        isCorrect: Math.random() > 0.3, // Mock 70% accuracy
-        score: Math.floor(Math.random() * 100),
-        masteryLevel: Math.floor(Math.random() * 5) + 1,
-        nextReview: new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString(),
-        feedback: 'Good job!',
-        timeSpent: answer.responseTime,
-        hintsUsed: answer.hintsUsed || 0,
-        attempts: answer.attempts || 1,
-        improvement: Math.floor(Math.random() * 20),
-      };
-      return mockResult;
+      const response = await LearningService.submitAnswer(sessionId, answer);
+      return response;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to submit answer');
     }
@@ -91,20 +54,34 @@ export const completeSession = createAsyncThunk(
   'learning/completeSession',
   async (sessionId: string, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      return {
-        sessionId,
-        completedAt: new Date().toISOString(),
-        duration: '15 minutes',
-        wordsStudied: 10,
-        correctAnswers: 7,
-        accuracy: 0.7,
-        score: 85,
-        streakUpdated: true,
-        achievements: [],
-      };
+      const statistics = await LearningService.completeSession(sessionId);
+      return statistics;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to complete session');
+    }
+  }
+);
+
+export const fetchSessionHistory = createAsyncThunk(
+  'learning/fetchSessionHistory',
+  async (params: { limit?: number; offset?: number } = {}, { rejectWithValue }) => {
+    try {
+      const history = await LearningService.getSessionHistory(params.limit, params.offset);
+      return history;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Failed to fetch session history');
+    }
+  }
+);
+
+export const fetchCurrentSession = createAsyncThunk(
+  'learning/fetchCurrentSession',
+  async (_, { rejectWithValue }) => {
+    try {
+      const session = await LearningService.getCurrentSession();
+      return session;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Failed to fetch current session');
     }
   }
 );
@@ -172,8 +149,21 @@ const learningSlice = createSlice({
 
     // Submit Answer
     builder
-      .addCase(submitAnswer.fulfilled, (state, action: PayloadAction<SessionResult>) => {
-        state.results.push(action.payload);
+      .addCase(submitAnswer.fulfilled, (state, action: PayloadAction<AnswerResponse>) => {
+        // Convert AnswerResponse to SessionResult format
+        const sessionResult = {
+          wordId: action.payload.wordId || '',
+          isCorrect: action.payload.isCorrect,
+          score: action.payload.score,
+          masteryLevel: action.payload.masteryLevel,
+          nextReview: action.payload.nextReview,
+          feedback: action.payload.feedback,
+          timeSpent: action.payload.timeSpent,
+          hintsUsed: action.payload.hintsUsed,
+          attempts: action.payload.attempts,
+          improvement: action.payload.improvement,
+        };
+        state.results.push(sessionResult);
       })
       .addCase(submitAnswer.rejected, (state, action) => {
         state.error = action.payload as string;
@@ -185,7 +175,7 @@ const learningSlice = createSlice({
         if (state.currentSession) {
           state.sessionHistory.push({
             ...state.currentSession,
-            completedAt: action.payload.completedAt,
+            completedAt: new Date().toISOString(),
           });
         }
         state.currentSession = null;
@@ -196,6 +186,35 @@ const learningSlice = createSlice({
         state.hintsUsed = 0;
       })
       .addCase(completeSession.rejected, (state, action) => {
+        state.error = action.payload as string;
+      });
+
+    // Fetch Session History
+    builder
+      .addCase(fetchSessionHistory.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchSessionHistory.fulfilled, (state, action: PayloadAction<SessionHistory[]>) => {
+        state.isLoading = false;
+        state.sessionHistory = action.payload;
+      })
+      .addCase(fetchSessionHistory.rejected, (state, action) => {
+        state.isLoading = false;
+        state.error = action.payload as string;
+      });
+
+    // Fetch Current Session
+    builder
+      .addCase(fetchCurrentSession.fulfilled, (state, action: PayloadAction<LearningSession | null>) => {
+        state.currentSession = action.payload;
+        if (action.payload) {
+          state.currentWordIndex = 0;
+          state.answers = action.payload.answers || [];
+          state.results = action.payload.results || [];
+        }
+      })
+      .addCase(fetchCurrentSession.rejected, (state, action) => {
         state.error = action.payload as string;
       });
   },

@@ -188,3 +188,60 @@ export interface SubmitAnswerRequest {
   hintsUsed?: number;
   attempts?: number;
 }
+
+// Learning session request (alias for StartSessionRequest)
+export interface LearningSessionRequest extends StartSessionRequest {}
+
+// Answer submission (alias for SubmitAnswerRequest)
+export interface AnswerSubmission extends SubmitAnswerRequest {}
+
+// Answer response
+export interface AnswerResponse {
+  wordId: string;
+  isCorrect: boolean;
+  score: number;
+  masteryLevel: number;
+  nextReview: string;
+  feedback: string;
+  timeSpent: number;
+  hintsUsed: number;
+  attempts: number;
+  improvement: number;
+}
+
+// Session history
+export interface SessionHistory {
+  id: string;
+  bookId: string;
+  bookTitle: string;
+  day?: number;
+  sessionType: SessionType;
+  startedAt: string;
+  completedAt?: string;
+  totalWords: number;
+  correctAnswers: number;
+  accuracy: number;
+  score: number;
+  duration: number; // seconds
+  isCompleted: boolean;
+}
+
+// Book enrollment
+export interface BookEnrollment {
+  id: string;
+  userId: string;
+  bookId: string;
+  enrolledAt: string;
+  progress: UserBookProgress;
+  book: Book;
+}
+
+// Book word (word with book context)
+export interface BookWord extends Word {
+  bookTitle: string;
+  day?: number;
+  order?: number;
+}
+
+// Daily words
+export interface DailyWords extends DailyWordsResponse {}

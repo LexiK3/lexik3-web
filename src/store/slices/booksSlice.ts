@@ -1,8 +1,9 @@
 // store/slices/booksSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
-import { Book } from '../../types/learning';
+import { Book, BookEnrollment } from '../../types/learning';
 import { BookFilters, PaginationInfo } from '../../types/store';
 import { BooksState } from '../../types/store';
+import { BooksService } from '../../services/books/booksService';
 
 const initialState: BooksState = {
   books: [],
@@ -24,50 +25,43 @@ const initialState: BooksState = {
   sortDirection: 'asc',
 };
 
-// Mock async thunks for now - will be replaced with actual API calls
+// Async thunks using real API service
 export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
   async (params: { page?: number; pageSize?: number; filters?: BookFilters } = {}, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      const mockBooks: Book[] = [
-        {
-          id: '1',
-          title: 'Essential English Vocabulary',
-          description: 'Core vocabulary for everyday English communication',
-          language: 'en' as any,
-          totalWords: 500,
-          difficulty: 'Beginner' as any,
-          createdAt: '2024-01-01T00:00:00Z',
-          isPublic: true,
-          author: 'LexiK3 Team',
-          categories: ['general', 'beginner'],
-          estimatedTime: '2 weeks',
-          tags: ['english', 'beginner'],
-          userProgress: {
-            isEnrolled: true,
-            wordsLearned: 150,
-            currentStreak: 7,
-            longestStreak: 15,
-            lastStudied: '2024-01-15T10:30:00Z',
-            progressPercentage: 30,
-            averageAccuracy: 0.85,
-            totalStudyTime: 120,
-            isCompleted: false,
-          },
-        },
-      ];
-
+      const books = await BooksService.getBooks();
+      
+      // Apply client-side filtering and pagination for now
+      // TODO: Move filtering and pagination to backend
+      let filteredBooks = books;
+      
+      if (params.filters?.difficulty) {
+        filteredBooks = filteredBooks.filter(book => book.difficulty === params.filters?.difficulty);
+      }
+      
+      if (params.filters?.categories && params.filters.categories.length > 0) {
+        filteredBooks = filteredBooks.filter(book => 
+          book.categories.some(category => params.filters?.categories?.includes(category))
+        );
+      }
+      
+      const page = params.page || 1;
+      const pageSize = params.pageSize || 10;
+      const startIndex = (page - 1) * pageSize;
+      const endIndex = startIndex + pageSize;
+      const paginatedBooks = filteredBooks.slice(startIndex, endIndex);
+      
       const pagination: PaginationInfo = {
-        page: params?.page || 1,
-        pageSize: params?.pageSize || 10,
-        totalItems: mockBooks.length,
-        totalPages: 1,
-        hasNext: false,
-        hasPrevious: false,
+        page,
+        pageSize,
+        totalItems: filteredBooks.length,
+        totalPages: Math.ceil(filteredBooks.length / pageSize),
+        hasNext: endIndex < filteredBooks.length,
+        hasPrevious: page > 1,
       };
 
-      return { books: mockBooks, pagination };
+      return { books: paginatedBooks, pagination };
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to fetch books');
     }
@@ -78,22 +72,8 @@ export const fetchBookById = createAsyncThunk(
   'books/fetchBookById',
   async (bookId: string, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      const mockBook: Book = {
-        id: bookId,
-        title: 'Essential English Vocabulary',
-        description: 'Core vocabulary for everyday English communication',
-        language: 'en' as any,
-        totalWords: 500,
-        difficulty: 'Beginner' as any,
-        createdAt: '2024-01-01T00:00:00Z',
-        isPublic: true,
-        author: 'LexiK3 Team',
-        categories: ['general', 'beginner'],
-        estimatedTime: '2 weeks',
-        tags: ['english', 'beginner'],
-      };
-      return mockBook;
+      const book = await BooksService.getBookById(bookId);
+      return book;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to fetch book');
     }
@@ -104,8 +84,8 @@ export const enrollInBook = createAsyncThunk(
   'books/enrollInBook',
   async (bookId: string, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
-      return bookId;
+      const enrollment = await BooksService.enrollInBook(bookId);
+      return enrollment;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to enroll in book');
     }
@@ -116,10 +96,22 @@ export const unenrollFromBook = createAsyncThunk(
   'books/unenrollFromBook',
   async (bookId: string, { rejectWithValue }) => {
     try {
-      // Mock implementation - replace with actual API call
+      await BooksService.unenrollFromBook(bookId);
       return bookId;
     } catch (error: any) {
       return rejectWithValue(error.message || 'Failed to unenroll from book');
+    }
+  }
+);
+
+export const fetchEnrolledBooks = createAsyncThunk(
+  'books/fetchEnrolledBooks',
+  async (_, { rejectWithValue }) => {
+    try {
+      const enrolledBooks = await BooksService.getEnrolledBooks();
+      return enrolledBooks;
+    } catch (error: any) {
+      return rejectWithValue(error.message || 'Failed to fetch enrolled books');
     }
   }
 );
@@ -176,8 +168,9 @@ const booksSlice = createSlice({
 
     // Enroll in Book
     builder
-      .addCase(enrollInBook.fulfilled, (state, action: PayloadAction<string>) => {
-        const bookId = action.payload;
+      .addCase(enrollInBook.fulfilled, (state, action: PayloadAction<BookEnrollment>) => {
+        const enrollment = action.payload;
+        const bookId = enrollment.bookId;
         const book = state.books.find(b => b.id === bookId);
         if (book && book.userProgress) {
           book.userProgress.isEnrolled = true;
@@ -185,6 +178,8 @@ const booksSlice = createSlice({
         if (state.currentBook?.id === bookId && state.currentBook.userProgress) {
           state.currentBook.userProgress.isEnrolled = true;
         }
+        // Add to enrolled books
+        state.enrolledBooks.push(enrollment.book);
       })
       .addCase(enrollInBook.rejected, (state, action) => {
         state.error = action.payload as string;
@@ -203,6 +198,21 @@ const booksSlice = createSlice({
         }
       })
       .addCase(unenrollFromBook.rejected, (state, action) => {
+        state.error = action.payload as string;
+      });
+
+    // Fetch Enrolled Books
+    builder
+      .addCase(fetchEnrolledBooks.pending, (state) => {
+        state.isLoading = true;
+        state.error = null;
+      })
+      .addCase(fetchEnrolledBooks.fulfilled, (state, action: PayloadAction<BookEnrollment[]>) => {
+        state.isLoading = false;
+        state.enrolledBooks = action.payload;
+      })
+      .addCase(fetchEnrolledBooks.rejected, (state, action) => {
+        state.isLoading = false;
         state.error = action.payload as string;
       });
   },

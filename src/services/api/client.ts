@@ -5,50 +5,14 @@ import { getApiClient, isMockMode } from './apiServiceFactory';
 
 // Create axios instance
 const apiClient: AxiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'https://api.lexik3.com/v1',
+  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5071',
   timeout: 10000,
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Override the axios instance methods to prevent API calls in mock mode
-const originalGet = apiClient.get.bind(apiClient);
-const originalPost = apiClient.post.bind(apiClient);
-const originalPut = apiClient.put.bind(apiClient);
-const originalDelete = apiClient.delete.bind(apiClient);
-
-apiClient.get = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
-  if (isMockMode()) {
-    console.warn('🚫 API call blocked in mock mode:', 'GET', url);
-    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
-  }
-  return originalGet<T, R, D>(url, config);
-};
-
-apiClient.post = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
-  if (isMockMode()) {
-    console.warn('🚫 API call blocked in mock mode:', 'POST', url);
-    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
-  }
-  return originalPost<T, R, D>(url, data, config);
-};
-
-apiClient.put = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, data?: D, config?: AxiosRequestConfig<D>): Promise<R> {
-  if (isMockMode()) {
-    console.warn('🚫 API call blocked in mock mode:', 'PUT', url);
-    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
-  }
-  return originalPut<T, R, D>(url, data, config);
-};
-
-apiClient.delete = function<T = any, R = AxiosResponse<T, any>, D = any>(url: string, config?: AxiosRequestConfig<D>): Promise<R> {
-  if (isMockMode()) {
-    console.warn('🚫 API call blocked in mock mode:', 'DELETE', url);
-    throw new Error('API calls are disabled in mock mode. Use the mock client instead.');
-  }
-  return originalDelete<T, R, D>(url, config);
-};
+// API client is ready for real API calls
 
 // Request interceptor - Add auth token
 apiClient.interceptors.request.use(
@@ -77,7 +41,7 @@ apiClient.interceptors.response.use(
         const refreshToken = localStorage.getItem('lexik3_refresh_token');
         if (refreshToken) {
           const refreshResponse = await axios.post<ApiResponse<any>>(
-            `${process.env.REACT_APP_API_URL || 'https://api.lexik3.com/v1'}/api/auth/refresh`,
+            `${process.env.REACT_APP_API_URL || 'http://localhost:5071'}/api/auth/refresh`,
             { refreshToken }
           );
 

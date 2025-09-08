@@ -12,13 +12,12 @@ export interface EnvironmentConfig {
 
 export const environmentConfig: EnvironmentConfig = {
   // Mock API Configuration
-  useMockApi: process.env.REACT_APP_USE_MOCK_API === 'true' || 
-              process.env.NODE_ENV === 'development',
+  useMockApi: process.env.REACT_APP_USE_MOCK_API === 'true',
   mockDelay: parseInt(process.env.REACT_APP_MOCK_DELAY || '500'),
   mockErrorRate: parseFloat(process.env.REACT_APP_MOCK_ERROR_RATE || '0.1'),
   
   // API Configuration
-  apiUrl: process.env.REACT_APP_API_URL || 'https://api.lexik3.com/v1',
+  apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:5071',
   environment: process.env.REACT_APP_ENVIRONMENT || 'development',
   debug: process.env.REACT_APP_DEBUG === 'true' || process.env.NODE_ENV === 'development',
   

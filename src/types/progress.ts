@@ -174,3 +174,37 @@ export interface DailyProgressRequest {
   accuracy: number;
   studyTime: number; // minutes
 }
+
+// Progress overview (alias for UserProgress)
+export interface ProgressOverview extends UserProgress {}
+
+// Daily progress (alias for DailyActivity)
+export interface DailyProgress extends DailyActivity {}
+
+// Statistics (alias for LearningStatistics)
+export interface Statistics extends LearningStatistics {}
+
+// Progress data (alias for BookProgress)
+export interface ProgressData extends BookProgress {}
+
+// Streak data
+export interface StreakData {
+  current: number;
+  longest: number;
+  average: number;
+  total: number;
+  bestMonth: string;
+  consistency: number;
+  lastStudied?: string;
+  nextMilestone: number;
+  milestones: StreakMilestone[];
+}
+
+// Streak milestone
+export interface StreakMilestone {
+  days: number;
+  name: string;
+  description: string;
+  isAchieved: boolean;
+  achievedAt?: string;
+}
