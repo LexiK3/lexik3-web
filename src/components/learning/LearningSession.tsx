@@ -49,7 +49,6 @@ const LearningSession: React.FC<LearningSessionProps> = ({ bookId, onComplete })
         answer,
         responseTime,
         confidence,
-        submittedAt: new Date().toISOString(),
         hintsUsed,
         attempts: 1,
       }
