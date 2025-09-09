@@ -446,7 +446,9 @@ export class MockApiClient {
       const language = this.getQueryParam(url, 'language');
       const search = this.getQueryParam(url, 'search');
 
-      let filteredBooks = books;
+      // Ensure books is always an array
+      const booksArray = Array.isArray(books) ? books : [];
+      let filteredBooks = booksArray;
       if (language) {
         filteredBooks = filteredBooks.filter(book => book.language === language);
       }

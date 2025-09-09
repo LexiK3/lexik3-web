@@ -32,9 +32,12 @@ export const fetchBooks = createAsyncThunk(
     try {
       const books = await BooksService.getBooks();
       
+      // Ensure books is always an array
+      const booksArray = Array.isArray(books) ? books : [];
+      
       // Apply client-side filtering and pagination for now
       // TODO: Move filtering and pagination to backend
-      let filteredBooks = books;
+      let filteredBooks = booksArray;
       
       if (params.filters?.difficulty) {
         filteredBooks = filteredBooks.filter(book => book.difficulty === params.filters?.difficulty);
@@ -63,7 +66,9 @@ export const fetchBooks = createAsyncThunk(
 
       return { books: paginatedBooks, pagination };
     } catch (error: any) {
-      return rejectWithValue(error.message || 'Failed to fetch books');
+      console.error('Error fetching books:', error);
+      // Return empty array as fallback to prevent slice errors
+      return { books: [], pagination: { page: 1, pageSize: 10, totalItems: 0, totalPages: 0, hasNext: false, hasPrevious: false } };
     }
   }
 );

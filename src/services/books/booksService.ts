@@ -11,8 +11,20 @@ export class BooksService {
     try {
       const client = getApiClient();
       const response = await (client as any).get(API_ENDPOINTS.BOOKS.LIST) as AxiosResponse<ApiResponse<Book[]>>;
-      return response.data.data;
+      
+      // Ensure we have valid data
+      if (!response.data || !response.data.data) {
+        console.warn('Invalid response from books API:', response.data);
+        return [];
+      }
+      
+      // Ensure data is an array
+      const books = Array.isArray(response.data.data) ? response.data.data : [];
+      console.log('Fetched books:', books.length, 'items');
+      
+      return books;
     } catch (error: any) {
+      console.error('Error fetching books:', error);
       throw new Error(this.handleBooksError(error));
     }
   }
