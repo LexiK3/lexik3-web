@@ -448,6 +448,9 @@ describe('LearningSession Component', () => {
         currentWordIndex: 2, // Last word
         isLoading: false,
         error: null,
+        isPaused: false,
+        hintsUsed: 0,
+        totalHints: 2,
       },
     });
 
@@ -457,12 +460,15 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
-    // Wait for the session to load
+    // Wait for the session to load and the loading state to complete
     await waitFor(() => {
       expect(screen.getByText('Learning Session')).toBeInTheDocument();
-    });
+    }, { timeout: 3000 });
 
-    expect(screen.getByText('Complete')).toBeInTheDocument();
+    // Wait for the Complete button to appear
+    await waitFor(() => {
+      expect(screen.getByText('Complete')).toBeInTheDocument();
+    }, { timeout: 3000 });
   });
 
   it('should display hints used counter', async () => {

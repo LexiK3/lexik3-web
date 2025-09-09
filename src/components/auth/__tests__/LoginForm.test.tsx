@@ -9,6 +9,7 @@ import authSlice from '../../../store/slices/authSlice';
 jest.mock('react-router-dom', () => ({
   useNavigate: () => jest.fn(),
   useLocation: () => ({ state: null }),
+  BrowserRouter: ({ children }: { children: React.ReactNode }) => <div>{children}</div>,
 }));
 
 // Mock store
@@ -68,7 +69,7 @@ describe('LoginForm', () => {
     expect(passwordInput).toHaveClass('block', 'w-full', 'pl-10', 'pr-3', 'py-2', 'border', 'rounded-lg');
 
     // Check if submit button has proper styling
-    const submitButton = screen.getByRole('button', { name: /sign in/i });
+    const submitButton = screen.getByRole('button', { name: /sign in with email/i });
     expect(submitButton).toHaveClass('inline-flex', 'items-center', 'justify-center', 'font-medium', 'rounded-lg');
   });
 
@@ -79,7 +80,7 @@ describe('LoginForm', () => {
       </TestWrapper>
     );
 
-    const submitButton = screen.getByRole('button', { name: /sign in/i });
+    const submitButton = screen.getByRole('button', { name: /sign in with email/i });
     submitButton.click();
 
     // Wait for validation errors to appear
