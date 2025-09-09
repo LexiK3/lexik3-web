@@ -6,6 +6,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { store, persistor } from './store';
 import LoginForm from './components/auth/LoginForm';
 import RegistrationForm from './components/auth/RegistrationForm';
+import OAuth2Callback from './components/auth/OAuth2Callback';
 import ProtectedRoute from './components/auth/ProtectedRoute';
 import Dashboard from './pages/Dashboard';
 import Learning from './pages/Learning';
@@ -21,6 +22,7 @@ function App() {
               {/* Public routes */}
               <Route path="/login" element={<LoginForm />} />
               <Route path="/register" element={<RegistrationForm />} />
+              <Route path="/oauth2/callback" element={<OAuth2Callback />} />
               
               {/* Protected routes */}
               <Route 

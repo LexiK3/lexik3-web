@@ -16,6 +16,18 @@ jest.mock('../../services/progress/progressService', () => ({
   },
 }));
 
+// Mock the thunks to return empty actions
+jest.mock('../../store/slices/progressSlice', () => {
+  const actual = jest.requireActual('../../store/slices/progressSlice');
+  return {
+    ...actual,
+    fetchStatistics: jest.fn(),
+    fetchAchievements: jest.fn(),
+    fetchDailyProgress: jest.fn(),
+    clearError: jest.fn(),
+  };
+});
+
 // Mock the common components
 jest.mock('../../components/common/Card', () => {
   return function MockCard({ children, className }: any) {

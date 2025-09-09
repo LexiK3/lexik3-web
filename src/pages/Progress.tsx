@@ -19,7 +19,7 @@ const Progress: React.FC = () => {
     statistics, 
     achievements, 
     dailyProgress,
-    isLoading: progressLoading, 
+    isLoading, 
     error: progressError 
   } = useAppSelector((state) => state.progress);
 
@@ -66,7 +66,7 @@ const Progress: React.FC = () => {
           <Card>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Statistics</h2>
             
-            {progressLoading ? (
+            {isLoading ? (
               <div className="space-y-4">
                 <LoadingCard lines={4} className="p-0" />
               </div>
@@ -134,7 +134,7 @@ const Progress: React.FC = () => {
           <Card>
             <h2 className="text-xl font-semibold text-gray-900 mb-4">Achievements</h2>
             
-            {progressLoading ? (
+            {isLoading ? (
               <div className="space-y-4">
                 <LoadingCard lines={3} className="p-0" />
               </div>

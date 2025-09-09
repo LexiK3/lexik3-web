@@ -62,6 +62,8 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
 
   return (
     <div
+      role="alert"
+      data-testid="error-message"
       className={`rounded-md border p-4 ${variantClasses[variant]} ${className}`}
     >
       <div className="flex">
@@ -77,6 +79,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
               <button
                 type="button"
                 onClick={onRetry}
+                aria-label="Retry"
                 className={`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   variant === 'error'
                     ? 'text-red-500 hover:bg-red-100 focus:ring-red-600'
@@ -86,6 +89,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
                 }`}
               >
                 <span className="sr-only">Retry</span>
+                Retry
                 <svg className="h-4 w-4" fill="currentColor" viewBox="0 0 20 20">
                   <path
                     fillRule="evenodd"
@@ -99,6 +103,7 @@ const ErrorMessage: React.FC<ErrorMessageProps> = ({
               <button
                 type="button"
                 onClick={onDismiss}
+                aria-label="Dismiss"
                 className={`inline-flex rounded-md p-1.5 focus:outline-none focus:ring-2 focus:ring-offset-2 ${
                   variant === 'error'
                     ? 'text-red-500 hover:bg-red-100 focus:ring-red-600'
