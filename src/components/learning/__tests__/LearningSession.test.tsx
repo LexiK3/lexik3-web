@@ -214,6 +214,15 @@ describe('LearningSession Component', () => {
     jest.clearAllMocks();
   });
 
+  // Mock the startSession thunk to not reset currentWordIndex
+  const mockStartSession = jest.fn().mockImplementation((dispatch, getState) => {
+    const state = getState();
+    return {
+      type: 'learning/startSession/fulfilled',
+      payload: state.learning.currentSession || mockSession,
+    };
+  });
+
   it('should display loading state when starting session', () => {
     const store = createMockStore({
       learning: { isLoading: true },
@@ -445,7 +454,7 @@ describe('LearningSession Component', () => {
     const store = createMockStore({
       learning: { 
         currentSession: mockSession, // Set the session directly
-        currentWordIndex: 2, // Last word
+        currentWordIndex: 0, // Start at first word
         isLoading: false,
         error: null,
         isPaused: false,
@@ -460,15 +469,20 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
-    // Wait for the session to load and the loading state to complete
+    // Wait for the session to load
     await waitFor(() => {
       expect(screen.getByText('Learning Session')).toBeInTheDocument();
-    }, { timeout: 3000 });
+    });
 
-    // Wait for the Complete button to appear
+    // Navigate to the last word by clicking Next twice
+    const nextButton = screen.getByText('Next →');
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+
+    // Now we should be on the last word and see Complete button
     await waitFor(() => {
       expect(screen.getByText('Complete')).toBeInTheDocument();
-    }, { timeout: 3000 });
+    });
   });
 
   it('should display hints used counter', async () => {
@@ -480,7 +494,7 @@ describe('LearningSession Component', () => {
       learning: { 
         currentSession: mockSession, // Set the session directly
         currentWordIndex: 0,
-        hintsUsed: 1,
+        hintsUsed: 0, // Start with 0 hints
         totalHints: 2,
         isLoading: false,
         error: null,
@@ -498,16 +512,30 @@ describe('LearningSession Component', () => {
       expect(screen.getByText('Learning Session')).toBeInTheDocument();
     });
 
-    expect(screen.getByText('Hints used: 1/2')).toBeInTheDocument();
+    // Use a hint by clicking the hint button
+    const hintButton = screen.getByTestId('use-hint');
+    fireEvent.click(hintButton);
+
+    // Now check that hints used counter shows 1/2
+    await waitFor(() => {
+      expect(screen.getByText('Hints used: 1/2')).toBeInTheDocument();
+    });
   });
 
   it('should handle word answer submission', async () => {
+    // Mock the LearningService to return a valid session
+    const { LearningService } = require('../../../services/learning/learningService');
+    LearningService.startSession.mockResolvedValueOnce(mockSession);
+
     const store = createMockStore({
       learning: { 
         currentSession: mockSession,
         currentWordIndex: 0,
         isLoading: false,
         error: null,
+        isPaused: false,
+        hintsUsed: 0,
+        totalHints: 2,
       },
     });
 
@@ -517,16 +545,26 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
+    // Wait for the session to load
+    await waitFor(() => {
+      expect(screen.getByText('Learning Session')).toBeInTheDocument();
+    });
+
     const submitButton = screen.getByTestId('submit-answer');
     fireEvent.click(submitButton);
 
     // The answer should be submitted to the store
     await waitFor(() => {
-      // This would be verified by checking the store state or mock calls
+      // Wait for the submitAnswer thunk to complete
+      expect(LearningService.submitAnswer).toHaveBeenCalled();
     });
   });
 
   it('should handle hint usage', async () => {
+    // Mock the LearningService to return a valid session
+    const { LearningService } = require('../../../services/learning/learningService');
+    LearningService.startSession.mockResolvedValueOnce(mockSession);
+
     const store = createMockStore({
       learning: { 
         currentSession: mockSession,
@@ -535,6 +573,7 @@ describe('LearningSession Component', () => {
         totalHints: 2,
         isLoading: false,
         error: null,
+        isPaused: false,
       },
     });
 
@@ -543,6 +582,11 @@ describe('LearningSession Component', () => {
         <LearningSession bookId="book-1" />
       </Provider>
     );
+
+    // Wait for the session to load
+    await waitFor(() => {
+      expect(screen.getByText('Learning Session')).toBeInTheDocument();
+    });
 
     const hintButton = screen.getByTestId('use-hint');
     fireEvent.click(hintButton);
@@ -552,7 +596,11 @@ describe('LearningSession Component', () => {
     });
   });
 
-  it('should handle session pause and resume', () => {
+  it('should handle session pause and resume', async () => {
+    // Mock the LearningService to return a valid session
+    const { LearningService } = require('../../../services/learning/learningService');
+    LearningService.startSession.mockResolvedValueOnce(mockSession);
+
     const store = createMockStore({
       learning: { 
         currentSession: mockSession,
@@ -560,6 +608,8 @@ describe('LearningSession Component', () => {
         isPaused: false,
         isLoading: false,
         error: null,
+        hintsUsed: 0,
+        totalHints: 2,
       },
     });
 
@@ -569,18 +619,30 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
+    // Wait for the session to load
+    await waitFor(() => {
+      expect(screen.getByText('Learning Session')).toBeInTheDocument();
+    });
+
     const pauseButton = screen.getByText('Pause');
     expect(pauseButton).toBeInTheDocument();
   });
 
   it('should call onComplete callback when session is completed', async () => {
+    // Mock the LearningService to return a valid session
+    const { LearningService } = require('../../../services/learning/learningService');
+    LearningService.startSession.mockResolvedValueOnce(mockSession);
+
     const mockOnComplete = jest.fn();
     const store = createMockStore({
       learning: { 
         currentSession: mockSession,
-        currentWordIndex: 2, // Last word
+        currentWordIndex: 0, // Start at first word
         isLoading: false,
         error: null,
+        isPaused: false,
+        hintsUsed: 0,
+        totalHints: 2,
       },
     });
 
@@ -590,15 +652,34 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
+    // Wait for the session to load
+    await waitFor(() => {
+      expect(screen.getByText('Learning Session')).toBeInTheDocument();
+    });
+
+    // Navigate to the last word by clicking Next twice
+    const nextButton = screen.getByText('Next →');
+    fireEvent.click(nextButton);
+    fireEvent.click(nextButton);
+
+    // Now we should see the Complete button
+    await waitFor(() => {
+      expect(screen.getByText('Complete')).toBeInTheDocument();
+    });
+
     const completeButton = screen.getByText('Complete');
     fireEvent.click(completeButton);
 
     await waitFor(() => {
       expect(mockOnComplete).toHaveBeenCalled();
-    });
+    }, { timeout: 5000 });
   });
 
-  it('should disable word card when session is paused', () => {
+  it('should disable word card when session is paused', async () => {
+    // Mock the LearningService to return a valid session
+    const { LearningService } = require('../../../services/learning/learningService');
+    LearningService.startSession.mockResolvedValueOnce(mockSession);
+
     const store = createMockStore({
       learning: { 
         currentSession: mockSession,
@@ -606,6 +687,8 @@ describe('LearningSession Component', () => {
         isPaused: true,
         isLoading: false,
         error: null,
+        hintsUsed: 0,
+        totalHints: 2,
       },
     });
 
@@ -615,7 +698,15 @@ describe('LearningSession Component', () => {
       </Provider>
     );
 
-    const submitButton = screen.getByTestId('submit-answer');
-    expect(submitButton).toBeDisabled();
+    // Wait for the session to load
+    await waitFor(() => {
+      expect(screen.getByText('Learning Session')).toBeInTheDocument();
+    });
+
+    // Wait for the submit button to be disabled
+    await waitFor(() => {
+      const submitButton = screen.getByTestId('submit-answer');
+      expect(submitButton).toBeDisabled();
+    });
   });
 });
