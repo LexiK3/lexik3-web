@@ -2,10 +2,14 @@
 import React from 'react';
 import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import { Provider } from 'react-redux';
-import { configureStore } from '@reduxjs/toolkit';
+import { configureStore, combineReducers } from '@reduxjs/toolkit';
 import Progress from '../Progress';
 import progressReducer from '../../store/slices/progressSlice';
 import authReducer from '../../store/slices/authSlice';
+import booksReducer from '../../store/slices/booksSlice';
+import learningReducer from '../../store/slices/learningSlice';
+import uiReducer from '../../store/slices/uiSlice';
+import userReducer from '../../store/slices/userSlice';
 
 // Mock the progress service
 jest.mock('../../services/progress/progressService', () => ({
@@ -27,6 +31,34 @@ jest.mock('../../store/slices/progressSlice', () => {
     clearError: jest.fn(),
   };
 });
+
+// Mock the Redux hooks
+jest.mock('../../store/hooks', () => ({
+  useAppDispatch: () => jest.fn(),
+  useAppSelector: (selector: any) => {
+    const mockState = {
+      progress: {
+        userProgress: null,
+        dailyProgress: [],
+        statistics: null,
+        achievements: [],
+        isLoading: false,
+        error: null,
+        lastUpdated: null,
+        selectedPeriod: 'week',
+        selectedBook: undefined,
+      },
+      auth: {
+        user: { id: 'user-1', email: 'test@example.com' },
+        token: 'token',
+        isAuthenticated: true,
+        isLoading: false,
+        error: null,
+      },
+    };
+    return selector(mockState);
+  },
+}));
 
 // Mock the common components
 jest.mock('../../components/common/Card', () => {
@@ -194,11 +226,18 @@ const mockDailyProgress = [
 ];
 
 const createMockStore = (initialState: any = {}) => {
+  // Create the same root reducer structure as the actual store
+  const rootReducer = combineReducers({
+    auth: authReducer,
+    books: booksReducer,
+    learning: learningReducer,
+    progress: progressReducer,
+    ui: uiReducer,
+    user: userReducer,
+  });
+
   const store = configureStore({
-    reducer: {
-      progress: progressReducer,
-      auth: authReducer,
-    },
+    reducer: rootReducer,
     preloadedState: {
       progress: {
         userProgress: null,
@@ -219,6 +258,59 @@ const createMockStore = (initialState: any = {}) => {
         isLoading: false,
         error: null,
         ...(initialState.auth || {}),
+      },
+      books: {
+        books: [],
+        currentBook: null,
+        isLoading: false,
+        error: null,
+        searchQuery: '',
+        filters: {
+          level: 'all',
+          category: 'all',
+          status: 'all',
+        },
+        pagination: {
+          page: 1,
+          pageSize: 10,
+          totalPages: 0,
+          totalItems: 0,
+        },
+        ...(initialState.books || {}),
+      },
+      learning: {
+        currentSession: null,
+        sessionHistory: [],
+        currentWordIndex: 0,
+        answers: [],
+        results: [],
+        isLoading: false,
+        error: null,
+        sessionStats: {
+          totalSessions: 0,
+          totalWordsStudied: 0,
+          averageAccuracy: 0,
+          currentStreak: 0,
+          longestStreak: 0,
+        },
+        isPaused: false,
+        pauseTime: undefined,
+        hintsUsed: 0,
+        totalHints: 2,
+        ...(initialState.learning || {}),
+      },
+      ui: {
+        theme: 'light',
+        sidebarOpen: false,
+        notifications: [],
+        ...(initialState.ui || {}),
+      },
+      user: {
+        profile: null,
+        preferences: null,
+        isLoading: false,
+        error: null,
+        ...(initialState.user || {}),
       },
     },
   });
