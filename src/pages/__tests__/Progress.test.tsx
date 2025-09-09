@@ -194,19 +194,23 @@ const mockDailyProgress = [
 ];
 
 const createMockStore = (initialState: any = {}) => {
-  return configureStore({
+  const store = configureStore({
     reducer: {
       progress: progressReducer,
       auth: authReducer,
     },
     preloadedState: {
       progress: {
+        userProgress: null,
+        dailyProgress: [],
         statistics: null,
         achievements: [],
-        dailyProgress: [],
         isLoading: false,
         error: null,
-        ...initialState.progress,
+        lastUpdated: null,
+        selectedPeriod: 'week',
+        selectedBook: undefined,
+        ...(initialState.progress || {}),
       },
       auth: {
         user: { id: 'user-1', email: 'test@example.com' },
@@ -214,10 +218,11 @@ const createMockStore = (initialState: any = {}) => {
         isAuthenticated: true,
         isLoading: false,
         error: null,
-        ...initialState.auth,
+        ...(initialState.auth || {}),
       },
     },
   });
+  return store;
 };
 
 describe('Progress Page', () => {

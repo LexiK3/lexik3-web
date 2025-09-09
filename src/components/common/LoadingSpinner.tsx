@@ -33,6 +33,8 @@ const LoadingSpinner: React.FC<LoadingSpinnerProps> = ({
         className={`animate-spin ${sizeClasses[size]} ${colorClasses[color]}`}
         fill="none"
         viewBox="0 0 24 24"
+        role="img"
+        aria-label="Loading spinner"
       >
         <circle
           className="opacity-25"
