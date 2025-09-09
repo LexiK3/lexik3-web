@@ -1,8 +1,10 @@
 // pages/Dashboard.tsx
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchBooks, clearError as clearBooksError } from '../store/slices/booksSlice';
+import { fetchBooks, clearError as clearBooksError, enrollInBook } from '../store/slices/booksSlice';
 import { fetchUserProgress, clearError as clearProgressError } from '../store/slices/progressSlice';
+import { logoutUser } from '../store/slices/authSlice';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
@@ -11,17 +13,23 @@ import ErrorMessage from '../components/common/ErrorMessage';
 
 const Dashboard: React.FC = () => {
   const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const { user } = useAppSelector((state) => state.auth);
   const { 
     books, 
     isLoading: booksLoading, 
-    error: booksError 
+    error: booksError,
+    enrolledBooks
   } = useAppSelector((state) => state.books);
   const { 
     userProgress, 
     isLoading: progressLoading, 
     error: progressError 
   } = useAppSelector((state) => state.progress);
+
+  // Local state for enrollment loading and errors
+  const [enrollingBookId, setEnrollingBookId] = useState<string | null>(null);
+  const [enrollmentError, setEnrollmentError] = useState<string | null>(null);
 
   useEffect(() => {
     dispatch(fetchBooks({}));
@@ -38,6 +46,49 @@ const Dashboard: React.FC = () => {
     dispatch(fetchUserProgress({}));
   };
 
+  // Button handlers
+  const handleLogout = () => {
+    dispatch(logoutUser());
+    navigate('/login');
+  };
+
+  const handleStartLearning = () => {
+    navigate('/learning');
+  };
+
+  const handleViewProgress = () => {
+    navigate('/progress');
+  };
+
+  const handleBrowseBooks = () => {
+    navigate('/learning');
+  };
+
+  const handleEnrollBook = async (bookId: string) => {
+    try {
+      setEnrollingBookId(bookId);
+      setEnrollmentError(null);
+      await dispatch(enrollInBook(bookId)).unwrap();
+      // Refresh books to show updated enrollment status
+      dispatch(fetchBooks({}));
+    } catch (error: any) {
+      console.error('Failed to enroll in book:', error);
+      setEnrollmentError(error.message || 'Failed to enroll in book. Please try again.');
+    } finally {
+      setEnrollingBookId(null);
+    }
+  };
+
+  const handleContinueBook = (bookId: string) => {
+    navigate(`/learning?book=${bookId}`);
+  };
+
+  // Helper function to check if a book is enrolled
+  const isBookEnrolled = (bookId: string) => {
+    return enrolledBooks.some(enrolledBook => enrolledBook.id === bookId) ||
+           books.find(book => book.id === bookId)?.userProgress?.isEnrolled;
+  };
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Header */}
@@ -49,7 +100,7 @@ const Dashboard: React.FC = () => {
               <span className="text-sm text-gray-600">
                 Welcome, {user?.firstName}!
               </span>
-              <Button variant="outline" size="sm">
+              <Button variant="outline" size="sm" onClick={handleLogout}>
                 Logout
               </Button>
             </div>
@@ -123,13 +174,13 @@ const Dashboard: React.FC = () => {
             <Card>
               <h2 className="text-xl font-semibold text-gray-900 mb-4">Quick Actions</h2>
               <div className="space-y-3">
-                <Button fullWidth>
+                <Button fullWidth onClick={handleStartLearning}>
                   Start Learning
                 </Button>
-                <Button variant="outline" fullWidth>
+                <Button variant="outline" fullWidth onClick={handleViewProgress}>
                   View Progress
                 </Button>
-                <Button variant="outline" fullWidth>
+                <Button variant="outline" fullWidth onClick={handleBrowseBooks}>
                   Browse Books
                 </Button>
               </div>
@@ -147,6 +198,14 @@ const Dashboard: React.FC = () => {
                 error={booksError}
                 onRetry={handleRetryBooks}
                 onDismiss={() => dispatch(clearBooksError())}
+                className="mb-4"
+              />
+            )}
+
+            {enrollmentError && (
+              <ErrorMessage
+                error={enrollmentError}
+                onDismiss={() => setEnrollmentError(null)}
                 className="mb-4"
               />
             )}
@@ -191,14 +250,41 @@ const Dashboard: React.FC = () => {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {books.map((book: any) => (
                   <Card key={book.id} hoverable className="p-4">
-                    <h3 className="font-semibold text-gray-900 mb-2">{book.title}</h3>
-                    <p className="text-sm text-gray-600 mb-3">{book.description}</p>
+                    <div className="mb-3">
+                      <h3 className="font-semibold text-gray-900 mb-2">{book.title}</h3>
+                      <p className="text-sm text-gray-600 mb-2 line-clamp-2">{book.description}</p>
+                      <div className="flex items-center space-x-2 mb-2">
+                        <span className="inline-flex items-center px-2 py-1 rounded-full text-xs font-medium bg-blue-100 text-blue-800">
+                          {book.difficultyDisplay || book.difficulty}
+                        </span>
+                        <span className="text-xs text-gray-500">
+                          by {book.author}
+                        </span>
+                      </div>
+                    </div>
                     <div className="flex justify-between items-center">
-                      <span className="text-xs text-gray-500">
-                        {book.totalWords} words
-                      </span>
-                      <Button size="sm">
-                        {book.userProgress?.isEnrolled ? 'Continue' : 'Enroll'}
+                      <div className="text-xs text-gray-500">
+                        <span>{book.totalWords} words</span>
+                        {book.categories && book.categories.length > 0 && (
+                          <span className="ml-2">• {book.categories[0]}</span>
+                        )}
+                      </div>
+                      <Button 
+                        size="sm" 
+                        loading={enrollingBookId === book.id}
+                        disabled={enrollingBookId === book.id}
+                        onClick={() => 
+                          isBookEnrolled(book.id)
+                            ? handleContinueBook(book.id) 
+                            : handleEnrollBook(book.id)
+                        }
+                      >
+                        {enrollingBookId === book.id 
+                          ? 'Enrolling...' 
+                          : isBookEnrolled(book.id) 
+                            ? 'Continue' 
+                            : 'Enroll'
+                        }
                       </Button>
                     </div>
                   </Card>

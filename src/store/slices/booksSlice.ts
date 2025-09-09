@@ -1,7 +1,7 @@
 // store/slices/booksSlice.ts
 import { createSlice, createAsyncThunk, PayloadAction } from '@reduxjs/toolkit';
 import { Book, BookEnrollment } from '../../types/learning';
-import { BookFilters, PaginationInfo } from '../../types/store';
+import { BookFilters } from '../../types/store';
 import { BooksState } from '../../types/store';
 import { BooksService } from '../../services/books/booksService';
 
