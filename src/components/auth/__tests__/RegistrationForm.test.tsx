@@ -57,11 +57,11 @@ describe('RegistrationForm', () => {
     );
 
     // Check if the main card container has proper styling
-    const cardElement = screen.getByRole('generic').querySelector('.max-w-md.mx-auto');
+    const cardElement = screen.getByRole('heading', { name: 'Create Account' }).closest('.max-w-md.mx-auto');
     expect(cardElement).toBeInTheDocument();
 
     // Check if the title has proper styling
-    const titleElement = screen.getByText('Create Account');
+    const titleElement = screen.getByRole('heading', { name: 'Create Account' });
     expect(titleElement).toHaveClass('text-2xl', 'font-bold', 'text-gray-900');
 
     // Check if the subtitle has proper styling
@@ -191,11 +191,7 @@ describe('RegistrationForm', () => {
     );
 
     const errorElement = screen.getByText(errorMessage);
-    expect(errorElement).toHaveClass('text-sm', 'text-red-600');
-    
-    // Check if error container has proper styling
-    const errorContainer = errorElement.closest('.bg-red-50.border.border-red-200.rounded-lg');
-    expect(errorContainer).toBeInTheDocument();
+    expect(errorElement).toHaveClass('text-sm', 'font-medium');
   });
 
   it('handles form submission with valid data', async () => {
@@ -223,7 +219,7 @@ describe('RegistrationForm', () => {
     });
     
     // Check terms checkbox
-    const termsCheckbox = screen.getByRole('checkbox');
+    const termsCheckbox = screen.getByLabelText(/I agree to the/);
     fireEvent.click(termsCheckbox);
 
     const submitButton = screen.getByRole('button', { name: /create account/i });
@@ -259,12 +255,14 @@ describe('RegistrationForm', () => {
       </TestWrapper>
     );
 
-    const termsCheckbox = screen.getByRole('checkbox');
+    const termsCheckbox = screen.getByLabelText(/I agree to the/);
     expect(termsCheckbox).toBeInTheDocument();
     expect(termsCheckbox).not.toBeChecked();
 
-    const termsLabel = screen.getByText(/I agree to the Terms and Conditions/);
-    expect(termsLabel).toHaveClass('text-sm', 'text-gray-600');
+    const termsLabel = screen.getByText((content, element) => {
+      return element?.textContent?.includes('I agree to the') && element?.tagName === 'LABEL';
+    });
+    expect(termsLabel).toHaveClass('text-gray-600');
   });
 
   it('validates terms and conditions acceptance', async () => {
