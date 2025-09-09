@@ -89,12 +89,15 @@ export interface UIState {
   theme: Theme;
   language: LanguageCode;
   sidebarOpen: boolean;
+  sidebarCollapsed: boolean;
   notifications: Notification[];
   modals: ModalState;
   toasts: ToastProps[];
   loading: LoadingStates;
   errors: ErrorState;
   preferences: UIPreferences;
+  isLoading: boolean;
+  error: string | null;
 }
 
 // Loading states

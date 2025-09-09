@@ -7,6 +7,7 @@ const initialState: UIState = {
   theme: Theme.Light,
   language: LanguageCode.English,
   sidebarOpen: false,
+  sidebarCollapsed: false,
   notifications: [],
   modals: {},
   toasts: [],
@@ -35,6 +36,8 @@ const initialState: UIState = {
     autoSave: true,
     autoRefresh: false,
   },
+  isLoading: false,
+  error: null,
 };
 
 const uiSlice = createSlice({
@@ -123,6 +126,27 @@ const uiSlice = createSlice({
     updatePreferences: (state, action: PayloadAction<Partial<typeof state.preferences>>) => {
       state.preferences = { ...state.preferences, ...action.payload };
     },
+    updateSettings: (state, action: PayloadAction<{ type: string; settings: any }>) => {
+      // Handle different types of settings updates
+      state.isLoading = true;
+      state.error = null;
+    },
+    clearCache: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    exportData: (state) => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    resetSettings: (state) => {
+      state.isLoading = true;
+      state.error = null;
+      // Reset to initial state
+      state.theme = Theme.Light;
+      state.language = LanguageCode.English;
+      state.preferences = initialState.preferences;
+    },
   },
 });
 
@@ -146,6 +170,10 @@ export const {
   clearError,
   clearAllErrors,
   updatePreferences,
+  updateSettings,
+  clearCache,
+  exportData,
+  resetSettings,
 } = uiSlice.actions;
 
 export default uiSlice.reducer;
