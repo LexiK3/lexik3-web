@@ -382,14 +382,21 @@ describe('Settings Page', () => {
       </Provider>
     );
 
-    // Debug: log what's being rendered
-    screen.debug();
+    // Wait for component to fully render
+    await waitFor(() => {
+      expect(screen.getByRole('heading', { name: 'Advanced' })).toBeInTheDocument();
+    });
 
-    const exportDataButton = screen.getByTestId('export-data-button');
+    const exportDataButton = await screen.findByRole('button', { name: 'Export Data' });
+    
+    // Verify button is in document before clicking
+    expect(exportDataButton).toBeInTheDocument();
+    
     fireEvent.click(exportDataButton);
 
+    // After clicking, the component should show loading state
     // In a real app, this would trigger a download
-    expect(exportDataButton).toBeInTheDocument();
+    expect(screen.getByTestId('loading-spinner')).toBeInTheDocument();
   });
 
   it('should handle settings reset', async () => {

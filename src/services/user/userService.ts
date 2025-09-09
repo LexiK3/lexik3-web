@@ -73,11 +73,11 @@ export interface DeleteAccountResponse {
 }
 
 class UserServiceClass {
-  private apiClient = getApiClient();
+  private apiClient = getApiClient() as any;
 
   async updateProfile(profileData: UpdateProfileRequest): Promise<UserProfile> {
     try {
-      const response = await this.apiClient.put<ApiResponse<UserProfile>>(
+      const response = await this.apiClient.put(
         '/api/users/profile',
         profileData
       );
@@ -95,7 +95,7 @@ class UserServiceClass {
 
   async changePassword(passwordData: ChangePasswordRequest): Promise<ChangePasswordResponse> {
     try {
-      const response = await this.apiClient.post<ApiResponse<ChangePasswordResponse>>(
+      const response = await this.apiClient.post(
         '/api/users/change-password',
         passwordData
       );
@@ -113,7 +113,7 @@ class UserServiceClass {
 
   async deleteAccount(): Promise<DeleteAccountResponse> {
     try {
-      const response = await this.apiClient.delete<ApiResponse<DeleteAccountResponse>>(
+      const response = await this.apiClient.delete(
         '/api/users/account'
       );
       
@@ -133,7 +133,7 @@ class UserServiceClass {
       const formData = new FormData();
       formData.append('avatar', file);
 
-      const response = await this.apiClient.post<ApiResponse<UploadAvatarResponse>>(
+      const response = await this.apiClient.post(
         '/api/users/avatar',
         formData,
         {
@@ -156,7 +156,7 @@ class UserServiceClass {
 
   async getProfile(): Promise<UserProfile> {
     try {
-      const response = await this.apiClient.get<ApiResponse<UserProfile>>(
+      const response = await this.apiClient.get(
         '/api/users/profile'
       );
       

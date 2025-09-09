@@ -47,16 +47,16 @@ const Settings: React.FC = () => {
       });
 
       setLearningSettings({
-        dailyGoal: user.preferences.learning?.dailyGoal || 20,
-        difficulty: user.preferences.learning?.difficulty || 'intermediate',
+        dailyGoal: user.preferences.learning?.wordsPerSession || 20,
+        difficulty: user.preferences.learning?.difficultyPreference || 'intermediate',
         autoAdvance: user.preferences.learning?.autoAdvance || true,
-        soundEffects: false, // Default value
+        soundEffects: user.preferences.learning?.soundEnabled || false,
       });
 
       setNotificationSettings({
         emailNotifications: user.preferences.notifications?.email || true,
         pushNotifications: user.preferences.notifications?.push || false,
-        dailyReminder: user.preferences.notifications?.dailyReminder || true,
+        dailyReminder: user.preferences.notifications?.reminders || true,
         studyReminders: false, // Default value
       });
     } else {
