@@ -10,6 +10,7 @@ import booksReducer from './slices/booksSlice';
 import learningReducer from './slices/learningSlice';
 import progressReducer from './slices/progressSlice';
 import uiReducer from './slices/uiSlice';
+import userReducer from './slices/userSlice';
 
 // Import middleware
 import { authMiddleware } from './middleware/authMiddleware';
@@ -30,6 +31,7 @@ const rootReducer = combineReducers({
   learning: learningReducer,
   progress: progressReducer,
   ui: uiReducer,
+  user: userReducer,
 });
 
 // Persisted reducer
