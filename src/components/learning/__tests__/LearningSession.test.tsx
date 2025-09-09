@@ -526,6 +526,18 @@ describe('LearningSession Component', () => {
     // Mock the LearningService to return a valid session
     const { LearningService } = require('../../../services/learning/learningService');
     LearningService.startSession.mockResolvedValueOnce(mockSession);
+    LearningService.submitAnswer.mockResolvedValueOnce({
+      wordId: 'word-1',
+      isCorrect: true,
+      score: 4,
+      masteryLevel: 2,
+      nextReview: new Date().toISOString(),
+      feedback: 'Great job!',
+      timeSpent: 5.2,
+      hintsUsed: 0,
+      attempts: 1,
+      improvement: 0,
+    });
 
     const store = createMockStore({
       learning: { 
@@ -632,6 +644,18 @@ describe('LearningSession Component', () => {
     // Mock the LearningService to return a valid session
     const { LearningService } = require('../../../services/learning/learningService');
     LearningService.startSession.mockResolvedValueOnce(mockSession);
+    LearningService.completeSession.mockResolvedValueOnce({
+      totalWords: 3,
+      correctAnswers: 2,
+      accuracy: 0.67,
+      averageResponseTime: 5.2,
+      totalTime: 15.6,
+      newWords: 2,
+      reviewWords: 1,
+      hintsUsed: 0,
+      score: 75,
+      improvement: 0,
+    });
 
     const mockOnComplete = jest.fn();
     const store = createMockStore({
@@ -660,9 +684,15 @@ describe('LearningSession Component', () => {
     // Navigate to the last word by clicking Next twice
     const nextButton = screen.getByText('Next →');
     fireEvent.click(nextButton);
+    
+    // Wait for the first navigation to complete
+    await waitFor(() => {
+      expect(screen.getByText('2 of 3')).toBeInTheDocument();
+    });
+    
     fireEvent.click(nextButton);
-
-    // Now we should see the Complete button
+    
+    // Wait for the second navigation to complete and Complete button to appear
     await waitFor(() => {
       expect(screen.getByText('Complete')).toBeInTheDocument();
     });
@@ -670,9 +700,10 @@ describe('LearningSession Component', () => {
     const completeButton = screen.getByText('Complete');
     fireEvent.click(completeButton);
 
+    // The callback should be called when the Complete button is clicked
     await waitFor(() => {
       expect(mockOnComplete).toHaveBeenCalled();
-    }, { timeout: 5000 });
+    });
   });
 
   it('should disable word card when session is paused', async () => {
@@ -684,7 +715,7 @@ describe('LearningSession Component', () => {
       learning: { 
         currentSession: mockSession,
         currentWordIndex: 0,
-        isPaused: true,
+        isPaused: false, // Start with not paused
         isLoading: false,
         error: null,
         hintsUsed: 0,
@@ -702,6 +733,10 @@ describe('LearningSession Component', () => {
     await waitFor(() => {
       expect(screen.getByText('Learning Session')).toBeInTheDocument();
     });
+
+    // Click the Pause button to pause the session
+    const pauseButton = screen.getByText('Pause');
+    fireEvent.click(pauseButton);
 
     // Wait for the submit button to be disabled
     await waitFor(() => {

@@ -110,7 +110,7 @@ const learningSlice = createSlice({
     },
     pauseSession: (state) => {
       state.isPaused = true;
-      state.pauseTime = Date.now();
+      state.pauseTime = new Date();
     },
     resumeSession: (state) => {
       state.isPaused = false;

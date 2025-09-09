@@ -1,7 +1,7 @@
 // components/learning/LearningSession.tsx
 import React, { useEffect, useState } from 'react';
 import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { startSession, submitAnswer, completeSession, nextWord, previousWord, useHint } from '../../store/slices/learningSlice';
+import { startSession, submitAnswer, completeSession, nextWord, previousWord, useHint, pauseSession, resumeSession } from '../../store/slices/learningSlice';
 import WordCard from './WordCard';
 import Card from '../common/Card';
 import Button from '../common/Button';
@@ -76,7 +76,13 @@ const LearningSession: React.FC<LearningSessionProps> = ({ bookId, onComplete })
   };
 
   const handlePause = () => {
-    // Implement pause functionality
+    if (isPaused) {
+      // Resume session
+      dispatch(resumeSession());
+    } else {
+      // Pause session
+      dispatch(pauseSession());
+    }
   };
 
   if (isLoading) {
@@ -186,7 +192,7 @@ const LearningSession: React.FC<LearningSessionProps> = ({ bookId, onComplete })
           
           <Button
             onClick={handleNext}
-            disabled={currentWordIndex >= currentSession.words.length - 1}
+            disabled={false}
           >
             {currentWordIndex >= currentSession.words.length - 1 ? 'Complete' : 'Next →'}
           </Button>
