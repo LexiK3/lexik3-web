@@ -32,33 +32,39 @@ jest.mock('../../store/slices/progressSlice', () => {
   };
 });
 
-// Mock the Redux hooks
+// Mock the Redux hooks with a variable state
+let mockReduxState = {
+  progress: {
+    userProgress: null,
+    dailyProgress: [],
+    statistics: null,
+    achievements: [],
+    isLoading: false,
+    error: null,
+    lastUpdated: null,
+    selectedPeriod: 'week',
+    selectedBook: undefined,
+  },
+  auth: {
+    user: { id: 'user-1', email: 'test@example.com' },
+    token: 'token',
+    isAuthenticated: true,
+    isLoading: false,
+    error: null,
+  },
+};
+
 jest.mock('../../store/hooks', () => ({
   useAppDispatch: () => jest.fn(),
   useAppSelector: (selector: any) => {
-    const mockState = {
-      progress: {
-        userProgress: null,
-        dailyProgress: [],
-        statistics: null,
-        achievements: [],
-        isLoading: false,
-        error: null,
-        lastUpdated: null,
-        selectedPeriod: 'week',
-        selectedBook: undefined,
-      },
-      auth: {
-        user: { id: 'user-1', email: 'test@example.com' },
-        token: 'token',
-        isAuthenticated: true,
-        isLoading: false,
-        error: null,
-      },
-    };
-    return selector(mockState);
+    return selector(mockReduxState);
   },
 }));
+
+// Helper function to update mock state for specific tests
+const setMockReduxState = (newState: any) => {
+  mockReduxState = { ...mockReduxState, ...newState };
+};
 
 // Mock the common components
 jest.mock('../../components/common/Card', () => {
@@ -390,6 +396,21 @@ describe('Progress Page', () => {
   });
 
   it('should display statistics when available', () => {
+    // Set mock state with statistics data
+    setMockReduxState({
+      progress: {
+        userProgress: null,
+        dailyProgress: [],
+        statistics: mockStatistics,
+        achievements: [],
+        isLoading: false,
+        error: null,
+        lastUpdated: null,
+        selectedPeriod: 'week',
+        selectedBook: undefined,
+      },
+    });
+
     const store = createMockStore({
       progress: { 
         statistics: mockStatistics,
@@ -415,6 +436,21 @@ describe('Progress Page', () => {
   });
 
   it('should display achievements when available', () => {
+    // Set mock state with achievements data
+    setMockReduxState({
+      progress: {
+        userProgress: null,
+        dailyProgress: [],
+        statistics: null,
+        achievements: mockAchievements,
+        isLoading: false,
+        error: null,
+        lastUpdated: null,
+        selectedPeriod: 'week',
+        selectedBook: undefined,
+      },
+    });
+
     const store = createMockStore({
       progress: { 
         achievements: mockAchievements,
@@ -451,7 +487,7 @@ describe('Progress Page', () => {
 
     expect(screen.getByText('No statistics available')).toBeInTheDocument();
     expect(screen.getByText('Start learning to see your progress statistics here.')).toBeInTheDocument();
-    expect(screen.getByText('Start Learning')).toBeInTheDocument();
+    expect(screen.getAllByText('Start Learning')).toHaveLength(2);
   });
 
   it('should display no achievements message when achievements are empty', () => {
@@ -559,8 +595,8 @@ describe('Progress Page', () => {
       </Provider>
     );
 
-    const startLearningButton = screen.getByText('Start Learning');
-    fireEvent.click(startLearningButton);
+    const startLearningButtons = screen.getAllByText('Start Learning');
+    fireEvent.click(startLearningButtons[0]); // Click the first one
 
     expect(window.location.href).toBe('/learning');
   });
@@ -583,8 +619,8 @@ describe('Progress Page', () => {
       </Provider>
     );
 
-    const startLearningButton = screen.getByText('Start Learning');
-    fireEvent.click(startLearningButton);
+    const startLearningButtons = screen.getAllByText('Start Learning');
+    fireEvent.click(startLearningButtons[0]); // Click the first one
 
     expect(window.location.href).toBe('/learning');
   });
