@@ -68,6 +68,10 @@ const AchievementCard: React.FC<AchievementCardProps> = ({ achievement, onClick 
                 <div 
                   className="bg-blue-600 h-2 rounded-full transition-all duration-300"
                   style={{ width: `${achievement.progress * 100}%` }}
+                  role="progressbar"
+                  aria-valuenow={achievement.progress * 100}
+                  aria-valuemin={0}
+                  aria-valuemax={100}
                 />
               </div>
             </div>
