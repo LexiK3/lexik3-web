@@ -49,7 +49,7 @@ describe('LoginForm', () => {
     );
 
     // Check if the main card container has proper styling
-    const cardElement = screen.getByRole('generic').querySelector('.max-w-md.mx-auto');
+    const cardElement = screen.getByText('Sign In').closest('.max-w-md.mx-auto');
     expect(cardElement).toBeInTheDocument();
 
     // Check if the title has proper styling
@@ -109,9 +109,7 @@ describe('LoginForm', () => {
 
     render(
       <Provider store={store}>
-        <BrowserRouter>
-          <LoginForm />
-        </BrowserRouter>
+        <LoginForm />
       </Provider>
     );
 

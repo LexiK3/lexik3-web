@@ -20,13 +20,11 @@ test('renders app with login form', () => {
   
   render(
     <Provider store={store}>
-      <BrowserRouter>
-        <App />
-      </BrowserRouter>
+      <App />
     </Provider>
   );
   
   // Check if the login form is rendered (since we're not authenticated)
-  const signInElement = screen.getByText(/sign in/i);
-  expect(signInElement).toBeInTheDocument();
+  const signInButton = screen.getByRole('button', { name: /sign in with email/i });
+  expect(signInButton).toBeInTheDocument();
 });
