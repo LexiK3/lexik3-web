@@ -9,6 +9,7 @@ export interface User extends BaseEntity {
   lastName: string;
   role: UserRole;
   isEmailVerified: boolean;
+  emailConfirmed?: boolean; // Alias for OAuth2 compatibility
   lastLoginAt?: string;
   preferences: UserPreferences;
   profile?: UserProfile;

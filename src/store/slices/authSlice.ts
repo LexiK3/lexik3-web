@@ -93,6 +93,9 @@ const authSlice = createSlice({
     resetLoginAttempts: (state) => {
       state.loginAttempts = 0;
     },
+    setIsAuthenticated: (state, action: PayloadAction<boolean>) => {
+      state.isAuthenticated = action.payload;
+    },
   },
   extraReducers: (builder) => {
     // Login
@@ -173,7 +176,8 @@ export const {
   setUser, 
   clearAuth, 
   incrementLoginAttempts, 
-  resetLoginAttempts 
+  resetLoginAttempts,
+  setIsAuthenticated
 } = authSlice.actions;
 
 export default authSlice.reducer;

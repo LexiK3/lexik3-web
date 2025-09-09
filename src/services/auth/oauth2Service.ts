@@ -91,7 +91,7 @@ export class OAuth2Service {
       };
 
       const response = await apiClient.post<OAuth2TokenResponse>('/oauth2/token', 
-        new URLSearchParams(request).toString(),
+        new URLSearchParams(request as unknown as Record<string, string>).toString(),
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -118,7 +118,7 @@ export class OAuth2Service {
       };
 
       const response = await apiClient.post<OAuth2TokenResponse>('/oauth2/token',
-        new URLSearchParams(request).toString(),
+        new URLSearchParams(request as unknown as Record<string, string>).toString(),
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'
@@ -145,7 +145,7 @@ export class OAuth2Service {
       };
 
       const response = await apiClient.post<OAuth2TokenResponse>('/oauth2/token',
-        new URLSearchParams(request).toString(),
+        new URLSearchParams(request as unknown as Record<string, string>).toString(),
         {
           headers: {
             'Content-Type': 'application/x-www-form-urlencoded'

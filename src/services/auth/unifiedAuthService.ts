@@ -111,9 +111,38 @@ export class UnifiedAuthService {
         email: userInfo.email,
         firstName: userInfo.given_name,
         lastName: userInfo.family_name,
+        role: 'student' as any, // Default role for OAuth2 users
+        isEmailVerified: userInfo.email_verified,
         emailConfirmed: userInfo.email_verified,
         createdAt: new Date().toISOString(),
-        lastLoginAt: new Date().toISOString()
+        lastLoginAt: new Date().toISOString(),
+        preferences: {
+          language: 'en' as any,
+          theme: 'light' as any,
+          dailyGoal: 10,
+          notifications: {
+            email: true,
+            push: true,
+            achievements: true,
+            reminders: true,
+            progress: true,
+            social: false
+          },
+          privacy: {
+            profileVisibility: 'private' as any,
+            showProgress: false,
+            showAchievements: false,
+            allowFriendRequests: false
+          },
+          learning: {
+            sessionDuration: 15,
+            wordsPerSession: 10,
+            difficultyPreference: 'intermediate',
+            autoAdvance: true,
+            showHints: true,
+            soundEnabled: true
+          }
+        }
       };
       
       // Store authentication data
@@ -153,9 +182,38 @@ export class UnifiedAuthService {
         email: 'system@lexik3.com',
         firstName: 'System',
         lastName: 'User',
+        role: 'admin' as any,
+        isEmailVerified: true,
         emailConfirmed: true,
         createdAt: new Date().toISOString(),
-        lastLoginAt: new Date().toISOString()
+        lastLoginAt: new Date().toISOString(),
+        preferences: {
+          language: 'en' as any,
+          theme: 'light' as any,
+          dailyGoal: 0,
+          notifications: {
+            email: false,
+            push: false,
+            achievements: false,
+            reminders: false,
+            progress: false,
+            social: false
+          },
+          privacy: {
+            profileVisibility: 'private' as any,
+            showProgress: false,
+            showAchievements: false,
+            allowFriendRequests: false
+          },
+          learning: {
+            sessionDuration: 0,
+            wordsPerSession: 0,
+            difficultyPreference: 'intermediate',
+            autoAdvance: false,
+            showHints: false,
+            soundEnabled: false
+          }
+        }
       };
       
       // Store authentication data
@@ -215,9 +273,38 @@ export class UnifiedAuthService {
           email: userInfo.email,
           firstName: userInfo.given_name,
           lastName: userInfo.family_name,
+          role: 'student' as any, // Default role for OAuth2 users
+          isEmailVerified: userInfo.email_verified,
           emailConfirmed: userInfo.email_verified,
           createdAt: new Date().toISOString(),
-          lastLoginAt: new Date().toISOString()
+          lastLoginAt: new Date().toISOString(),
+          preferences: {
+            language: 'en' as any,
+            theme: 'light' as any,
+            dailyGoal: 10,
+            notifications: {
+              email: true,
+              push: true,
+              achievements: true,
+              reminders: true,
+              progress: true,
+              social: false
+            },
+            privacy: {
+              profileVisibility: 'private' as any,
+              showProgress: false,
+              showAchievements: false,
+              allowFriendRequests: false
+            },
+            learning: {
+              sessionDuration: 15,
+              wordsPerSession: 10,
+              difficultyPreference: 'intermediate',
+              autoAdvance: true,
+              showHints: true,
+              soundEnabled: true
+            }
+          }
         };
         
         // Store authentication data

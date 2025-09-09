@@ -31,7 +31,7 @@ const LoginForm: React.FC = () => {
       
       if (loginUser.fulfilled.match(result)) {
         // Redirect to intended page or dashboard
-        const from = location.state?.from?.pathname || '/dashboard';
+        const from = (location.state as any)?.from?.pathname || '/dashboard';
         navigate(from, { replace: true });
       } else if (loginUser.rejected.match(result)) {
         setLocalError(result.payload as string);

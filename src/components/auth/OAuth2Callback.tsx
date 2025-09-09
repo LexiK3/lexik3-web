@@ -4,8 +4,8 @@ import { useNavigate, useLocation } from 'react-router-dom';
 import { useAppDispatch } from '../../store/hooks';
 import { UnifiedAuthService } from '../../services/auth/unifiedAuthService';
 import { setUser, setIsAuthenticated } from '../../store/slices/authSlice';
-import { LoadingSpinner } from '../common/LoadingSpinner';
-import { ErrorMessage } from '../common/ErrorMessage';
+import LoadingSpinner from '../common/LoadingSpinner';
+import ErrorMessage from '../common/ErrorMessage';
 
 const OAuth2Callback: React.FC = () => {
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ const OAuth2Callback: React.FC = () => {
         dispatch(setIsAuthenticated(true));
         
         // Redirect to dashboard or intended page
-        const from = location.state?.from?.pathname || '/dashboard';
+        const from = (location.state as any)?.from?.pathname || '/dashboard';
         navigate(from, { replace: true });
         
       } catch (err) {
@@ -49,7 +49,7 @@ const OAuth2Callback: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
-          <LoadingSpinner size="large" />
+          <LoadingSpinner size="lg" />
           <p className="mt-4 text-gray-600">Completing OAuth2 authentication...</p>
         </div>
       </div>
@@ -60,7 +60,7 @@ const OAuth2Callback: React.FC = () => {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="max-w-md mx-auto">
-          <ErrorMessage message={error} />
+          <ErrorMessage error={error} />
           <div className="mt-4 text-center">
             <button
               onClick={() => navigate('/login')}
