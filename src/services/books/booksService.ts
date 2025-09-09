@@ -2,27 +2,38 @@
 import { getApiClient } from '../api/apiServiceFactory';
 import { API_ENDPOINTS } from '../api/endpoints';
 import { Book, BookEnrollment, BookWord, DailyWords } from '../../types/learning';
-import { ApiResponse } from '../../types/common';
+import { ApiResponse, BooksApiResponse } from '../../types/common';
 import { AxiosResponse } from 'axios';
 
 export class BooksService {
   // Get all available books
-  static async getBooks(): Promise<Book[]> {
+  static async getBooks(): Promise<{ books: Book[]; pagination: any }> {
     try {
       const client = getApiClient();
-      const response = await (client as any).get(API_ENDPOINTS.BOOKS.LIST) as AxiosResponse<ApiResponse<Book[]>>;
+      const response = await (client as any).get(API_ENDPOINTS.BOOKS.LIST) as AxiosResponse<BooksApiResponse<Book>>;
       
-      // Ensure we have valid data
-      if (!response.data || !response.data.data) {
+      // Ensure we have valid data - API returns data.items, not data.data
+      if (!response.data || !response.data.data || !response.data.data.items) {
         console.warn('Invalid response from books API:', response.data);
-        return [];
+        return { books: [], pagination: { page: 1, pageSize: 10, totalItems: 0, totalPages: 0, hasNext: false, hasPrevious: false } };
       }
       
-      // Ensure data is an array
-      const books = Array.isArray(response.data.data) ? response.data.data : [];
+      // Ensure data.items is an array
+      const books = Array.isArray(response.data.data.items) ? response.data.data.items : [];
       console.log('Fetched books:', books.length, 'items');
       
-      return books;
+      // Return both books and pagination data from API
+      return {
+        books,
+        pagination: {
+          page: response.data.data.page,
+          pageSize: response.data.data.pageSize,
+          totalItems: response.data.data.totalItems,
+          totalPages: response.data.data.totalPages,
+          hasNext: response.data.data.hasNext,
+          hasPrevious: response.data.data.hasPrevious
+        }
+      };
     } catch (error: any) {
       console.error('Error fetching books:', error);
       throw new Error(this.handleBooksError(error));

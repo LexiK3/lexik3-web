@@ -8,6 +8,23 @@ export interface ApiResponse<T> {
   timestamp: string;
 }
 
+// Books API response wrapper (has different structure)
+export interface BooksApiResponse<T> {
+  success: true;
+  data: {
+    items: T[];
+    page: number;
+    pageSize: number;
+    totalItems: number;
+    totalPages: number;
+    hasNext: boolean;
+    hasPrevious: boolean;
+  };
+  message: string;
+  timestamp: string;
+  errors: any[];
+}
+
 // API error response
 export interface ApiError {
   success: false;

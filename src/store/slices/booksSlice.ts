@@ -30,14 +30,14 @@ export const fetchBooks = createAsyncThunk(
   'books/fetchBooks',
   async (params: { page?: number; pageSize?: number; filters?: BookFilters } = {}, { rejectWithValue }) => {
     try {
-      const books = await BooksService.getBooks();
+      const result = await BooksService.getBooks();
       
-      // Ensure books is always an array
-      const booksArray = Array.isArray(books) ? books : [];
+      // Use the books and pagination data directly from the API
+      const books = Array.isArray(result.books) ? result.books : [];
+      const pagination = result.pagination;
       
-      // Apply client-side filtering and pagination for now
-      // TODO: Move filtering and pagination to backend
-      let filteredBooks = booksArray;
+      // Apply client-side filtering only (pagination is handled by API)
+      let filteredBooks = books;
       
       if (params.filters?.difficulty) {
         filteredBooks = filteredBooks.filter(book => book.difficulty === params.filters?.difficulty);
@@ -48,23 +48,8 @@ export const fetchBooks = createAsyncThunk(
           book.categories.some(category => params.filters?.categories?.includes(category))
         );
       }
-      
-      const page = params.page || 1;
-      const pageSize = params.pageSize || 10;
-      const startIndex = (page - 1) * pageSize;
-      const endIndex = startIndex + pageSize;
-      const paginatedBooks = filteredBooks.slice(startIndex, endIndex);
-      
-      const pagination: PaginationInfo = {
-        page,
-        pageSize,
-        totalItems: filteredBooks.length,
-        totalPages: Math.ceil(filteredBooks.length / pageSize),
-        hasNext: endIndex < filteredBooks.length,
-        hasPrevious: page > 1,
-      };
 
-      return { books: paginatedBooks, pagination };
+      return { books: filteredBooks, pagination };
     } catch (error: any) {
       console.error('Error fetching books:', error);
       // Return empty array as fallback to prevent slice errors
