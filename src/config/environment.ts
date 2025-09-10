@@ -17,7 +17,7 @@ export const environmentConfig: EnvironmentConfig = {
   mockErrorRate: parseFloat(process.env.REACT_APP_MOCK_ERROR_RATE || '0.1'),
   
   // API Configuration
-  apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:5071',
+  apiUrl: process.env.REACT_APP_API_URL || 'http://localhost:5001',
   environment: process.env.REACT_APP_ENVIRONMENT || 'development',
   debug: process.env.REACT_APP_DEBUG === 'true' || process.env.NODE_ENV === 'development',
   

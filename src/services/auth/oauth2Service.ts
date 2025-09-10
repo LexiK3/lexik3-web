@@ -73,7 +73,7 @@ export class OAuth2Service {
       ...(state && { state })
     });
 
-    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5071';
+    const baseUrl = process.env.REACT_APP_API_URL || 'http://localhost:5001';
     return `${baseUrl}/oauth2/authorize?${params.toString()}`;
   }
 
