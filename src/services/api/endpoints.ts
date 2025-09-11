@@ -37,10 +37,10 @@ export const API_ENDPOINTS = {
 
   // Learning Sessions
   LEARNING: {
-    START_SESSION: '/api/learning-sessions',
-    SUBMIT_ANSWER: (sessionId: string) => `/api/learning-sessions/${sessionId}/answers`,
-    COMPLETE_SESSION: (sessionId: string) => `/api/learning-sessions/${sessionId}/complete`,
-    SESSION_HISTORY: '/api/learning-sessions/history',
+    START_SESSION: '/api/learning/sessions',
+    SUBMIT_ANSWER: (sessionId: string) => `/api/learning/sessions/${sessionId}/answers`,
+    COMPLETE_SESSION: (sessionId: string) => `/api/learning/sessions/${sessionId}/complete`,
+    SESSION_HISTORY: '/api/learning/sessions/history',
   },
 
   // Progress
