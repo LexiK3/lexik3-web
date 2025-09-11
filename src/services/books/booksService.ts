@@ -1,11 +1,13 @@
 // services/books/booksService.ts
 import { getApiClient } from '../api/apiServiceFactory';
 import { API_ENDPOINTS } from '../api/endpoints';
+import { IBooksService } from '../interfaces/IBooksService';
+import { ErrorHandler } from '../error/ErrorHandler';
 import { Book, BookEnrollment, BookWord, DailyWords } from '../../types/learning';
 import { ApiResponse, BooksApiResponse, BooksResponse, PaginationInfo } from '../../types/common';
 import { AxiosResponse } from 'axios';
 
-export class BooksService {
+export class BooksService implements IBooksService {
   // Get all available books
   static async getBooks(): Promise<BooksResponse> {
     try {
@@ -34,9 +36,9 @@ export class BooksService {
           hasPrevious: response.data.data.hasPrevious
         }
       };
-    } catch (error: any) {
-      console.error('Error fetching books:', error);
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.getBooks');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -46,8 +48,9 @@ export class BooksService {
       const client = getApiClient();
       const response = await (client as any).get(API_ENDPOINTS.BOOKS.DETAIL(bookId)) as AxiosResponse<ApiResponse<Book>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.getBookById');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -57,8 +60,9 @@ export class BooksService {
       const client = getApiClient();
       const response = await (client as any).post(API_ENDPOINTS.BOOKS.ENROLL(bookId)) as AxiosResponse<ApiResponse<BookEnrollment>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.enrollInBook');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -67,8 +71,9 @@ export class BooksService {
     try {
       const client = getApiClient();
       await (client as any).delete(API_ENDPOINTS.BOOKS.UNENROLL(bookId));
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.unenrollFromBook');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -78,8 +83,9 @@ export class BooksService {
       const client = getApiClient();
       const response = await (client as any).get(API_ENDPOINTS.BOOKS.WORDS(bookId)) as AxiosResponse<ApiResponse<BookWord[]>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.getBookWords');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -89,8 +95,9 @@ export class BooksService {
       const client = getApiClient();
       const response = await (client as any).get(API_ENDPOINTS.BOOKS.DAILY_WORDS(bookId, day)) as AxiosResponse<ApiResponse<DailyWords>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.getDailyWords');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
   }
 
@@ -100,34 +107,9 @@ export class BooksService {
       const client = getApiClient();
       const response = await (client as any).get(`${API_ENDPOINTS.BOOKS.LIST}/enrolled`) as AxiosResponse<ApiResponse<BookEnrollment[]>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleBooksError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'BooksService.getEnrolledBooks');
+      throw new Error(ErrorHandler.handleBooksError(error));
     }
-  }
-
-  // Handle books service errors
-  private static handleBooksError(error: any): string {
-    if (error.response?.data?.error) {
-      const { code, message } = error.response.data.error;
-      
-      switch (code) {
-        case 'BOOK_NOT_FOUND':
-          return 'Book not found.';
-        case 'ALREADY_ENROLLED':
-          return 'You are already enrolled in this book.';
-        case 'NOT_ENROLLED':
-          return 'You are not enrolled in this book.';
-        case 'ENROLLMENT_LIMIT_REACHED':
-          return 'You have reached the maximum number of book enrollments.';
-        case 'VALIDATION_ERROR':
-          return 'Please check your input and try again.';
-        case 'RATE_LIMITED':
-          return 'Too many requests. Please wait a moment.';
-        default:
-          return message || 'An error occurred while accessing books.';
-      }
-    }
-    
-    return 'Network error. Please check your connection.';
   }
 }

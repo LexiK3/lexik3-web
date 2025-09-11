@@ -1,6 +1,8 @@
 // services/auth/authService.ts
 import { getApiClient } from '../api/apiServiceFactory';
 import { TokenStorage } from './tokenStorage';
+import { IAuthService } from '../interfaces/IAuthService';
+import { ErrorHandler } from '../error/ErrorHandler';
 import { 
   LoginRequest, 
   RegisterRequest, 
@@ -14,15 +16,16 @@ import {
 import { ApiResponse } from '../../types/common';
 import { AxiosResponse } from 'axios';
 
-export class AuthService {
+export class AuthService implements IAuthService {
   // Register new user
   static async register(userData: RegisterRequest): Promise<User> {
     try {
       const client = getApiClient();
       const response = await (client as any).post('/api/auth/register', userData) as AxiosResponse<ApiResponse<User>>;
       return response.data.data;
-    } catch (error: any) {
-      throw new Error(this.handleAuthError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.register');
+      throw new Error(ErrorHandler.handleAuthError(error));
     }
   }
 
@@ -37,8 +40,9 @@ export class AuthService {
       TokenStorage.storeAuthData(authData);
       
       return authData;
-    } catch (error: any) {
-      throw new Error(this.handleAuthError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.login');
+      throw new Error(ErrorHandler.handleAuthError(error));
     }
   }
 
@@ -59,7 +63,8 @@ export class AuthService {
       TokenStorage.storeAuthData(authData);
       
       return authData;
-    } catch (error: any) {
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.refreshToken');
       // If refresh fails, clear auth data and redirect to login
       TokenStorage.clearAuthData();
       window.location.href = '/login';
@@ -72,8 +77,8 @@ export class AuthService {
     try {
       const client = getApiClient();
       await (client as any).post('/api/auth/logout');
-    } catch (error) {
-      console.error('Logout error:', error);
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.logout');
     } finally {
       TokenStorage.clearAuthData();
     }
@@ -94,8 +99,9 @@ export class AuthService {
     try {
       const client = getApiClient();
       await (client as any).post('/api/auth/change-password', passwordData);
-    } catch (error: any) {
-      throw new Error(this.handleAuthError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.changePassword');
+      throw new Error(ErrorHandler.handleAuthError(error));
     }
   }
 
@@ -104,8 +110,9 @@ export class AuthService {
     try {
       const client = getApiClient();
       await (client as any).post('/api/auth/forgot-password', email);
-    } catch (error: any) {
-      throw new Error(this.handleAuthError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.forgotPassword');
+      throw new Error(ErrorHandler.handleAuthError(error));
     }
   }
 
@@ -114,32 +121,9 @@ export class AuthService {
     try {
       const client = getApiClient();
       await (client as any).post('/api/auth/reset-password', resetData);
-    } catch (error: any) {
-      throw new Error(this.handleAuthError(error));
+    } catch (error: unknown) {
+      ErrorHandler.logError(error, 'AuthService.resetPassword');
+      throw new Error(ErrorHandler.handleAuthError(error));
     }
-  }
-
-  // Handle authentication errors
-  private static handleAuthError(error: any): string {
-    if (error.response?.data?.error) {
-      const { code, message } = error.response.data.error;
-      
-      switch (code) {
-        case 'VALIDATION_ERROR':
-          return 'Please check your input and try again.';
-        case 'AUTHENTICATION_FAILED':
-          return 'Invalid email or password.';
-        case 'CONFLICT':
-          return 'An account with this email already exists.';
-        case 'RATE_LIMITED':
-          return 'Too many attempts. Please wait a moment.';
-        case 'TOKEN_EXPIRED':
-          return 'Your session has expired. Please log in again.';
-        default:
-          return message || 'Authentication failed. Please try again.';
-      }
-    }
-    
-    return 'Network error. Please check your connection.';
   }
 }
