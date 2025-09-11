@@ -2,12 +2,12 @@
 import { getApiClient } from '../api/apiServiceFactory';
 import { API_ENDPOINTS } from '../api/endpoints';
 import { Book, BookEnrollment, BookWord, DailyWords } from '../../types/learning';
-import { ApiResponse, BooksApiResponse } from '../../types/common';
+import { ApiResponse, BooksApiResponse, BooksResponse, PaginationInfo } from '../../types/common';
 import { AxiosResponse } from 'axios';
 
 export class BooksService {
   // Get all available books
-  static async getBooks(): Promise<{ books: Book[]; pagination: any }> {
+  static async getBooks(): Promise<BooksResponse> {
     try {
       const client = getApiClient();
       const response = await (client as any).get(API_ENDPOINTS.BOOKS.LIST) as AxiosResponse<BooksApiResponse<Book>>;

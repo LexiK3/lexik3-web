@@ -1,4 +1,5 @@
 // types/common.ts
+import { Book } from './learning';
 
 // Generic API response wrapper
 export interface ApiResponse<T> {
@@ -52,6 +53,12 @@ export interface PaginationInfo {
 // Generic paginated response
 export interface PaginatedResponse<T> {
   items: T[];
+  pagination: PaginationInfo;
+}
+
+// Books service specific response
+export interface BooksResponse {
+  books: Book[];
   pagination: PaginationInfo;
 }
 

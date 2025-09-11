@@ -39,7 +39,15 @@ describe('BooksService', () => {
 
       const mockResponse = {
         data: {
-          data: mockBooks,
+          data: {
+            items: mockBooks,
+            page: 1,
+            pageSize: 10,
+            totalItems: 1,
+            totalPages: 1,
+            hasNext: false,
+            hasPrevious: false,
+          },
         },
       };
 
@@ -48,7 +56,17 @@ describe('BooksService', () => {
       const result = await BooksService.getBooks();
 
       expect(mockApiClient.get).toHaveBeenCalledWith('/api/books');
-      expect(result).toEqual(mockBooks);
+      expect(result).toEqual({
+        books: mockBooks,
+        pagination: {
+          page: 1,
+          pageSize: 10,
+          totalItems: 1,
+          totalPages: 1,
+          hasNext: false,
+          hasPrevious: false,
+        },
+      });
     });
 
     it('should handle API errors gracefully', async () => {
