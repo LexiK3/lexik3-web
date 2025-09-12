@@ -78,7 +78,7 @@ export class ErrorHandler {
       // Server responded with error status
       const apiError = this.extractApiError(error);
       if (apiError) {
-        return apiError.message;
+        return apiError.error.message;
       }
       return `Server error: ${error.response.status}`;
     }
