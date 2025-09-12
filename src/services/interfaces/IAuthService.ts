@@ -17,9 +17,9 @@ export interface IAuthService {
   /**
    * Register a new user account
    * @param userData - User registration data
-   * @returns Promise<User> - The created user
+   * @returns Promise<AuthResponse> - Authentication response with tokens and user data
    */
-  register(userData: RegisterRequest): Promise<User>;
+  register(userData: RegisterRequest): Promise<AuthResponse>;
 
   /**
    * Authenticate user with credentials

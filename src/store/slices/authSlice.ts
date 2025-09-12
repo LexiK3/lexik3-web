@@ -125,9 +125,14 @@ const authSlice = createSlice({
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(registerUser.fulfilled, (state) => {
+      .addCase(registerUser.fulfilled, (state, action: PayloadAction<AuthResponse>) => {
         state.isLoading = false;
-        // Registration successful, user needs to login
+        state.user = action.payload.user;
+        state.token = action.payload.token;
+        state.refreshToken = action.payload.refreshToken;
+        state.isAuthenticated = true;
+        state.lastActivity = new Date().toISOString();
+        state.loginAttempts = 0;
       })
       .addCase(registerUser.rejected, (state, action) => {
         state.isLoading = false;

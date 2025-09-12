@@ -18,11 +18,16 @@ import { AxiosResponse } from 'axios';
 
 export class AuthService implements IAuthService {
   // Register new user
-  static async register(userData: RegisterRequest): Promise<User> {
+  static async register(userData: RegisterRequest): Promise<AuthResponse> {
     try {
       const client = getApiClient();
-      const response = await (client as any).post('/api/auth/register', userData) as AxiosResponse<ApiResponse<User>>;
-      return response.data.data;
+      const response = await (client as any).post('/api/auth/register', userData) as AxiosResponse<ApiResponse<AuthResponse>>;
+      const authData = response.data.data;
+      
+      // Store authentication data
+      TokenStorage.storeAuthData(authData);
+      
+      return authData;
     } catch (error: unknown) {
       ErrorHandler.logError(error, 'AuthService.register');
       throw new Error(ErrorHandler.handleAuthError(error));

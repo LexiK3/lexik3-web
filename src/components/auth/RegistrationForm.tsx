@@ -35,10 +35,10 @@ const RegistrationForm: React.FC = () => {
       const result = await dispatch(registerUser(data));
       
       if (registerUser.fulfilled.match(result)) {
-        // Redirect to login page after successful registration
-        navigate('/login', { 
+        // Redirect to dashboard after successful registration (user is now logged in)
+        navigate('/dashboard', { 
           state: { 
-            message: 'Registration successful! Please log in to continue.' 
+            message: 'Registration successful! Welcome to LexiK3.' 
           },
           replace: true 
         });
@@ -178,8 +178,8 @@ const RegistrationForm: React.FC = () => {
                   message: 'Password must be at least 8 characters'
                 },
                 pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)/,
-                  message: 'Password must contain at least one uppercase letter, one lowercase letter, and one number'
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[!@#$%^&*()_+\-=\[\]{}|;:,.<>?]).{8,}$/,
+                  message: 'Password must contain at least one uppercase letter, one lowercase letter, one digit, and one special character'
                 }
               })}
             />
