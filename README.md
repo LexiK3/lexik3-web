@@ -10,13 +10,28 @@ A modern vocabulary learning application built with React, TypeScript, and Redux
 - **✅ Profile & Settings**: Complete user management and preferences
 - **✅ Responsive Design**: Modern UI with Tailwind CSS
 - **✅ Type Safety**: Full TypeScript implementation
-- **✅ State Management**: Redux Toolkit with persistence
-- **✅ Testing**: 85% test coverage with Jest and React Testing Library
+- **✅ State Management**: Redux Toolkit with persistence and optimized selectors
+- **✅ Testing**: 280+ tests with comprehensive coverage using Jest and React Testing Library
 - **✅ Real API Integration**: Full backend integration (no mock dependencies)
+- **✅ Clean Architecture**: Service interfaces, error handling, and separation of concerns
+- **✅ Utility Functions**: Comprehensive validation, formatting, and helper utilities
 
 ## 🏗️ Architecture
 
 The application follows Clean Architecture principles with clear separation of concerns:
+
+### Recent Improvements (Code Cleanup)
+
+- **Service Layer Refactoring**: Implemented service interfaces (`IAuthService`, `IBooksService`, `IApiClient`) following Clean Architecture principles
+- **Centralized Error Handling**: Created `ErrorHandler` service for consistent error processing across the application
+- **Custom React Hooks**: Extracted component logic into reusable hooks (`useAuth`, `useBooks`, `useProgress`, `useLearning`, `useFormError`)
+- **Redux Optimization**: Added comprehensive selectors with memoization for better performance and reusability
+- **Enhanced Middleware**: Improved error handling, authentication, and API middleware with retry logic and session management
+- **Utility Functions**: Created comprehensive validation, formatting, and helper utilities with full test coverage
+- **Type Safety**: Enhanced TypeScript interfaces and types throughout the application
+- **Test Coverage**: Achieved 280+ tests with comprehensive coverage across all layers
+
+## 🏗️ Architecture Details
 
 ```
 src/
@@ -32,10 +47,15 @@ src/
 │   └── mock/          # Mock API for development
 ├── store/              # Redux store and slices
 │   ├── slices/        # Redux slices
+│   ├── selectors/     # Memoized selectors
 │   ├── middleware/    # Custom middleware
 │   └── hooks.ts       # Typed Redux hooks
 ├── types/              # TypeScript type definitions
-├── utils/              # Utility functions
+├── utils/              # Utility functions and helpers
+│   ├── validation.ts  # Form validation utilities
+│   ├── formatting.ts  # Data formatting utilities
+│   ├── helpers.ts     # General helper functions
+│   └── constants.ts   # Application constants
 └── hooks/              # Custom React hooks
 ```
 
