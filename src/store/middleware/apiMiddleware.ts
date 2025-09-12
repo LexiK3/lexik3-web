@@ -3,32 +3,39 @@ import { Middleware } from '@reduxjs/toolkit';
 import { RootState } from '../../types/store';
 
 export const apiMiddleware: Middleware<{}, RootState> = (store) => (next) => (action: any) => {
-  // Handle API errors globally
-  if (action.type.endsWith('/rejected')) {
-    const error = action.payload;
-    
-    // Handle specific error types
-    if (error.includes('401') || error.includes('Unauthorized')) {
-      // Token expired, redirect to login
-      store.dispatch({ type: 'auth/clearAuth' });
-      window.location.href = '/login';
+  // Track API call metrics
+  if (action.type.endsWith('/pending')) {
+    const startTime = Date.now();
+    action.meta = { ...action.meta, startTime };
+  }
+  
+  if (action.type.endsWith('/fulfilled')) {
+    const startTime = action.meta?.startTime;
+    if (startTime) {
+      const duration = Date.now() - startTime;
+      console.log(`API call ${action.type} completed in ${duration}ms`);
     }
+  }
+  
+  // Handle API rate limiting
+  if (action.type.endsWith('/rejected') && action.payload?.includes('429')) {
+    // Implement exponential backoff for rate limited requests
+    const retryAfter = action.meta?.retryAfter || 1000;
+    const retryCount = action.meta?.retryCount || 0;
     
-    if (error.includes('403') || error.includes('Forbidden')) {
-      // Insufficient permissions
-      console.warn('Access forbidden:', action.type);
+    if (retryCount < 3) {
+      setTimeout(() => {
+        store.dispatch({
+          ...action,
+          meta: {
+            ...action.meta,
+            retryCount: retryCount + 1,
+            retryAfter: retryAfter * 2
+          }
+        });
+      }, retryAfter);
+      return;
     }
-
-    // Show error toast
-    store.dispatch({
-      type: 'ui/addToast',
-      payload: {
-        type: 'error',
-        title: 'Error',
-        message: error,
-        duration: 5000,
-      },
-    });
   }
 
   return next(action);

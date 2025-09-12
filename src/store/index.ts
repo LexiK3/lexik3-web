@@ -15,6 +15,7 @@ import userReducer from './slices/userSlice';
 // Import middleware
 import { authMiddleware } from './middleware/authMiddleware';
 import { apiMiddleware } from './middleware/apiMiddleware';
+import { errorMiddleware } from './middleware/errorMiddleware';
 
 // Persist configuration
 const persistConfig = {
@@ -47,7 +48,8 @@ export const store = configureStore({
       },
     })
     .concat(authMiddleware)
-    .concat(apiMiddleware),
+    .concat(apiMiddleware)
+    .concat(errorMiddleware),
   devTools: process.env.NODE_ENV !== 'production',
 });
 
