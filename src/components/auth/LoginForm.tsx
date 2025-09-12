@@ -1,9 +1,8 @@
 // components/auth/LoginForm.tsx
-import React, { useState } from 'react';
+import React from 'react';
 import { useForm } from 'react-hook-form';
-import { useAppDispatch, useAppSelector } from '../../store/hooks';
-import { loginUser, clearError, setUser } from '../../store/slices/authSlice';
 import { useNavigate, useLocation } from 'react-router-dom';
+import { useAuth, useFormError } from '../../hooks';
 import { UnifiedAuthService } from '../../services/auth/unifiedAuthService';
 import Button from '../common/Button';
 import Card from '../common/Card';
@@ -14,46 +13,45 @@ interface LoginFormData {
 }
 
 const LoginForm: React.FC = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
   const location = useLocation();
-  const { isLoading, error } = useAppSelector((state) => state.auth);
-  const [localError, setLocalError] = useState<string>('');
+  const { login, isLoading, error, clearAuthError } = useAuth();
+  const { setError, clearError, getDisplayError } = useFormError();
 
   const { register, handleSubmit, formState: { errors } } = useForm<LoginFormData>();
 
   const onSubmit = async (data: LoginFormData) => {
     try {
-      setLocalError('');
-      dispatch(clearError());
+      clearError();
+      clearAuthError();
       
-      const result = await dispatch(loginUser(data));
+      const result = await login(data);
       
-      if (loginUser.fulfilled.match(result)) {
+      if (result.type === 'auth/login/fulfilled') {
         // Redirect to intended page or dashboard
         const from = (location.state as any)?.from?.pathname || '/dashboard';
         navigate(from, { replace: true });
-      } else if (loginUser.rejected.match(result)) {
-        setLocalError(result.payload as string);
+      } else if (result.type === 'auth/login/rejected') {
+        setError(result.payload as string);
       }
     } catch (err) {
-      setLocalError('An unexpected error occurred');
+      setError('An unexpected error occurred');
     }
   };
 
   const handleOAuth2Login = async () => {
     try {
-      setLocalError('');
-      dispatch(clearError());
+      clearError();
+      clearAuthError();
       
       await UnifiedAuthService.loginWithOAuth2();
       // The OAuth2 flow will redirect to the callback component
     } catch (err) {
-      setLocalError(err instanceof Error ? err.message : 'OAuth2 login failed');
+      setError(err instanceof Error ? err.message : 'OAuth2 login failed');
     }
   };
 
-  const displayError = localError || error;
+  const displayError = getDisplayError(error);
 
   return (
     <Card className="max-w-md mx-auto">

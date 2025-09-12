@@ -1,10 +1,8 @@
 // pages/Dashboard.tsx
 import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAppDispatch, useAppSelector } from '../store/hooks';
-import { fetchBooks, clearError as clearBooksError, enrollInBook } from '../store/slices/booksSlice';
-import { fetchUserProgress, clearError as clearProgressError } from '../store/slices/progressSlice';
-import { logoutUser } from '../store/slices/authSlice';
+import { useAppSelector } from '../store/hooks';
+import { useAuth, useBooks, useProgress } from '../hooks';
 import Card from '../components/common/Card';
 import Button from '../components/common/Button';
 import LoadingSpinner from '../components/common/LoadingSpinner';
@@ -12,43 +10,47 @@ import LoadingCard from '../components/common/LoadingCard';
 import ErrorMessage from '../components/common/ErrorMessage';
 
 const Dashboard: React.FC = () => {
-  const dispatch = useAppDispatch();
   const navigate = useNavigate();
-  const { user } = useAppSelector((state) => state.auth);
+  const { user, logout } = useAuth();
   const { 
     books, 
     isLoading: booksLoading, 
     error: booksError,
-    enrolledBooks
-  } = useAppSelector((state) => state.books);
+    loadBooks,
+    enroll,
+    clearBooksError,
+    isBookEnrolled
+  } = useBooks();
   const { 
     userProgress, 
     isLoading: progressLoading, 
-    error: progressError 
-  } = useAppSelector((state) => state.progress);
+    error: progressError,
+    loadProgress,
+    clearProgressError
+  } = useProgress();
 
   // Local state for enrollment loading and errors
   const [enrollingBookId, setEnrollingBookId] = useState<string | null>(null);
   const [enrollmentError, setEnrollmentError] = useState<string | null>(null);
 
   useEffect(() => {
-    dispatch(fetchBooks({}));
-    dispatch(fetchUserProgress({}));
-  }, [dispatch]);
+    loadBooks({});
+    loadProgress({});
+  }, [loadBooks, loadProgress]);
 
   const handleRetryBooks = () => {
-    dispatch(clearBooksError());
-    dispatch(fetchBooks({}));
+    clearBooksError();
+    loadBooks({});
   };
 
   const handleRetryProgress = () => {
-    dispatch(clearProgressError());
-    dispatch(fetchUserProgress({}));
+    clearProgressError();
+    loadProgress({});
   };
 
   // Button handlers
-  const handleLogout = () => {
-    dispatch(logoutUser());
+  const handleLogout = async () => {
+    await logout();
     navigate('/login');
   };
 
@@ -68,9 +70,9 @@ const Dashboard: React.FC = () => {
     try {
       setEnrollingBookId(bookId);
       setEnrollmentError(null);
-      await dispatch(enrollInBook(bookId)).unwrap();
+      await enroll(bookId);
       // Refresh books to show updated enrollment status
-      dispatch(fetchBooks({}));
+      loadBooks({});
     } catch (error: any) {
       console.error('Failed to enroll in book:', error);
       setEnrollmentError(error.message || 'Failed to enroll in book. Please try again.');
@@ -81,12 +83,6 @@ const Dashboard: React.FC = () => {
 
   const handleContinueBook = (bookId: string) => {
     navigate(`/learning?book=${bookId}`);
-  };
-
-  // Helper function to check if a book is enrolled
-  const isBookEnrolled = (bookId: string) => {
-    return enrolledBooks.some(enrolledBook => enrolledBook.id === bookId) ||
-           books.find(book => book.id === bookId)?.userProgress?.isEnrolled;
   };
 
   return (
