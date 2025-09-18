@@ -74,7 +74,7 @@ const QuizPicker = ({ totalLessons, isOpen, onClose, onStartQuiz }) => {
                         key={type}
                         className={`p-4 rounded-xl border-2 cursor-pointer transition-all duration-200 ${
                           selectedQuizType === type
-                            ? `border-${info.color}-500 bg-${info.color}-50`
+                            ? 'border-green-500 bg-green-50'
                             : 'border-gray-200 hover:border-gray-300 bg-white'
                         }`}
                         onClick={() => setSelectedQuizType(type)}
