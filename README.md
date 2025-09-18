@@ -5,13 +5,19 @@ A beautiful React + TailwindCSS landing page for learning 6 new English words ev
 ## Features
 
 - **Daily Vocabulary**: Displays 6 carefully curated English words with definitions and synonyms
+- **Interactive Quiz System**: 
+  - 4 different quiz types (Definition Match, Synonym Match, Example Completion, Translation)
+  - Select any combination of lessons for custom quizzes
+  - Real-time scoring and progress tracking
+  - Timer-based quizzes with automatic submission
 - **Responsive Design**: 
   - Mobile: 1 column layout
   - Tablet: 2 column layout  
   - Desktop: 3 column layout
 - **Interactive**: "Next Day" button to cycle through different word sets
 - **Modern UI**: Clean design with hover effects, shadows, and smooth transitions
-- **Mock Data**: 3 sets of 6 words each (18 total words) covering different themes
+- **Bilingual Support**: English and Persian translations for better learning
+- **Comprehensive Data**: Multiple lesson sets with 6 words each covering various themes
 
 ## Tech Stack
 
@@ -39,19 +45,35 @@ A beautiful React + TailwindCSS landing page for learning 6 new English words ev
 ```
 src/
 ├── components/
-│   └── WordCard.jsx      # Individual vocabulary card component
+│   ├── WordCard.jsx           # Individual vocabulary card component
+│   ├── LandingPage.jsx        # Main landing page with lesson selection
+│   ├── LessonPage.jsx         # Individual lesson display page
+│   ├── LessonPicker.jsx       # Modal for selecting lessons
+│   ├── QuizPicker.jsx         # Modal for creating custom quizzes
+│   ├── QuizPage.jsx           # Quiz interface with different question types
+│   └── ...                    # Other UI components
 ├── data/
-│   └── wordsData.js      # Mock vocabulary data (3 sets of 6 words)
-├── App.jsx               # Main application component
-├── main.jsx              # React entry point
-└── index.css             # Global styles and Tailwind imports
+│   ├── wordsData.js           # Vocabulary data (multiple lesson sets)
+│   └── quizData.js            # Quiz generation logic and question types
+├── App.jsx                    # Main application component with routing
+├── main.jsx                   # React entry point
+└── index.css                  # Global styles and Tailwind imports
 ```
+
+## Quiz Types
+
+1. **Definition Match**: Match words with their correct definitions
+2. **Synonym Match**: Find synonyms for given words
+3. **Example Completion**: Complete sentences with missing words
+4. **Translation**: Translate Persian words to English
 
 ## Word Sets
 
-1. **Day 1**: Advanced Vocabulary (serendipity, ephemeral, ubiquitous, etc.)
-2. **Day 2**: Business & Professional (paradigm, synergy, leverage, etc.)
-3. **Day 3**: Nature & Science (photosynthesis, biodiversity, ecosystem, etc.)
+The app includes multiple lesson sets with 6 words each, covering various themes like:
+- Advanced Vocabulary
+- Business & Professional terms
+- Nature & Science concepts
+- And many more...
 
 ## Customization
 
