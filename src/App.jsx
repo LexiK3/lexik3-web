@@ -39,6 +39,7 @@ function App() {
                 definition={wordData.definition}
                 synonyms={wordData.synonyms}
                 examples={wordData.examples}
+                persian={wordData.persian}
               />
             ))}
           </div>

@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 
-const WordCard = ({ word, definition, synonyms, examples = [] }) => {
+const WordCard = ({ word, definition, synonyms, examples = [], persian = null }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPersian, setIsPersian] = useState(false);
 
   const handleFlip = (e) => {
     e.stopPropagation();
@@ -14,6 +15,26 @@ const WordCard = ({ word, definition, synonyms, examples = [] }) => {
     setIsExpanded(!isExpanded);
   };
 
+  const handleLanguageToggle = (e) => {
+    e.stopPropagation();
+    if (persian) {
+      setIsPersian(!isPersian);
+    }
+  };
+
+  // Get current language content
+  const currentContent = isPersian && persian ? {
+    word: persian.word,
+    definition: persian.definition,
+    synonyms: persian.synonyms,
+    examples: persian.examples
+  } : {
+    word,
+    definition,
+    synonyms,
+    examples
+  };
+
   return (
     <div className="word-card">
       <div 
@@ -22,8 +43,8 @@ const WordCard = ({ word, definition, synonyms, examples = [] }) => {
       >
         {/* Front of card - Word only */}
         <div className="flip-card-front p-6 h-full flex flex-col justify-center items-center text-center">
-          <h3 className="text-3xl font-bold text-gray-900 mb-4">
-            {word}
+          <h3 className={`text-3xl font-bold text-gray-900 mb-4 ${isPersian ? 'font-serif' : ''}`}>
+            {currentContent.word}
           </h3>
           <p className="text-gray-600 text-sm">
             Click to reveal meaning
@@ -36,28 +57,28 @@ const WordCard = ({ word, definition, synonyms, examples = [] }) => {
         </div>
 
         {/* Back of card - Definition and synonyms */}
-        <div className="flip-card-back p-6 h-full flex flex-col">
-          <h3 className="text-2xl font-bold text-gray-900 mb-4 text-center">
-            {word}
+        <div className={`flip-card-back p-6 h-full flex flex-col ${isPersian ? 'text-right' : 'text-left'}`}>
+          <h3 className={`text-2xl font-bold text-gray-900 mb-4 text-center ${isPersian ? 'font-serif' : ''}`}>
+            {currentContent.word}
           </h3>
           
           <div className="flex-grow">
             <h4 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
               Definition
             </h4>
-            <p className="text-gray-700 text-sm leading-relaxed mb-4">
-              {definition}
+            <p className={`text-gray-700 text-sm leading-relaxed mb-4 ${isPersian ? 'font-serif' : ''}`}>
+              {currentContent.definition}
             </p>
             
             <h4 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
               Synonyms
             </h4>
-            <p className="text-sm text-gray-600 italic mb-4">
-              {synonyms}
+            <p className={`text-sm text-gray-600 italic mb-4 ${isPersian ? 'font-serif' : ''}`}>
+              {currentContent.synonyms}
             </p>
 
             {/* Examples section */}
-            {examples.length > 0 && (
+            {currentContent.examples.length > 0 && (
               <div className="mb-4">
                 <button
                   onClick={handleExpand}
@@ -76,8 +97,8 @@ const WordCard = ({ word, definition, synonyms, examples = [] }) => {
                 
                 <div className={`transition-all duration-300 ${isExpanded ? 'max-h-80 opacity-100' : 'max-h-0 opacity-0 overflow-hidden'}`}>
                   <div className="space-y-2 pb-2">
-                    {examples.map((example, index) => (
-                      <p key={index} className="text-sm text-gray-600 italic pl-2 border-l-2 border-lexik-blue leading-relaxed">
+                    {currentContent.examples.map((example, index) => (
+                      <p key={index} className={`text-sm text-gray-600 italic pl-2 border-l-2 border-lexik-blue leading-relaxed ${isPersian ? 'font-serif' : ''}`}>
                         "{example}"
                       </p>
                     ))}
@@ -87,10 +108,22 @@ const WordCard = ({ word, definition, synonyms, examples = [] }) => {
             )}
           </div>
           
-          <div className="mt-auto">
-            <p className="text-xs text-gray-500 text-center">
-              Click to flip back
-            </p>
+          <div className="mt-auto flex justify-center">
+            {persian ? (
+              <button
+                onClick={handleLanguageToggle}
+                className="flex items-center space-x-2 px-4 py-2 bg-lexik-blue hover:bg-blue-600 text-white text-sm font-semibold rounded-lg transition-colors duration-200"
+              >
+                <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 5h12M9 3v2m1.048 9.5A18.022 18.022 0 016.412 9m6.088 9h7M11 21l5-10 5 10M12.751 5C11.783 10.77 8.07 15.61 3 18.129" />
+                </svg>
+                <span>{isPersian ? 'English' : 'فارسی'}</span>
+              </button>
+            ) : (
+              <p className="text-xs text-gray-500 text-center">
+                Click to flip back
+              </p>
+            )}
           </div>
         </div>
       </div>

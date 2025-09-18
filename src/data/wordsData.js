@@ -9,7 +9,17 @@ export const wordsData = [
         "It was pure serendipity that I found this job opening.",
         "The discovery of penicillin was a happy serendipity.",
         "Through serendipity, we met our future business partner at the coffee shop."
-      ]
+      ],
+      persian: {
+        word: "تصادف خوش",
+        definition: "رخ دادن و پیشرفت رویدادها به صورت تصادفی در مسیری خوشایند یا سودمند.",
+        synonyms: "شانس، بخت، تصادف، اتفاق",
+        examples: [
+          "کاملاً تصادف خوش بود که این فرصت شغلی را پیدا کردم.",
+          "کشف پنی‌سیلین یک تصادف خوش بود.",
+          "از طریق تصادف خوش، شریک تجاری آینده‌مان را در کافه ملاقات کردیم."
+        ]
+      }
     },
     {
       word: "Ephemeral",
@@ -19,7 +29,17 @@ export const wordsData = [
         "The beauty of cherry blossoms is ephemeral, lasting only a few weeks.",
         "Social media trends are often ephemeral in nature.",
         "His fame proved to be ephemeral, fading quickly after the scandal."
-      ]
+      ],
+      persian: {
+        word: "زودگذر",
+        definition: "مدت زمان کوتاهی دوام آوردن؛ موقت.",
+        synonyms: "موقت، گذرا، لحظه‌ای، کوتاه",
+        examples: [
+          "زیبایی شکوفه‌های گیلاس زودگذر است و فقط چند هفته دوام می‌آورد.",
+          "ترندهای شبکه‌های اجتماعی اغلب ماهیت زودگذری دارند.",
+          "شهرت او زودگذر از آب درآمد و پس از رسوایی به سرعت محو شد."
+        ]
+      }
     },
     {
       word: "Ubiquitous",
@@ -29,7 +49,17 @@ export const wordsData = [
         "Smartphones have become ubiquitous in modern society.",
         "The company's logo is ubiquitous throughout the city.",
         "Coffee shops are ubiquitous in downtown areas."
-      ]
+      ],
+      persian: {
+        word: "همه‌جا حاضر",
+        definition: "در همه جا حاضر، ظاهر یا یافت شونده.",
+        synonyms: "همه‌جا، جهانی، گسترده، فراگیر",
+        examples: [
+          "گوشی‌های هوشمند در جامعه مدرن همه‌جا حاضر شده‌اند.",
+          "لوگوی شرکت در سراسر شهر همه‌جا حاضر است.",
+          "کافه‌ها در مناطق مرکزی شهر همه‌جا حاضر هستند."
+        ]
+      }
     },
     {
       word: "Mellifluous",
@@ -39,7 +69,17 @@ export const wordsData = [
         "Her mellifluous voice captivated the entire audience.",
         "The mellifluous sounds of the violin filled the concert hall.",
         "He spoke with a mellifluous tone that was soothing to hear."
-      ]
+      ],
+      persian: {
+        word: "خوش‌آهنگ",
+        definition: "شیرین یا موسیقیایی؛ خوشایند برای شنیدن.",
+        synonyms: "ملودیک، هماهنگ، نرم، خوش‌صدا",
+        examples: [
+          "صدای خوش‌آهنگ او تمام مخاطبان را مجذوب کرد.",
+          "صداهای خوش‌آهنگ ویولن سالن کنسرت را پر کرد.",
+          "او با لحنی خوش‌آهنگ صحبت می‌کرد که آرامش‌بخش بود."
+        ]
+      }
     },
     {
       word: "Perspicacious",
