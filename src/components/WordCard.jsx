@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import ClickableText from './ClickableText';
 
-const WordCard = ({ word, definition, synonyms, examples = [], persian = null, onWordClick }) => {
+const WordCard = ({ word, exactMeaning, definition, synonyms, examples = [], persian = null, onWordClick }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPersian, setIsPersian] = useState(false);
@@ -33,11 +33,13 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null, o
   // Get current language content
   const currentContent = isPersian && persian ? {
     word: persian.word,
+    exactMeaning: persian.exactMeaning,
     definition: persian.definition,
     synonyms: persian.synonyms,
     examples: persian.examples
   } : {
     word,
+    exactMeaning,
     definition,
     synonyms,
     examples
@@ -93,6 +95,18 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null, o
           </div>
           
           <div className="flex-grow">
+            {/* Exact Meaning - 504 Format */}
+            {currentContent.exactMeaning && (
+              <>
+                <h4 className="text-sm font-semibold text-lexik-blue mb-2 uppercase tracking-wide">
+                  Exact Meaning
+                </h4>
+                <p className={`text-gray-800 text-sm leading-relaxed mb-4 font-medium ${isPersian ? 'font-serif' : ''}`}>
+                  <ClickableText text={currentContent.exactMeaning} onWordClick={onWordClick} />
+                </p>
+              </>
+            )}
+            
             <h4 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
               Definition
             </h4>

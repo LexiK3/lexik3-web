@@ -3,6 +3,7 @@ export const wordsData = [
   [
     {
       word: "Abandon",
+      exactMeaning: "To give up completely; to leave behind forever",
       definition: "To leave completely and finally; give up.",
       synonyms: "desert, leave, forsake, quit",
       examples: [
@@ -12,6 +13,7 @@ export const wordsData = [
       ],
       persian: {
         word: "ترک کردن",
+        exactMeaning: "کامل و برای همیشه رها کردن؛ ول کردن برای همیشه",
         definition: "کامل و برای همیشه ول کردن یا رها کردن.",
         synonyms: "ول کردن، رها کردن، ترک کردن",
         examples: [
@@ -23,6 +25,7 @@ export const wordsData = [
     },
     {
       word: "Keen",
+      exactMeaning: "Having a sharp edge; very eager or enthusiastic; highly developed",
       definition: "Sharp; eager; intense; sensitive.",
       synonyms: "eager, enthusiastic, sharp, intense",
       examples: [
@@ -32,6 +35,7 @@ export const wordsData = [
       ],
       persian: {
         word: "تیز / مشتاق",
+        exactMeaning: "تیز بودن؛ خیلی مشتاق یا علاقه‌مند؛ خیلی پیشرفته",
         definition: "تیز، شدید یا خیلی مشتاق.",
         synonyms: "مشتاق، علاقه‌مند، تیزبین",
         examples: [
@@ -43,6 +47,7 @@ export const wordsData = [
     },
     {
       word: "Jealous",
+      exactMeaning: "Feeling resentment because of someone else's success or advantages; protective of what one has",
       definition: "Afraid that the one you love might prefer someone else; wanting what someone else has.",
       synonyms: "envious, suspicious, protective, resentful",
       examples: [
@@ -52,6 +57,7 @@ export const wordsData = [
       ],
       persian: {
         word: "حسود / غیور",
+        exactMeaning: "احساس ناراحتی به خاطر موفقیت یا مزایای دیگران؛ محافظت از آنچه داری",
         definition: "وقتی می‌ترسی کسی رو از دست بدی یا چیزی رو که مال کس دیگه‌ست بخوای.",
         synonyms: "حسود، چشم‌تنگ، غیور",
         examples: [
@@ -63,6 +69,7 @@ export const wordsData = [
     },
     {
       word: "Tact",
+      exactMeaning: "Skill in dealing with difficult situations without causing offense; sensitivity in social situations",
       definition: "Ability to say the right thing.",
       synonyms: "diplomacy, discretion, sensitivity, thoughtfulness",
       examples: [
@@ -72,6 +79,7 @@ export const wordsData = [
       ],
       persian: {
         word: "درایت / خوش‌زبانی",
+        exactMeaning: "مهارت در برخورد با موقعیت‌های دشوار بدون ایجاد ناراحتی؛ حساسیت در موقعیت‌های اجتماعی",
         definition: "توانایی درست و مودبانه صحبت کردن.",
         synonyms: "درایت، تدبیر، خوش‌زبانی",
         examples: [
@@ -83,6 +91,7 @@ export const wordsData = [
     },
     {
       word: "Oath",
+      exactMeaning: "A solemn promise, often invoking a divine witness; a profane expression of anger",
       definition: "A promise that something is true; a curse.",
       synonyms: "vow, pledge, promise, swear",
       examples: [
@@ -92,6 +101,7 @@ export const wordsData = [
       ],
       persian: {
         word: "قسم / سوگند",
+        exactMeaning: "قول محکم و رسمی، اغلب با استناد به خدا؛ عبارت توهین‌آمیز خشم",
         definition: "قول محکم یا فحش.",
         synonyms: "قسم، سوگند، قول، فحش",
         examples: [
