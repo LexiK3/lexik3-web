@@ -4,6 +4,7 @@
   "description": "A vocabulary learning app landing page",
   "type": "module",
   "main": "index.js",
+  "homepage": "https://yourusername.github.io/lexik3-web",
   "scripts": {
     "dev": "vite",
     "build": "vite build",

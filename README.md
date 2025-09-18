@@ -1,5 +1,7 @@
 # LexiK3 - Vocabulary Learning App
 
+[![Deploy to GitHub Pages](https://github.com/yourusername/lexik3-web/actions/workflows/deploy.yml/badge.svg)](https://github.com/yourusername/lexik3-web/actions/workflows/deploy.yml)
+
 A beautiful React + TailwindCSS landing page for learning 6 new English words every day.
 
 ## Features
@@ -89,3 +91,32 @@ npm run build
 ```
 
 The built files will be in the `dist` directory, ready for deployment.
+
+## GitHub Pages Deployment
+
+This project is configured for automatic deployment to GitHub Pages:
+
+1. **Automatic Deployment**: The app automatically builds and deploys when you push to the `main` branch
+2. **GitHub Actions**: Uses GitHub Actions workflow (`.github/workflows/deploy.yml`)
+3. **Live URL**: Your app will be available at `https://yourusername.github.io/lexik3-web`
+
+### Setup Instructions:
+
+1. **Update Repository Name**: 
+   - Change `yourusername` in `package.json` homepage field to your GitHub username
+   - Update the `base` path in `vite.config.js` to match your repository name
+
+2. **Enable GitHub Pages**:
+   - Go to your repository Settings
+   - Navigate to Pages section
+   - Select "GitHub Actions" as the source
+   - The workflow will automatically deploy your app
+
+3. **Push to Main**:
+   ```bash
+   git add .
+   git commit -m "Add GitHub Pages deployment"
+   git push origin main
+   ```
+
+The deployment will start automatically and your app will be live within a few minutes!
