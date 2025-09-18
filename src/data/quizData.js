@@ -41,7 +41,6 @@ export const generateQuizQuestions = (wordsData, selectedLessons, quizType) => {
   }
 };
 
-
 const generateDefinitionMatchQuestions = (quizWords) => {
   return quizWords.map((word, index) => {
     // Get 3 random wrong words for options
@@ -57,7 +56,7 @@ const generateDefinitionMatchQuestions = (quizWords) => {
       id: `def_${index}`,
       type: 'definition_match',
       question: `Match the word with its definition:`,
-      word: word.word,
+      word: word, // Store full word object instead of word.word
       definition: word.definition,
       options: options,
       correctAnswer: word.word,
@@ -85,7 +84,7 @@ const generateSynonymMatchQuestions = (quizWords) => {
       id: `syn_${index}`,
       type: 'synonym_match',
       question: `What is a synonym for "${word.word}"?`,
-      word: word.word,
+      word: word, // Store full word object instead of word.word
       synonyms: synonyms,
       options: options,
       correctAnswer: correctSynonym,
@@ -115,7 +114,7 @@ const generateExampleCompletionQuestions = (quizWords) => {
       example: blankedExample,
       options: options,
       correctAnswer: word.word,
-      word: word,
+      word: word, // Store full word object (already correct)
       points: 10
     };
   });
@@ -139,7 +138,7 @@ const generateTranslationQuestions = (quizWords) => {
       persianWord: word.persian.word,
       options: options,
       correctAnswer: word.word,
-      word: word,
+      word: word, // Store full word object (already correct)
       points: 10
     };
   });
