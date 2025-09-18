@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
 import WordCard from './components/WordCard';
+import ConfirmationDialog from './components/ConfirmationDialog';
 import { wordsData } from './data/wordsData';
 
 function App() {
   const [currentDay, setCurrentDay] = useState(0);
+  const [dialogState, setDialogState] = useState({ isOpen: false, word: '' });
   const currentWords = wordsData[currentDay];
 
   const handleNextDay = () => {
     setCurrentDay((prevDay) => (prevDay + 1) % wordsData.length);
+  };
+
+  const handleOpenDialog = (word) => {
+    setDialogState({ isOpen: true, word });
+  };
+
+  const handleCloseDialog = () => {
+    setDialogState({ isOpen: false, word: '' });
+  };
+
+  const handleConfirmTranslate = () => {
+    const googleTranslateUrl = `https://translate.google.com/?sl=auto&tl=en&text=${encodeURIComponent(dialogState.word)}`;
+    window.open(googleTranslateUrl, '_blank');
+    handleCloseDialog();
   };
 
   return (
@@ -40,6 +56,7 @@ function App() {
                 synonyms={wordData.synonyms}
                 examples={wordData.examples}
                 persian={wordData.persian}
+                onWordClick={handleOpenDialog}
               />
             ))}
           </div>
@@ -64,6 +81,14 @@ function App() {
           </p>
         </div>
       </footer>
+
+      {/* Global Dialog */}
+      <ConfirmationDialog
+        isOpen={dialogState.isOpen}
+        onClose={handleCloseDialog}
+        onConfirm={handleConfirmTranslate}
+        word={dialogState.word}
+      />
     </div>
   );
 }

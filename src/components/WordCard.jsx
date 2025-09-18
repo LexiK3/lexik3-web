@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
+import ClickableText from './ClickableText';
 
-const WordCard = ({ word, definition, synonyms, examples = [], persian = null }) => {
+const WordCard = ({ word, definition, synonyms, examples = [], persian = null, onWordClick }) => {
   const [isFlipped, setIsFlipped] = useState(false);
   const [isExpanded, setIsExpanded] = useState(false);
   const [isPersian, setIsPersian] = useState(false);
@@ -19,6 +20,13 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null })
     e.stopPropagation();
     if (persian) {
       setIsPersian(!isPersian);
+    }
+  };
+
+  const handleWordClick = (e) => {
+    e.stopPropagation();
+    if (onWordClick) {
+      onWordClick(currentContent.word);
     }
   };
 
@@ -43,9 +51,20 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null })
       >
         {/* Front of card - Word only */}
         <div className="flip-card-front p-6 h-full flex flex-col justify-center items-center text-center">
-          <h3 className={`text-3xl font-bold text-gray-900 mb-4 ${isPersian ? 'font-serif' : ''}`}>
-            {currentContent.word}
-          </h3>
+          <div className="relative group">
+            <h3 
+              className={`text-3xl font-bold text-gray-900 mb-4 cursor-pointer hover:text-lexik-blue transition-colors duration-200 ${isPersian ? 'font-serif' : ''}`}
+              onClick={handleWordClick}
+              title="Click to translate in Google Translate"
+            >
+              {currentContent.word}
+            </h3>
+            {/* Hover tooltip */}
+            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+              Translate in Google
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+            </div>
+          </div>
           <p className="text-gray-600 text-sm">
             Click to reveal meaning
           </p>
@@ -58,23 +77,34 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null })
 
         {/* Back of card - Definition and synonyms */}
         <div className={`flip-card-back p-6 h-full flex flex-col ${isPersian ? 'text-right' : 'text-left'}`}>
-          <h3 className={`text-2xl font-bold text-gray-900 mb-4 text-center ${isPersian ? 'font-serif' : ''}`}>
-            {currentContent.word}
-          </h3>
+          <div className="relative group mb-4">
+            <h3 
+              className={`text-2xl font-bold text-gray-900 text-center cursor-pointer hover:text-lexik-blue transition-colors duration-200 ${isPersian ? 'font-serif' : ''}`}
+              onClick={handleWordClick}
+              title="Click to translate in Google Translate"
+            >
+              {currentContent.word}
+            </h3>
+            {/* Hover tooltip */}
+            <div className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gray-800 text-white text-xs px-2 py-1 rounded opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none whitespace-nowrap">
+              Translate in Google
+              <div className="absolute top-full left-1/2 transform -translate-x-1/2 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-gray-800"></div>
+            </div>
+          </div>
           
           <div className="flex-grow">
             <h4 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
               Definition
             </h4>
             <p className={`text-gray-700 text-sm leading-relaxed mb-4 ${isPersian ? 'font-serif' : ''}`}>
-              {currentContent.definition}
+              <ClickableText text={currentContent.definition} onWordClick={onWordClick} />
             </p>
             
             <h4 className="text-sm font-semibold text-gray-600 mb-2 uppercase tracking-wide">
               Synonyms
             </h4>
             <p className={`text-sm text-gray-600 italic mb-4 ${isPersian ? 'font-serif' : ''}`}>
-              {currentContent.synonyms}
+              <ClickableText text={currentContent.synonyms} onWordClick={onWordClick} />
             </p>
 
             {/* Examples section */}
@@ -99,7 +129,7 @@ const WordCard = ({ word, definition, synonyms, examples = [], persian = null })
                   <div className="space-y-2 pb-2">
                     {currentContent.examples.map((example, index) => (
                       <p key={index} className={`text-sm text-gray-600 italic pl-2 border-l-2 border-lexik-blue leading-relaxed ${isPersian ? 'font-serif' : ''}`}>
-                        "{example}"
+                        "<ClickableText text={example} onWordClick={onWordClick} />"
                       </p>
                     ))}
                   </div>
