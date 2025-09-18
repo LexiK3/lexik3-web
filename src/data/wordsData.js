@@ -7653,994 +7653,2721 @@ export const wordsData = [
       }
     }
   ],
-// Day 63 - Lesson 32 (Part 1)
-[
-  {
-    word: "Decorum",
-    definition: "Behavior in keeping with good taste and propriety.",
-    synonyms: "etiquette, propriety, manners, civility",
-    examples: [
-      "The ceremony was conducted with decorum.",
-      "She maintained decorum during the meeting.",
-      "Proper decorum is expected at formal events."
-    ],
-    persian: {
-      word: "آداب / رفتار مناسب",
-      definition: "رفتاری مطابق با ذوق و شایستگی.",
-      synonyms: "آداب، شایستگی، اخلاق، نزاکت",
+  // Day 63 - Lesson 32 (Part 1)
+  [
+    {
+      word: "Decorum",
+      definition: "Behavior in keeping with good taste and propriety.",
+      synonyms: "etiquette, propriety, manners, civility",
       examples: [
-        "مراسم با رعایت آداب برگزار شد.",
-        "او در طول جلسه رفتار مناسب داشت.",
-        "انتظار می‌رود در رویدادهای رسمی رفتار مناسب رعایت شود."
-      ]
-    }
-  },
-  {
-    word: "Defer",
-    definition: "Put off (an action or event) to a later time; yield respectfully.",
-    synonyms: "postpone, delay, yield, submit",
-    examples: [
-      "The meeting was deferred until next week.",
-      "He deferred to his senior's opinion.",
-      "Decisions were deferred pending further review."
-    ],
-    persian: {
-      word: "به تعویق انداختن / احترام گذاشتن",
-      definition: "یک اقدام یا رویداد را به زمان بعدی موکول کردن؛ با احترام تسلیم شدن.",
-      synonyms: "به تعویق انداختن، تأخیر، تسلیم شدن، احترام گذاشتن",
+        "The ceremony was conducted with decorum.",
+        "She maintained decorum during the meeting.",
+        "Proper decorum is expected at formal events."
+      ],
+      persian: {
+        word: "آداب / رفتار مناسب",
+        definition: "رفتاری مطابق با ذوق و شایستگی.",
+        synonyms: "آداب، شایستگی، اخلاق، نزاکت",
+        examples: [
+          "مراسم با رعایت آداب برگزار شد.",
+          "او در طول جلسه رفتار مناسب داشت.",
+          "انتظار می‌رود در رویدادهای رسمی رفتار مناسب رعایت شود."
+        ]
+      }
+    },
+    {
+      word: "Defer",
+      definition: "Put off (an action or event) to a later time; yield respectfully.",
+      synonyms: "postpone, delay, yield, submit",
       examples: [
-        "جلسه تا هفته آینده به تعویق افتاد.",
-        "او به نظر ارشد خود احترام گذاشت.",
-        "تصمیمات تا بررسی بیشتر به تعویق افتاد."
-      ]
-    }
-  },
-  {
-    word: "Diligent",
-    definition: "Having or showing care and conscientiousness in one's work or duties.",
-    synonyms: "hardworking, industrious, meticulous, assiduous",
-    examples: [
-      "She is a diligent student.",
-      "The team worked diligently on the project.",
-      "Diligent preparation is key to success."
-    ],
-    persian: {
-      word: "سخت‌کوش / دقیق",
-      definition: "داشتن یا نشان دادن دقت و وظیفه‌شناسی در کار یا وظایف.",
-      synonyms: "سخت‌کوش، کوشا، دقیق، پیگیر",
+        "The meeting was deferred until next week.",
+        "He deferred to his senior's opinion.",
+        "Decisions were deferred pending further review."
+      ],
+      persian: {
+        word: "به تعویق انداختن / احترام گذاشتن",
+        definition: "یک اقدام یا رویداد را به زمان بعدی موکول کردن؛ با احترام تسلیم شدن.",
+        synonyms: "به تعویق انداختن، تأخیر، تسلیم شدن، احترام گذاشتن",
+        examples: [
+          "جلسه تا هفته آینده به تعویق افتاد.",
+          "او به نظر ارشد خود احترام گذاشت.",
+          "تصمیمات تا بررسی بیشتر به تعویق افتاد."
+        ]
+      }
+    },
+    {
+      word: "Diligent",
+      definition: "Having or showing care and conscientiousness in one's work or duties.",
+      synonyms: "hardworking, industrious, meticulous, assiduous",
       examples: [
-        "او دانش‌آموز سخت‌کوشی است.",
-        "تیم به طور دقیق روی پروژه کار کرد.",
-        "آمادگی دقیق کلید موفقیت است."
-      ]
-    }
-  },
-  {
-    word: "Discrepancy",
-    definition: "A lack of compatibility or similarity between two or more facts.",
-    synonyms: "difference, inconsistency, divergence, variation",
-    examples: [
-      "There was a discrepancy in the accounts.",
-      "The reports showed a discrepancy in data.",
-      "Discrepancies must be resolved before proceeding."
-    ],
-    persian: {
-      word: "تفاوت / اختلاف",
-      definition: "کمبود سازگاری یا شباهت بین دو یا چند واقعیت.",
-      synonyms: "تفاوت، ناسازگاری، انحراف، تغییر",
+        "She is a diligent student.",
+        "The team worked diligently on the project.",
+        "Diligent preparation is key to success."
+      ],
+      persian: {
+        word: "سخت‌کوش / دقیق",
+        definition: "داشتن یا نشان دادن دقت و وظیفه‌شناسی در کار یا وظایف.",
+        synonyms: "سخت‌کوش، کوشا، دقیق، پیگیر",
+        examples: [
+          "او دانش‌آموز سخت‌کوشی است.",
+          "تیم به طور دقیق روی پروژه کار کرد.",
+          "آمادگی دقیق کلید موفقیت است."
+        ]
+      }
+    },
+    {
+      word: "Discrepancy",
+      definition: "A lack of compatibility or similarity between two or more facts.",
+      synonyms: "difference, inconsistency, divergence, variation",
       examples: [
-        "در حساب‌ها اختلافی وجود داشت.",
-        "گزارش‌ها تفاوت داده‌ها را نشان دادند.",
-        "اختلافات باید قبل از ادامه حل شوند."
-      ]
-    }
-  },
-  {
-    word: "Elated",
-    definition: "Make (someone) ecstatically happy.",
-    synonyms: "overjoyed, thrilled, ecstatic, jubilant",
-    examples: [
-      "She was elated at the news of her promotion.",
-      "The team was elated after winning the championship.",
-      "He felt elated when he passed the exam."
-    ],
-    persian: {
-      word: "شادمان / خوشحال",
-      definition: "کسی را به شدت خوشحال کردن.",
-      synonyms: "شادمان، سرمست، شاد، خوشحال",
+        "There was a discrepancy in the accounts.",
+        "The reports showed a discrepancy in data.",
+        "Discrepancies must be resolved before proceeding."
+      ],
+      persian: {
+        word: "تفاوت / اختلاف",
+        definition: "کمبود سازگاری یا شباهت بین دو یا چند واقعیت.",
+        synonyms: "تفاوت، ناسازگاری، انحراف، تغییر",
+        examples: [
+          "در حساب‌ها اختلافی وجود داشت.",
+          "گزارش‌ها تفاوت داده‌ها را نشان دادند.",
+          "اختلافات باید قبل از ادامه حل شوند."
+        ]
+      }
+    },
+    {
+      word: "Elated",
+      definition: "Make (someone) ecstatically happy.",
+      synonyms: "overjoyed, thrilled, ecstatic, jubilant",
       examples: [
-        "او از خبر ترفیع شادمان شد.",
-        "تیم پس از قهرمانی شادمان بود.",
-        "او هنگام قبولی در امتحان شادمان شد."
-      ]
-    }
-  },
-  {
-    word: "Eminent",
-    definition: "Famous and respected within a particular sphere or profession.",
-    synonyms: "distinguished, renowned, prominent, notable",
-    examples: [
-      "He is an eminent scientist.",
-      "The eminent author received many awards.",
-      "Eminent figures attended the conference."
-    ],
-    persian: {
-      word: "برجسته / مشهور",
-      definition: "مشهور و محترم در یک حوزه یا حرفه خاص.",
-      synonyms: "برجسته، مشهور، برجسته، قابل توجه",
+        "She was elated at the news of her promotion.",
+        "The team was elated after winning the championship.",
+        "He felt elated when he passed the exam."
+      ],
+      persian: {
+        word: "شادمان / خوشحال",
+        definition: "کسی را به شدت خوشحال کردن.",
+        synonyms: "شادمان، سرمست، شاد، خوشحال",
+        examples: [
+          "او از خبر ترفیع شادمان شد.",
+          "تیم پس از قهرمانی شادمان بود.",
+          "او هنگام قبولی در امتحان شادمان شد."
+        ]
+      }
+    },
+    {
+      word: "Eminent",
+      definition: "Famous and respected within a particular sphere or profession.",
+      synonyms: "distinguished, renowned, prominent, notable",
       examples: [
-        "او یک دانشمند برجسته است.",
-        "نویسنده برجسته جوایز زیادی دریافت کرد.",
-        "شخصیت‌های برجسته در کنفرانس حضور داشتند."
-      ]
+        "He is an eminent scientist.",
+        "The eminent author received many awards.",
+        "Eminent figures attended the conference."
+      ],
+      persian: {
+        word: "برجسته / مشهور",
+        definition: "مشهور و محترم در یک حوزه یا حرفه خاص.",
+        synonyms: "برجسته، مشهور، برجسته، قابل توجه",
+        examples: [
+          "او یک دانشمند برجسته است.",
+          "نویسنده برجسته جوایز زیادی دریافت کرد.",
+          "شخصیت‌های برجسته در کنفرانس حضور داشتند."
+        ]
+      }
     }
-  }
-],
+  ],
 
-// Day 64 - Lesson 32 (Part 2)
-[
-  {
-    word: "Erratic",
-    definition: "Not even or regular in pattern or movement; unpredictable.",
-    synonyms: "irregular, inconsistent, unpredictable, unstable",
-    examples: [
-      "His behavior was erratic and confusing.",
-      "The weather this week has been erratic.",
-      "Erratic driving can cause accidents."
-    ],
-    persian: {
-      word: "نامنظم / غیرقابل پیش‌بینی",
-      definition: "در الگو یا حرکت نامنظم؛ غیرقابل پیش‌بینی.",
-      synonyms: "نامنظم، ناسازگار، غیرقابل پیش‌بینی، ناپایدار",
+  // Day 64 - Lesson 32 (Part 2)
+  [
+    {
+      word: "Erratic",
+      definition: "Not even or regular in pattern or movement; unpredictable.",
+      synonyms: "irregular, inconsistent, unpredictable, unstable",
       examples: [
-        "رفتار او نامنظم و گیج‌کننده بود.",
-        "هوا این هفته نامنظم بوده است.",
-        "رانندگی نامنظم می‌تواند باعث تصادف شود."
-      ]
-    }
-  },
-  {
-    word: "Exacerbate",
-    definition: "Make (a problem, situation, or feeling) worse.",
-    synonyms: "aggravate, worsen, intensify, inflame",
-    examples: [
-      "His comments exacerbated the tension.",
-      "The new policy may exacerbate the problem.",
-      "Failing to act could exacerbate the situation."
-    ],
-    persian: {
-      word: "بدتر کردن / تشدید کردن",
-      definition: "بدتر کردن یک مشکل، وضعیت یا احساس.",
-      synonyms: "تشدید کردن، بدتر کردن، شدت دادن، برانگیختن",
+        "His behavior was erratic and confusing.",
+        "The weather this week has been erratic.",
+        "Erratic driving can cause accidents."
+      ],
+      persian: {
+        word: "نامنظم / غیرقابل پیش‌بینی",
+        definition: "در الگو یا حرکت نامنظم؛ غیرقابل پیش‌بینی.",
+        synonyms: "نامنظم، ناسازگار، غیرقابل پیش‌بینی، ناپایدار",
+        examples: [
+          "رفتار او نامنظم و گیج‌کننده بود.",
+          "هوا این هفته نامنظم بوده است.",
+          "رانندگی نامنظم می‌تواند باعث تصادف شود."
+        ]
+      }
+    },
+    {
+      word: "Exacerbate",
+      definition: "Make (a problem, situation, or feeling) worse.",
+      synonyms: "aggravate, worsen, intensify, inflame",
       examples: [
-        "نظرات او تنش را تشدید کرد.",
-        "سیاست جدید ممکن است مشکل را بدتر کند.",
-        "عمل نکردن می‌تواند وضعیت را تشدید کند."
-      ]
-    }
-  },
-  {
-    word: "Exemplary",
-    definition: "Serving as a desirable model; representing the best of its kind.",
-    synonyms: "model, commendable, admirable, outstanding",
-    examples: [
-      "Her performance was exemplary.",
-      "The company set an exemplary standard.",
-      "He received an award for his exemplary service."
-    ],
-    persian: {
-      word: "نمونه / الگو",
-      definition: "به عنوان یک مدل مطلوب عمل کردن؛ نماینده بهترین نوع خود بودن.",
-      synonyms: "الگو، قابل تحسین، ستودنی، برجسته",
+        "His comments exacerbated the tension.",
+        "The new policy may exacerbate the problem.",
+        "Failing to act could exacerbate the situation."
+      ],
+      persian: {
+        word: "بدتر کردن / تشدید کردن",
+        definition: "بدتر کردن یک مشکل، وضعیت یا احساس.",
+        synonyms: "تشدید کردن، بدتر کردن، شدت دادن، برانگیختن",
+        examples: [
+          "نظرات او تنش را تشدید کرد.",
+          "سیاست جدید ممکن است مشکل را بدتر کند.",
+          "عمل نکردن می‌تواند وضعیت را تشدید کند."
+        ]
+      }
+    },
+    {
+      word: "Exemplary",
+      definition: "Serving as a desirable model; representing the best of its kind.",
+      synonyms: "model, commendable, admirable, outstanding",
       examples: [
-        "عملکرد او نمونه بود.",
-        "شرکت استانداردی نمونه تعیین کرد.",
-        "او به خاطر خدمات نمونه خود جایزه گرفت."
-      ]
-    }
-  },
-  {
-    word: "Extol",
-    definition: "Praise enthusiastically.",
-    synonyms: "praise, glorify, laud, commend",
-    examples: [
-      "The teacher extolled the student's achievements.",
-      "Critics extolled the new movie.",
-      "She extolled the virtues of teamwork."
-    ],
-    persian: {
-      word: "ستایش کردن / تمجید کردن",
-      definition: "با شور و شوق ستایش کردن.",
-      synonyms: "ستایش کردن، تمجید کردن، تحسین کردن، تقدیر کردن",
+        "Her performance was exemplary.",
+        "The company set an exemplary standard.",
+        "He received an award for his exemplary service."
+      ],
+      persian: {
+        word: "نمونه / الگو",
+        definition: "به عنوان یک مدل مطلوب عمل کردن؛ نماینده بهترین نوع خود بودن.",
+        synonyms: "الگو، قابل تحسین، ستودنی، برجسته",
+        examples: [
+          "عملکرد او نمونه بود.",
+          "شرکت استانداردی نمونه تعیین کرد.",
+          "او به خاطر خدمات نمونه خود جایزه گرفت."
+        ]
+      }
+    },
+    {
+      word: "Extol",
+      definition: "Praise enthusiastically.",
+      synonyms: "praise, glorify, laud, commend",
       examples: [
-        "معلم موفقیت‌های دانش‌آموز را ستایش کرد.",
-        "منتقدان فیلم جدید را تمجید کردند.",
-        "او فضایل کار تیمی را ستایش کرد."
-      ]
-    }
-  },
-  {
-    word: "Fluctuate",
-    definition: "Rise and fall irregularly in number or amount.",
-    synonyms: "vary, oscillate, waver, change",
-    examples: [
-      "Prices fluctuate with demand.",
-      "His mood fluctuates daily.",
-      "The stock market tends to fluctuate."
-    ],
-    persian: {
-      word: "نوسان داشتن / تغییر کردن",
-      definition: "به طور نامنظم در تعداد یا مقدار بالا و پایین رفتن.",
-      synonyms: "تغییر کردن، نوسان داشتن، متزلزل شدن، متفاوت بودن",
+        "The teacher extolled the student's achievements.",
+        "Critics extolled the new movie.",
+        "She extolled the virtues of teamwork."
+      ],
+      persian: {
+        word: "ستایش کردن / تمجید کردن",
+        definition: "با شور و شوق ستایش کردن.",
+        synonyms: "ستایش کردن، تمجید کردن، تحسین کردن، تقدیر کردن",
+        examples: [
+          "معلم موفقیت‌های دانش‌آموز را ستایش کرد.",
+          "منتقدان فیلم جدید را تمجید کردند.",
+          "او فضایل کار تیمی را ستایش کرد."
+        ]
+      }
+    },
+    {
+      word: "Fluctuate",
+      definition: "Rise and fall irregularly in number or amount.",
+      synonyms: "vary, oscillate, waver, change",
       examples: [
-        "قیمت‌ها با توجه به تقاضا نوسان دارند.",
-        "حالت او روزانه نوسان دارد.",
-        "بازار سهام تمایل به نوسان دارد."
-      ]
-    }
-  },
-  {
-    word: "Formidable",
-    definition: "Inspiring fear or respect through being impressively large, powerful, or capable.",
-    synonyms: "intimidating, daunting, impressive, powerful",
-    examples: [
-      "The team faced a formidable opponent.",
-      "The mountain was a formidable challenge.",
-      "Her knowledge made her a formidable leader."
-    ],
-    persian: {
-      word: "مهیب / قدرتمند",
-      definition: "ایجاد ترس یا احترام از طریق بزرگ، قدرتمند یا توانمند بودن.",
-      synonyms: "مهیب، دلهره‌آور، تأثیرگذار، قدرتمند",
+        "Prices fluctuate with demand.",
+        "His mood fluctuates daily.",
+        "The stock market tends to fluctuate."
+      ],
+      persian: {
+        word: "نوسان داشتن / تغییر کردن",
+        definition: "به طور نامنظم در تعداد یا مقدار بالا و پایین رفتن.",
+        synonyms: "تغییر کردن، نوسان داشتن، متزلزل شدن، متفاوت بودن",
+        examples: [
+          "قیمت‌ها با توجه به تقاضا نوسان دارند.",
+          "حالت او روزانه نوسان دارد.",
+          "بازار سهام تمایل به نوسان دارد."
+        ]
+      }
+    },
+    {
+      word: "Formidable",
+      definition: "Inspiring fear or respect through being impressively large, powerful, or capable.",
+      synonyms: "intimidating, daunting, impressive, powerful",
       examples: [
-        "تیم با یک حریف مهیب مواجه شد.",
-        "کوه یک چالش مهیب بود.",
-        "دانش او او را به رهبر قدرتمندی تبدیل کرد."
-      ]
+        "The team faced a formidable opponent.",
+        "The mountain was a formidable challenge.",
+        "Her knowledge made her a formidable leader."
+      ],
+      persian: {
+        word: "مهیب / قدرتمند",
+        definition: "ایجاد ترس یا احترام از طریق بزرگ، قدرتمند یا توانمند بودن.",
+        synonyms: "مهیب، دلهره‌آور، تأثیرگذار، قدرتمند",
+        examples: [
+          "تیم با یک حریف مهیب مواجه شد.",
+          "کوه یک چالش مهیب بود.",
+          "دانش او او را به رهبر قدرتمندی تبدیل کرد."
+        ]
+      }
     }
-  }
-],
-// Day 65 - Lesson 33 (Part 1)
-[
-  {
-    word: "Frugal",
-    definition: "Sparing or economical with regard to money or food.",
-    synonyms: "economical, thrifty, careful, prudent",
-    examples: [
-      "She leads a frugal lifestyle to save money.",
-      "Being frugal with resources is important.",
-      "He made frugal choices to reduce expenses."
-    ],
-    persian: {
-      word: "صرفه‌جو / کم‌خرج",
-      definition: "صرفه‌جویی یا اقتصادی در مورد پول یا غذا.",
-      synonyms: "صرفه‌جو، اقتصادی، محتاط، عاقلانه",
+  ],
+  // Day 65 - Lesson 33 (Part 1)
+  [
+    {
+      word: "Frugal",
+      definition: "Sparing or economical with regard to money or food.",
+      synonyms: "economical, thrifty, careful, prudent",
       examples: [
-        "او سبک زندگی صرفه‌جو دارد تا پول پس‌انداز کند.",
-        "صرفه‌جویی در منابع مهم است.",
-        "او تصمیمات صرفه‌جویانه گرفت تا هزینه‌ها را کاهش دهد."
-      ]
-    }
-  },
-  {
-    word: "Gregarious",
-    definition: "Fond of company; sociable.",
-    synonyms: "sociable, outgoing, friendly, companionable",
-    examples: [
-      "She is gregarious and enjoys social gatherings.",
-      "Gregarious people often make friends easily.",
-      "His gregarious nature made him popular."
-    ],
-    persian: {
-      word: "خوش‌صحبت / اجتماعی",
-      definition: "علاقه‌مند به جمع؛ اجتماعی.",
-      synonyms: "اجتماعی، خوش‌مشرب، دوستانه، همراه‌جو",
+        "She leads a frugal lifestyle to save money.",
+        "Being frugal with resources is important.",
+        "He made frugal choices to reduce expenses."
+      ],
+      persian: {
+        word: "صرفه‌جو / کم‌خرج",
+        definition: "صرفه‌جویی یا اقتصادی در مورد پول یا غذا.",
+        synonyms: "صرفه‌جو، اقتصادی، محتاط، عاقلانه",
+        examples: [
+          "او سبک زندگی صرفه‌جو دارد تا پول پس‌انداز کند.",
+          "صرفه‌جویی در منابع مهم است.",
+          "او تصمیمات صرفه‌جویانه گرفت تا هزینه‌ها را کاهش دهد."
+        ]
+      }
+    },
+    {
+      word: "Gregarious",
+      definition: "Fond of company; sociable.",
+      synonyms: "sociable, outgoing, friendly, companionable",
       examples: [
-        "او اجتماعی است و از گردهمایی‌های دوستانه لذت می‌برد.",
-        "افراد اجتماعی معمولاً به راحتی دوستان پیدا می‌کنند.",
-        "طبیعت اجتماعی او باعث محبوبیتش شد."
-      ]
-    }
-  },
-  {
-    word: "Haughty",
-    definition: "Arrogantly superior and disdainful.",
-    synonyms: "arrogant, proud, conceited, disdainful",
-    examples: [
-      "His haughty attitude annoyed everyone.",
-      "She spoke in a haughty tone.",
-      "The haughty king ignored his subjects."
-    ],
-    persian: {
-      word: "متکبر / مغرور",
-      definition: "با غرور و تحقیرکننده بودن.",
-      synonyms: "متکبر، مغرور، خودبین، تحقیرکننده",
+        "She is gregarious and enjoys social gatherings.",
+        "Gregarious people often make friends easily.",
+        "His gregarious nature made him popular."
+      ],
+      persian: {
+        word: "خوش‌صحبت / اجتماعی",
+        definition: "علاقه‌مند به جمع؛ اجتماعی.",
+        synonyms: "اجتماعی، خوش‌مشرب، دوستانه، همراه‌جو",
+        examples: [
+          "او اجتماعی است و از گردهمایی‌های دوستانه لذت می‌برد.",
+          "افراد اجتماعی معمولاً به راحتی دوستان پیدا می‌کنند.",
+          "طبیعت اجتماعی او باعث محبوبیتش شد."
+        ]
+      }
+    },
+    {
+      word: "Haughty",
+      definition: "Arrogantly superior and disdainful.",
+      synonyms: "arrogant, proud, conceited, disdainful",
       examples: [
-        "رفتار متکبرانه او همه را ناراحت کرد.",
-        "او با لحن متکبر صحبت کرد.",
-        "پادشاه مغرور مردمش را نادیده گرفت."
-      ]
-    }
-  },
-  {
-    word: "Impartial",
-    definition: "Treating all rivals or disputants equally; fair and just.",
-    synonyms: "neutral, unbiased, fair, objective",
-    examples: [
-      "The judge was impartial in his ruling.",
-      "An impartial review is necessary.",
-      "She gave an impartial assessment of the situation."
-    ],
-    persian: {
-      word: "بی‌طرف / منصف",
-      definition: "برخورد برابر با همه رقبا یا طرف‌های منازعه؛ منصف و عادلانه.",
-      synonyms: "بی‌طرف، منصف، عادل، بی‌غرض",
+        "His haughty attitude annoyed everyone.",
+        "She spoke in a haughty tone.",
+        "The haughty king ignored his subjects."
+      ],
+      persian: {
+        word: "متکبر / مغرور",
+        definition: "با غرور و تحقیرکننده بودن.",
+        synonyms: "متکبر، مغرور، خودبین، تحقیرکننده",
+        examples: [
+          "رفتار متکبرانه او همه را ناراحت کرد.",
+          "او با لحن متکبر صحبت کرد.",
+          "پادشاه مغرور مردمش را نادیده گرفت."
+        ]
+      }
+    },
+    {
+      word: "Impartial",
+      definition: "Treating all rivals or disputants equally; fair and just.",
+      synonyms: "neutral, unbiased, fair, objective",
       examples: [
-        "قاضی در حکم خود بی‌طرف بود.",
-        "بازبینی بی‌طرفانه ضروری است.",
-        "او ارزیابی بی‌طرفانه‌ای از وضعیت ارائه داد."
-      ]
-    }
-  },
-  {
-    word: "Incessant",
-    definition: "Continuing without pause or interruption.",
-    synonyms: "uninterrupted, ceaseless, continual, relentless",
-    examples: [
-      "The incessant noise disturbed everyone.",
-      "Incessant rain flooded the streets.",
-      "Her incessant talking was tiring."
-    ],
-    persian: {
-      word: "بی‌وقفه / مداوم",
-      definition: "ادامه داشتن بدون توقف یا وقفه.",
-      synonyms: "بی‌وقفه، بی‌پایان، مداوم، مستمر",
+        "The judge was impartial in his ruling.",
+        "An impartial review is necessary.",
+        "She gave an impartial assessment of the situation."
+      ],
+      persian: {
+        word: "بی‌طرف / منصف",
+        definition: "برخورد برابر با همه رقبا یا طرف‌های منازعه؛ منصف و عادلانه.",
+        synonyms: "بی‌طرف، منصف، عادل، بی‌غرض",
+        examples: [
+          "قاضی در حکم خود بی‌طرف بود.",
+          "بازبینی بی‌طرفانه ضروری است.",
+          "او ارزیابی بی‌طرفانه‌ای از وضعیت ارائه داد."
+        ]
+      }
+    },
+    {
+      word: "Incessant",
+      definition: "Continuing without pause or interruption.",
+      synonyms: "uninterrupted, ceaseless, continual, relentless",
       examples: [
-        "سر و صدای بی‌وقفه همه را ناراحت کرد.",
-        "باران مداوم خیابان‌ها را پر کرد.",
-        "صحبت‌های مداوم او خسته‌کننده بود."
-      ]
-    }
-  },
-  {
-    word: "Intrepid",
-    definition: "Fearless; adventurous.",
-    synonyms: "brave, courageous, bold, daring",
-    examples: [
-      "The intrepid explorer ventured into unknown lands.",
-      "She showed intrepid determination in the face of danger.",
-      "Intrepid soldiers faced the enemy without fear."
-    ],
-    persian: {
-      word: "بی‌باک / شجاع",
-      definition: "بی‌باک؛ ماجراجو.",
-      synonyms: "شجاع، دلیر، جسور، بی‌باک",
+        "The incessant noise disturbed everyone.",
+        "Incessant rain flooded the streets.",
+        "Her incessant talking was tiring."
+      ],
+      persian: {
+        word: "بی‌وقفه / مداوم",
+        definition: "ادامه داشتن بدون توقف یا وقفه.",
+        synonyms: "بی‌وقفه، بی‌پایان، مداوم، مستمر",
+        examples: [
+          "سر و صدای بی‌وقفه همه را ناراحت کرد.",
+          "باران مداوم خیابان‌ها را پر کرد.",
+          "صحبت‌های مداوم او خسته‌کننده بود."
+        ]
+      }
+    },
+    {
+      word: "Intrepid",
+      definition: "Fearless; adventurous.",
+      synonyms: "brave, courageous, bold, daring",
       examples: [
-        "کاوشگر بی‌باک به سرزمین‌های ناشناخته رفت.",
-        "او در مواجهه با خطر شجاعت بی‌باک نشان داد.",
-        "سربازان بی‌باک بدون ترس با دشمن مواجه شدند."
-      ]
+        "The intrepid explorer ventured into unknown lands.",
+        "She showed intrepid determination in the face of danger.",
+        "Intrepid soldiers faced the enemy without fear."
+      ],
+      persian: {
+        word: "بی‌باک / شجاع",
+        definition: "بی‌باک؛ ماجراجو.",
+        synonyms: "شجاع، دلیر، جسور، بی‌باک",
+        examples: [
+          "کاوشگر بی‌باک به سرزمین‌های ناشناخته رفت.",
+          "او در مواجهه با خطر شجاعت بی‌باک نشان داد.",
+          "سربازان بی‌باک بدون ترس با دشمن مواجه شدند."
+        ]
+      }
     }
-  }
-],
+  ],
 
-// Day 66 - Lesson 33 (Part 2)
-[
-  {
-    word: "Lethargic",
-    definition: "Affected by lethargy; sluggish and apathetic.",
-    synonyms: "sluggish, inactive, drowsy, indifferent",
-    examples: [
-      "I felt lethargic after the long flight.",
-      "The hot weather made everyone lethargic.",
-      "Lethargic students struggled to focus."
-    ],
-    persian: {
-      word: "سست / بی‌حس",
-      definition: "تحت تأثیر سستی؛ کند و بی‌علاقه.",
-      synonyms: "سست، بی‌حرکت، خواب‌آلود، بی‌علاقه",
+  // Day 66 - Lesson 33 (Part 2)
+  [
+    {
+      word: "Lethargic",
+      definition: "Affected by lethargy; sluggish and apathetic.",
+      synonyms: "sluggish, inactive, drowsy, indifferent",
       examples: [
-        "بعد از پرواز طولانی احساس سستی کردم.",
-        "هوای گرم همه را سست کرد.",
-        "دانش‌آموزان سست برای تمرکز مشکل داشتند."
-      ]
-    }
-  },
-  {
-    word: "Mundane",
-    definition: "Lacking interest or excitement; dull.",
-    synonyms: "ordinary, commonplace, routine, prosaic",
-    examples: [
-      "He found his job mundane.",
-      "Mundane tasks can be tedious.",
-      "She wanted to escape her mundane life."
-    ],
-    persian: {
-      word: "روزمره / بی‌هیجان",
-      definition: "کمبود علاقه یا هیجان؛ کسل‌کننده.",
-      synonyms: "عادی، روزمره، روتین، بی‌روح",
+        "I felt lethargic after the long flight.",
+        "The hot weather made everyone lethargic.",
+        "Lethargic students struggled to focus."
+      ],
+      persian: {
+        word: "سست / بی‌حس",
+        definition: "تحت تأثیر سستی؛ کند و بی‌علاقه.",
+        synonyms: "سست، بی‌حرکت، خواب‌آلود، بی‌علاقه",
+        examples: [
+          "بعد از پرواز طولانی احساس سستی کردم.",
+          "هوای گرم همه را سست کرد.",
+          "دانش‌آموزان سست برای تمرکز مشکل داشتند."
+        ]
+      }
+    },
+    {
+      word: "Mundane",
+      definition: "Lacking interest or excitement; dull.",
+      synonyms: "ordinary, commonplace, routine, prosaic",
       examples: [
-        "او شغل خود را روزمره یافت.",
-        "وظایف روزمره می‌تواند خسته‌کننده باشد.",
-        "او می‌خواست از زندگی روزمره‌اش فرار کند."
-      ]
-    }
-  },
-  {
-    word: "Novice",
-    definition: "A person new to or inexperienced in a field or situation.",
-    synonyms: "beginner, learner, trainee, newcomer",
-    examples: [
-      "He is a novice at chess.",
-      "Novices need guidance and support.",
-      "She was a novice in the world of finance."
-    ],
-    persian: {
-      word: "تازه‌کار / مبتدی",
-      definition: "شخصی که در یک زمینه یا وضعیت تازه یا بی‌تجربه است.",
-      synonyms: "تازه‌کار، مبتدی، کارآموز، تازه‌وارد",
+        "He found his job mundane.",
+        "Mundane tasks can be tedious.",
+        "She wanted to escape her mundane life."
+      ],
+      persian: {
+        word: "روزمره / بی‌هیجان",
+        definition: "کمبود علاقه یا هیجان؛ کسل‌کننده.",
+        synonyms: "عادی، روزمره، روتین، بی‌روح",
+        examples: [
+          "او شغل خود را روزمره یافت.",
+          "وظایف روزمره می‌تواند خسته‌کننده باشد.",
+          "او می‌خواست از زندگی روزمره‌اش فرار کند."
+        ]
+      }
+    },
+    {
+      word: "Novice",
+      definition: "A person new to or inexperienced in a field or situation.",
+      synonyms: "beginner, learner, trainee, newcomer",
       examples: [
-        "او تازه‌کار در شطرنج است.",
-        "تازه‌کاران نیاز به راهنمایی و حمایت دارند.",
-        "او در دنیای مالی تازه‌کار بود."
-      ]
-    }
-  },
-  {
-    word: "Opulent",
-    definition: "Rich and luxurious or lavish.",
-    synonyms: "luxurious, wealthy, sumptuous, extravagant",
-    examples: [
-      "The palace was opulent.",
-      "He lived an opulent lifestyle.",
-      "Opulent furnishings decorated the room."
-    ],
-    persian: {
-      word: "ثروتمند / مجلل",
-      definition: "ثروتمند و مجلل یا پرزرق و برق.",
-      synonyms: "مجلل، ثروتمند، باشکوه، پرزرق و برق",
+        "He is a novice at chess.",
+        "Novices need guidance and support.",
+        "She was a novice in the world of finance."
+      ],
+      persian: {
+        word: "تازه‌کار / مبتدی",
+        definition: "شخصی که در یک زمینه یا وضعیت تازه یا بی‌تجربه است.",
+        synonyms: "تازه‌کار، مبتدی، کارآموز، تازه‌وارد",
+        examples: [
+          "او تازه‌کار در شطرنج است.",
+          "تازه‌کاران نیاز به راهنمایی و حمایت دارند.",
+          "او در دنیای مالی تازه‌کار بود."
+        ]
+      }
+    },
+    {
+      word: "Opulent",
+      definition: "Rich and luxurious or lavish.",
+      synonyms: "luxurious, wealthy, sumptuous, extravagant",
       examples: [
-        "کاخ مجلل بود.",
-        "او سبک زندگی مجللی داشت.",
-        "اثاثیه مجلل اتاق را تزئین کرده بود."
-      ]
-    }
-  },
-  {
-    word: "Parched",
-    definition: "Dried out with heat; extremely thirsty.",
-    synonyms: "dry, dehydrated, arid, thirsty",
-    examples: [
-      "The parched earth cracked under the sun.",
-      "After the run, he was parched.",
-      "Parched travelers searched for water."
-    ],
-    persian: {
-      word: "خشک / تشنه",
-      definition: "خشک شده به دلیل گرما؛ بسیار تشنه.",
-      synonyms: "خشک، دهیدراته، خشک و بی‌آب، تشنه",
+        "The palace was opulent.",
+        "He lived an opulent lifestyle.",
+        "Opulent furnishings decorated the room."
+      ],
+      persian: {
+        word: "ثروتمند / مجلل",
+        definition: "ثروتمند و مجلل یا پرزرق و برق.",
+        synonyms: "مجلل، ثروتمند، باشکوه، پرزرق و برق",
+        examples: [
+          "کاخ مجلل بود.",
+          "او سبک زندگی مجللی داشت.",
+          "اثاثیه مجلل اتاق را تزئین کرده بود."
+        ]
+      }
+    },
+    {
+      word: "Parched",
+      definition: "Dried out with heat; extremely thirsty.",
+      synonyms: "dry, dehydrated, arid, thirsty",
       examples: [
-        "زمین خشک زیر آفتاب ترک خورد.",
-        "بعد از دویدن، او بسیار تشنه بود.",
-        "مسافران تشنه به دنبال آب می‌گشتند."
-      ]
-    }
-  },
-  {
-    word: "Pensive",
-    definition: "Engaged in deep or serious thought.",
-    synonyms: "thoughtful, contemplative, reflective, meditative",
-    examples: [
-      "He looked pensive as he stared out the window.",
-      "She was pensive about her future.",
-      "The pensive mood filled the room."
-    ],
-    persian: {
-      word: "متفکر / عمیق‌انگار",
-      definition: "درگیر تفکر عمیق یا جدی بودن.",
-      synonyms: "متفکر، تأمل‌کننده، عمیق‌انگار، مدیتیشن‌گر",
+        "The parched earth cracked under the sun.",
+        "After the run, he was parched.",
+        "Parched travelers searched for water."
+      ],
+      persian: {
+        word: "خشک / تشنه",
+        definition: "خشک شده به دلیل گرما؛ بسیار تشنه.",
+        synonyms: "خشک، دهیدراته، خشک و بی‌آب، تشنه",
+        examples: [
+          "زمین خشک زیر آفتاب ترک خورد.",
+          "بعد از دویدن، او بسیار تشنه بود.",
+          "مسافران تشنه به دنبال آب می‌گشتند."
+        ]
+      }
+    },
+    {
+      word: "Pensive",
+      definition: "Engaged in deep or serious thought.",
+      synonyms: "thoughtful, contemplative, reflective, meditative",
       examples: [
-        "او هنگام نگاه کردن به بیرون پنجره متفکر بود.",
-        "او درباره آینده خود عمیق‌انگار بود.",
-        "فضای اتاق پر از حال و هوای متفکر بود."
-      ]
+        "He looked pensive as he stared out the window.",
+        "She was pensive about her future.",
+        "The pensive mood filled the room."
+      ],
+      persian: {
+        word: "متفکر / عمیق‌انگار",
+        definition: "درگیر تفکر عمیق یا جدی بودن.",
+        synonyms: "متفکر، تأمل‌کننده، عمیق‌انگار، مدیتیشن‌گر",
+        examples: [
+          "او هنگام نگاه کردن به بیرون پنجره متفکر بود.",
+          "او درباره آینده خود عمیق‌انگار بود.",
+          "فضای اتاق پر از حال و هوای متفکر بود."
+        ]
+      }
     }
-  }
-],
-// Day 67 - Lesson 34 (Part 1)
-[
-  {
-    word: "Poignant",
-    definition: "Evoking a keen sense of sadness or regret.",
-    synonyms: "touching, moving, affecting, emotional",
-    examples: [
-      "The movie’s ending was poignant.",
-      "Her speech was deeply poignant.",
-      "The letter contained a poignant message."
-    ],
-    persian: {
-      word: "غم‌انگیز / تکان‌دهنده",
-      definition: "برانگیزاننده حس شدید غم یا پشیمانی.",
-      synonyms: "تکان‌دهنده، عاطفی، مؤثر، تأثیرگذار",
+  ],
+  // Day 67 - Lesson 34 (Part 1)
+  [
+    {
+      word: "Poignant",
+      definition: "Evoking a keen sense of sadness or regret.",
+      synonyms: "touching, moving, affecting, emotional",
       examples: [
-        "پایان فیلم غم‌انگیز بود.",
-        "سخنرانی او بسیار تکان‌دهنده بود.",
-        "نامه حاوی پیام غم‌انگیزی بود."
-      ]
-    }
-  },
-  {
-    word: "Procrastinate",
-    definition: "Delay or postpone action; put off doing something.",
-    synonyms: "delay, defer, stall, postpone",
-    examples: [
-      "Don’t procrastinate on your assignments.",
-      "He tends to procrastinate when tasks are difficult.",
-      "Procrastinating will only make things worse."
-    ],
-    persian: {
-      word: "تعلل کردن / به تأخیر انداختن",
-      definition: "تأخیر یا موکول کردن اقدام؛ انجام کاری را به بعد انداختن.",
-      synonyms: "به تأخیر انداختن، دیر کردن، به تعویق انداختن، کوتاهی کردن",
+        "The movie’s ending was poignant.",
+        "Her speech was deeply poignant.",
+        "The letter contained a poignant message."
+      ],
+      persian: {
+        word: "غم‌انگیز / تکان‌دهنده",
+        definition: "برانگیزاننده حس شدید غم یا پشیمانی.",
+        synonyms: "تکان‌دهنده، عاطفی، مؤثر، تأثیرگذار",
+        examples: [
+          "پایان فیلم غم‌انگیز بود.",
+          "سخنرانی او بسیار تکان‌دهنده بود.",
+          "نامه حاوی پیام غم‌انگیزی بود."
+        ]
+      }
+    },
+    {
+      word: "Procrastinate",
+      definition: "Delay or postpone action; put off doing something.",
+      synonyms: "delay, defer, stall, postpone",
       examples: [
-        "در انجام تکالیف خود تعلل نکن.",
-        "او وقتی کارها دشوار است معمولاً تعلل می‌کند.",
-        "تعلل فقط وضعیت را بدتر می‌کند."
-      ]
-    }
-  },
-  {
-    word: "Prudent",
-    definition: "Acting with or showing care and thought for the future.",
-    synonyms: "wise, cautious, sensible, judicious",
-    examples: [
-      "It is prudent to save money for emergencies.",
-      "She made a prudent decision about her investments.",
-      "Prudent planning prevents future problems."
-    ],
-    persian: {
-      word: "عاقل / محتاط",
-      definition: "عمل کردن یا نشان دادن دقت و تفکر برای آینده.",
-      synonyms: "عاقل، محتاط، منطقی، با تدبیر",
+        "Don’t procrastinate on your assignments.",
+        "He tends to procrastinate when tasks are difficult.",
+        "Procrastinating will only make things worse."
+      ],
+      persian: {
+        word: "تعلل کردن / به تأخیر انداختن",
+        definition: "تأخیر یا موکول کردن اقدام؛ انجام کاری را به بعد انداختن.",
+        synonyms: "به تأخیر انداختن، دیر کردن، به تعویق انداختن، کوتاهی کردن",
+        examples: [
+          "در انجام تکالیف خود تعلل نکن.",
+          "او وقتی کارها دشوار است معمولاً تعلل می‌کند.",
+          "تعلل فقط وضعیت را بدتر می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Prudent",
+      definition: "Acting with or showing care and thought for the future.",
+      synonyms: "wise, cautious, sensible, judicious",
       examples: [
-        "صرفه‌جویی برای مواقع اضطراری عاقلانه است.",
-        "او تصمیم عاقلانه‌ای درباره سرمایه‌گذاری‌های خود گرفت.",
-        "برنامه‌ریزی محتاطانه مشکلات آینده را جلوگیری می‌کند."
-      ]
-    }
-  },
-  {
-    word: "Quaint",
-    definition: "Attractively unusual or old-fashioned.",
-    synonyms: "charming, picturesque, old-fashioned, unusual",
-    examples: [
-      "They stayed in a quaint cottage by the lake.",
-      "The village has a quaint charm.",
-      "Quaint shops lined the cobblestone streets."
-    ],
-    persian: {
-      word: "جذاب و قدیمی / عجیب و غریب",
-      definition: "جذاب به شکل غیرمعمول یا قدیمی.",
-      synonyms: "دلنشین، دیدنی، قدیمی، غیرمعمول",
+        "It is prudent to save money for emergencies.",
+        "She made a prudent decision about her investments.",
+        "Prudent planning prevents future problems."
+      ],
+      persian: {
+        word: "عاقل / محتاط",
+        definition: "عمل کردن یا نشان دادن دقت و تفکر برای آینده.",
+        synonyms: "عاقل، محتاط، منطقی، با تدبیر",
+        examples: [
+          "صرفه‌جویی برای مواقع اضطراری عاقلانه است.",
+          "او تصمیم عاقلانه‌ای درباره سرمایه‌گذاری‌های خود گرفت.",
+          "برنامه‌ریزی محتاطانه مشکلات آینده را جلوگیری می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Quaint",
+      definition: "Attractively unusual or old-fashioned.",
+      synonyms: "charming, picturesque, old-fashioned, unusual",
       examples: [
-        "آن‌ها در کلبه‌ای جذاب کنار دریاچه اقامت کردند.",
-        "روستا جذابیتی قدیمی دارد.",
-        "فروشگاه‌های جذاب خیابان‌های سنگفرش را پر کرده بودند."
-      ]
-    }
-  },
-  {
-    word: "Ravenous",
-    definition: "Extremely hungry.",
-    synonyms: "starving, voracious, famished, insatiable",
-    examples: [
-      "After the hike, they were ravenous.",
-      "He had a ravenous appetite.",
-      "Ravenous wolves hunted in the forest."
-    ],
-    persian: {
-      word: "گرسنه / پر ولع",
-      definition: "بسیار گرسنه.",
-      synonyms: "گرسنه، پر ولع، فاقه‌کش، سیری‌ناپذیر",
+        "They stayed in a quaint cottage by the lake.",
+        "The village has a quaint charm.",
+        "Quaint shops lined the cobblestone streets."
+      ],
+      persian: {
+        word: "جذاب و قدیمی / عجیب و غریب",
+        definition: "جذاب به شکل غیرمعمول یا قدیمی.",
+        synonyms: "دلنشین، دیدنی، قدیمی، غیرمعمول",
+        examples: [
+          "آن‌ها در کلبه‌ای جذاب کنار دریاچه اقامت کردند.",
+          "روستا جذابیتی قدیمی دارد.",
+          "فروشگاه‌های جذاب خیابان‌های سنگفرش را پر کرده بودند."
+        ]
+      }
+    },
+    {
+      word: "Ravenous",
+      definition: "Extremely hungry.",
+      synonyms: "starving, voracious, famished, insatiable",
       examples: [
-        "بعد از پیاده‌روی، آن‌ها بسیار گرسنه بودند.",
-        "او اشتهای زیادی داشت.",
-        "گرگ‌های گرسنه در جنگل شکار می‌کردند."
-      ]
-    }
-  },
-  {
-    word: "Sagacious",
-    definition: "Having or showing keen mental discernment and good judgment.",
-    synonyms: "wise, shrewd, astute, insightful",
-    examples: [
-      "The sagacious leader guided the nation wisely.",
-      "Her sagacious advice helped me make a decision.",
-      "A sagacious investor sees opportunities others miss."
-    ],
-    persian: {
-      word: "دانا / عاقل",
-      definition: "داشتن یا نشان دادن درک ذهنی تیز و قضاوت خوب.",
-      synonyms: "دانا، زیرک، تیزهوش، بصیر",
+        "After the hike, they were ravenous.",
+        "He had a ravenous appetite.",
+        "Ravenous wolves hunted in the forest."
+      ],
+      persian: {
+        word: "گرسنه / پر ولع",
+        definition: "بسیار گرسنه.",
+        synonyms: "گرسنه، پر ولع، فاقه‌کش، سیری‌ناپذیر",
+        examples: [
+          "بعد از پیاده‌روی، آن‌ها بسیار گرسنه بودند.",
+          "او اشتهای زیادی داشت.",
+          "گرگ‌های گرسنه در جنگل شکار می‌کردند."
+        ]
+      }
+    },
+    {
+      word: "Sagacious",
+      definition: "Having or showing keen mental discernment and good judgment.",
+      synonyms: "wise, shrewd, astute, insightful",
       examples: [
-        "رهبر دانا کشور را عاقلانه هدایت کرد.",
-        "مشاوره دانای او به من در تصمیم‌گیری کمک کرد.",
-        "سرمایه‌گذار دانا فرصت‌هایی را می‌بیند که دیگران نمی‌بینند."
-      ]
+        "The sagacious leader guided the nation wisely.",
+        "Her sagacious advice helped me make a decision.",
+        "A sagacious investor sees opportunities others miss."
+      ],
+      persian: {
+        word: "دانا / عاقل",
+        definition: "داشتن یا نشان دادن درک ذهنی تیز و قضاوت خوب.",
+        synonyms: "دانا، زیرک، تیزهوش، بصیر",
+        examples: [
+          "رهبر دانا کشور را عاقلانه هدایت کرد.",
+          "مشاوره دانای او به من در تصمیم‌گیری کمک کرد.",
+          "سرمایه‌گذار دانا فرصت‌هایی را می‌بیند که دیگران نمی‌بینند."
+        ]
+      }
     }
-  }
-],
+  ],
 
-// Day 68 - Lesson 34 (Part 2)
-[
-  {
-    word: "Spurious",
-    definition: "Not being what it purports to be; false or fake.",
-    synonyms: "false, fake, counterfeit, bogus",
-    examples: [
-      "He was arrested for making spurious claims.",
-      "The document contained spurious information.",
-      "Spurious rumors spread quickly in the town."
-    ],
-    persian: {
-      word: "جعلی / دروغین",
-      definition: "نبودن چیزی که ادعا می‌شود؛ دروغین یا جعلی.",
-      synonyms: "جعلی، دروغین، قلابی، غیرواقعی",
+  // Day 68 - Lesson 34 (Part 2)
+  [
+    {
+      word: "Spurious",
+      definition: "Not being what it purports to be; false or fake.",
+      synonyms: "false, fake, counterfeit, bogus",
       examples: [
-        "او به خاطر ادعاهای جعلی دستگیر شد.",
-        "مدرک حاوی اطلاعات جعلی بود.",
-        "شایعات جعلی به سرعت در شهر پخش شد."
-      ]
-    }
-  },
-  {
-    word: "Superfluous",
-    definition: "Unnecessary, especially through being more than enough.",
-    synonyms: "redundant, excessive, extra, needless",
-    examples: [
-      "Remove superfluous words from your essay.",
-      "The report contained superfluous details.",
-      "Superfluous spending should be avoided."
-    ],
-    persian: {
-      word: "اضافی / غیرضروری",
-      definition: "غیرضروری، به ویژه به دلیل بیش از حد بودن.",
-      synonyms: "اضافی، غیرضروری، بیش از حد، زائد",
+        "He was arrested for making spurious claims.",
+        "The document contained spurious information.",
+        "Spurious rumors spread quickly in the town."
+      ],
+      persian: {
+        word: "جعلی / دروغین",
+        definition: "نبودن چیزی که ادعا می‌شود؛ دروغین یا جعلی.",
+        synonyms: "جعلی، دروغین، قلابی، غیرواقعی",
+        examples: [
+          "او به خاطر ادعاهای جعلی دستگیر شد.",
+          "مدرک حاوی اطلاعات جعلی بود.",
+          "شایعات جعلی به سرعت در شهر پخش شد."
+        ]
+      }
+    },
+    {
+      word: "Superfluous",
+      definition: "Unnecessary, especially through being more than enough.",
+      synonyms: "redundant, excessive, extra, needless",
       examples: [
-        "کلمات اضافی را از مقاله خود حذف کنید.",
-        "گزارش حاوی جزئیات غیرضروری بود.",
-        "هزینه‌های اضافی باید اجتناب شود."
-      ]
-    }
-  },
-  {
-    word: "Tenacious",
-    definition: "Tending to keep a firm hold of something; persistent.",
-    synonyms: "persistent, determined, resolute, stubborn",
-    examples: [
-      "She was tenacious in pursuing her goals.",
-      "A tenacious grip on the rope saved him.",
-      "Tenacious efforts lead to success."
-    ],
-    persian: {
-      word: "سمج / مقاوم",
-      definition: "تمایل به حفظ محکم چیزی؛ پیگیر.",
-      synonyms: "پیگیر، مصمم، استوار، سرسخت",
+        "Remove superfluous words from your essay.",
+        "The report contained superfluous details.",
+        "Superfluous spending should be avoided."
+      ],
+      persian: {
+        word: "اضافی / غیرضروری",
+        definition: "غیرضروری، به ویژه به دلیل بیش از حد بودن.",
+        synonyms: "اضافی، غیرضروری، بیش از حد، زائد",
+        examples: [
+          "کلمات اضافی را از مقاله خود حذف کنید.",
+          "گزارش حاوی جزئیات غیرضروری بود.",
+          "هزینه‌های اضافی باید اجتناب شود."
+        ]
+      }
+    },
+    {
+      word: "Tenacious",
+      definition: "Tending to keep a firm hold of something; persistent.",
+      synonyms: "persistent, determined, resolute, stubborn",
       examples: [
-        "او در دنبال کردن اهداف خود سمج بود.",
-        "گرفتن محکم طناب او را نجات داد.",
-        "تلاش‌های پیگیر منجر به موفقیت می‌شود."
-      ]
-    }
-  },
-  {
-    word: "Trepidation",
-    definition: "A feeling of fear or agitation about something that may happen.",
-    synonyms: "fear, anxiety, apprehension, dread",
-    examples: [
-      "She entered the room with trepidation.",
-      "There was trepidation before the exam results.",
-      "He faced the challenge with trepidation."
-    ],
-    persian: {
-      word: "ترس / نگرانی",
-      definition: "احساس ترس یا اضطراب درباره چیزی که ممکن است اتفاق بیفتد.",
-      synonyms: "ترس، اضطراب، نگرانی، دلهره",
+        "She was tenacious in pursuing her goals.",
+        "A tenacious grip on the rope saved him.",
+        "Tenacious efforts lead to success."
+      ],
+      persian: {
+        word: "سمج / مقاوم",
+        definition: "تمایل به حفظ محکم چیزی؛ پیگیر.",
+        synonyms: "پیگیر، مصمم، استوار، سرسخت",
+        examples: [
+          "او در دنبال کردن اهداف خود سمج بود.",
+          "گرفتن محکم طناب او را نجات داد.",
+          "تلاش‌های پیگیر منجر به موفقیت می‌شود."
+        ]
+      }
+    },
+    {
+      word: "Trepidation",
+      definition: "A feeling of fear or agitation about something that may happen.",
+      synonyms: "fear, anxiety, apprehension, dread",
       examples: [
-        "او با ترس وارد اتاق شد.",
-        "قبل از نتایج امتحان نگرانی وجود داشت.",
-        "او با ترس با چالش مواجه شد."
-      ]
-    }
-  },
-  {
-    word: "Venerable",
-    definition: "Accorded a great deal of respect, especially because of age or wisdom.",
-    synonyms: "respected, esteemed, revered, honored",
-    examples: [
-      "The venerable professor inspired students for decades.",
-      "He is a venerable figure in the community.",
-      "Venerable traditions are honored every year."
-    ],
-    persian: {
-      word: "موقر / محترم",
-      definition: "با احترام زیاد، به ویژه به دلیل سن یا حکمت.",
-      synonyms: "محترم، قابل احترام، مورد تقدیر، محترم",
+        "She entered the room with trepidation.",
+        "There was trepidation before the exam results.",
+        "He faced the challenge with trepidation."
+      ],
+      persian: {
+        word: "ترس / نگرانی",
+        definition: "احساس ترس یا اضطراب درباره چیزی که ممکن است اتفاق بیفتد.",
+        synonyms: "ترس، اضطراب، نگرانی، دلهره",
+        examples: [
+          "او با ترس وارد اتاق شد.",
+          "قبل از نتایج امتحان نگرانی وجود داشت.",
+          "او با ترس با چالش مواجه شد."
+        ]
+      }
+    },
+    {
+      word: "Venerable",
+      definition: "Accorded a great deal of respect, especially because of age or wisdom.",
+      synonyms: "respected, esteemed, revered, honored",
       examples: [
-        "پروفسور موقر دهه‌ها دانشجویان را الهام بخشید.",
-        "او شخصیتی محترم در جامعه است.",
-        "سنت‌های موقر هر سال گرامی داشته می‌شوند."
-      ]
-    }
-  },
-  {
-    word: "Volatile",
-    definition: "Liable to change rapidly and unpredictably, especially for the worse.",
-    synonyms: "unstable, unpredictable, erratic, explosive",
-    examples: [
-      "The stock market is volatile.",
-      "He has a volatile temper.",
-      "Political situations can be volatile."
-    ],
-    persian: {
-      word: "نوسانی / بی‌ثبات",
-      definition: "متمایل به تغییر سریع و غیرقابل پیش‌بینی، به ویژه به بدتر شدن.",
-      synonyms: "ناپایدار، غیرقابل پیش‌بینی، نوسانی، انفجاری",
+        "The venerable professor inspired students for decades.",
+        "He is a venerable figure in the community.",
+        "Venerable traditions are honored every year."
+      ],
+      persian: {
+        word: "موقر / محترم",
+        definition: "با احترام زیاد، به ویژه به دلیل سن یا حکمت.",
+        synonyms: "محترم، قابل احترام، مورد تقدیر، محترم",
+        examples: [
+          "پروفسور موقر دهه‌ها دانشجویان را الهام بخشید.",
+          "او شخصیتی محترم در جامعه است.",
+          "سنت‌های موقر هر سال گرامی داشته می‌شوند."
+        ]
+      }
+    },
+    {
+      word: "Volatile",
+      definition: "Liable to change rapidly and unpredictably, especially for the worse.",
+      synonyms: "unstable, unpredictable, erratic, explosive",
       examples: [
-        "بازار سهام نوسانی است.",
-        "او خلق و خوی نوسانی دارد.",
-        "وضعیت‌های سیاسی می‌توانند ناپایدار باشند."
-      ]
+        "The stock market is volatile.",
+        "He has a volatile temper.",
+        "Political situations can be volatile."
+      ],
+      persian: {
+        word: "نوسانی / بی‌ثبات",
+        definition: "متمایل به تغییر سریع و غیرقابل پیش‌بینی، به ویژه به بدتر شدن.",
+        synonyms: "ناپایدار، غیرقابل پیش‌بینی، نوسانی، انفجاری",
+        examples: [
+          "بازار سهام نوسانی است.",
+          "او خلق و خوی نوسانی دارد.",
+          "وضعیت‌های سیاسی می‌توانند ناپایدار باشند."
+        ]
+      }
     }
-  }
-],
-// Day 69 - Lesson 35 (Part 1)
-[
-  {
-    word: "Wary",
-    definition: "Feeling or showing caution about possible dangers or problems.",
-    synonyms: "cautious, alert, watchful, vigilant",
-    examples: [
-      "She was wary of strangers.",
-      "Investors are wary of high-risk stocks.",
-      "He gave a wary glance at the dark alley."
-    ],
-    persian: {
-      word: "محتاط / هوشیار",
-      definition: "احساس یا نشان دادن احتیاط در مورد خطرات یا مشکلات ممکن.",
-      synonyms: "محتاط، هوشیار، مراقب، گوش به زنگ",
+  ],
+  // Day 69 - Lesson 35 (Part 1)
+  [
+    {
+      word: "Wary",
+      definition: "Feeling or showing caution about possible dangers or problems.",
+      synonyms: "cautious, alert, watchful, vigilant",
       examples: [
-        "او نسبت به غریبه‌ها محتاط بود.",
-        "سرمایه‌گذاران نسبت به سهام پرریسک محتاط هستند.",
-        "او با نگاهی محتاط به کوچه تاریک نگاه کرد."
-      ]
-    }
-  },
-  {
-    word: "Whimsical",
-    definition: "Playfully quaint or fanciful; unpredictable.",
-    synonyms: "fanciful, playful, quirky, capricious",
-    examples: [
-      "The artist has a whimsical style.",
-      "She made a whimsical choice for her outfit.",
-      "The story has a whimsical ending."
-    ],
-    persian: {
-      word: "خیالی / فانتزی",
-      definition: "بازیگوش و عجیب یا فانتزی؛ غیرقابل پیش‌بینی.",
-      synonyms: "فانتزی، بازیگوش، عجیب و غریب، دمدمی مزاج",
+        "She was wary of strangers.",
+        "Investors are wary of high-risk stocks.",
+        "He gave a wary glance at the dark alley."
+      ],
+      persian: {
+        word: "محتاط / هوشیار",
+        definition: "احساس یا نشان دادن احتیاط در مورد خطرات یا مشکلات ممکن.",
+        synonyms: "محتاط، هوشیار، مراقب، گوش به زنگ",
+        examples: [
+          "او نسبت به غریبه‌ها محتاط بود.",
+          "سرمایه‌گذاران نسبت به سهام پرریسک محتاط هستند.",
+          "او با نگاهی محتاط به کوچه تاریک نگاه کرد."
+        ]
+      }
+    },
+    {
+      word: "Whimsical",
+      definition: "Playfully quaint or fanciful; unpredictable.",
+      synonyms: "fanciful, playful, quirky, capricious",
       examples: [
-        "هنرمند سبک خیالی دارد.",
-        "او انتخابی خیالی برای لباس خود کرد.",
-        "داستان پایانی خیالی دارد."
-      ]
-    }
-  },
-  {
-    word: "Zealous",
-    definition: "Having or showing great energy or enthusiasm in pursuit of a cause or objective.",
-    synonyms: "enthusiastic, fervent, ardent, passionate",
-    examples: [
-      "She is zealous about environmental causes.",
-      "The team worked with zealous dedication.",
-      "Zealous supporters attended the rally."
-    ],
-    persian: {
-      word: "پرشور / مشتاق",
-      definition: "داشتن یا نشان دادن انرژی یا شور زیاد در پیگیری یک هدف یا مأموریت.",
-      synonyms: "مشتاق، پرشور، دلسوز، پرشور",
+        "The artist has a whimsical style.",
+        "She made a whimsical choice for her outfit.",
+        "The story has a whimsical ending."
+      ],
+      persian: {
+        word: "خیالی / فانتزی",
+        definition: "بازیگوش و عجیب یا فانتزی؛ غیرقابل پیش‌بینی.",
+        synonyms: "فانتزی، بازیگوش، عجیب و غریب، دمدمی مزاج",
+        examples: [
+          "هنرمند سبک خیالی دارد.",
+          "او انتخابی خیالی برای لباس خود کرد.",
+          "داستان پایانی خیالی دارد."
+        ]
+      }
+    },
+    {
+      word: "Zealous",
+      definition: "Having or showing great energy or enthusiasm in pursuit of a cause or objective.",
+      synonyms: "enthusiastic, fervent, ardent, passionate",
       examples: [
-        "او نسبت به مسائل محیط زیست پرشور است.",
-        "تیم با تعهد پرشور کار کرد.",
-        "حامیان پرشور در گردهمایی شرکت کردند."
-      ]
-    }
-  },
-  {
-    word: "Acumen",
-    definition: "The ability to make good judgments and quick decisions, typically in a particular domain.",
-    synonyms: "shrewdness, insight, astuteness, discernment",
-    examples: [
-      "Her business acumen is impressive.",
-      "The manager showed acumen in resolving conflicts.",
-      "Acumen in financial matters is essential."
-    ],
-    persian: {
-      word: "تیزهوشی / درایت",
-      definition: "توانایی گرفتن تصمیمات خوب و سریع، معمولاً در یک حوزه خاص.",
-      synonyms: "تیزهوشی، بینش، درایت، فهم",
+        "She is zealous about environmental causes.",
+        "The team worked with zealous dedication.",
+        "Zealous supporters attended the rally."
+      ],
+      persian: {
+        word: "پرشور / مشتاق",
+        definition: "داشتن یا نشان دادن انرژی یا شور زیاد در پیگیری یک هدف یا مأموریت.",
+        synonyms: "مشتاق، پرشور، دلسوز، پرشور",
+        examples: [
+          "او نسبت به مسائل محیط زیست پرشور است.",
+          "تیم با تعهد پرشور کار کرد.",
+          "حامیان پرشور در گردهمایی شرکت کردند."
+        ]
+      }
+    },
+    {
+      word: "Acumen",
+      definition: "The ability to make good judgments and quick decisions, typically in a particular domain.",
+      synonyms: "shrewdness, insight, astuteness, discernment",
       examples: [
-        "تیزهوشی او در کسب و کار قابل توجه است.",
-        "مدیر در حل تعارض‌ها درایت نشان داد.",
-        "تیزهوشی در مسائل مالی ضروری است."
-      ]
-    }
-  },
-  {
-    word: "Austere",
-    definition: "Severe or strict in manner, attitude, or appearance; having no comforts or luxuries.",
-    synonyms: "stern, strict, plain, unadorned",
-    examples: [
-      "The monk lived an austere life.",
-      "His austere expression revealed his seriousness.",
-      "The room was austere but functional."
-    ],
-    persian: {
-      word: "سخت‌گیر / ساده",
-      definition: "سخت یا جدی در رفتار، نگرش یا ظاهر؛ بدون راحتی یا تجمل.",
-      synonyms: "سخت‌گیر، جدی، ساده، بدون تزئین",
+        "Her business acumen is impressive.",
+        "The manager showed acumen in resolving conflicts.",
+        "Acumen in financial matters is essential."
+      ],
+      persian: {
+        word: "تیزهوشی / درایت",
+        definition: "توانایی گرفتن تصمیمات خوب و سریع، معمولاً در یک حوزه خاص.",
+        synonyms: "تیزهوشی، بینش، درایت، فهم",
+        examples: [
+          "تیزهوشی او در کسب و کار قابل توجه است.",
+          "مدیر در حل تعارض‌ها درایت نشان داد.",
+          "تیزهوشی در مسائل مالی ضروری است."
+        ]
+      }
+    },
+    {
+      word: "Austere",
+      definition: "Severe or strict in manner, attitude, or appearance; having no comforts or luxuries.",
+      synonyms: "stern, strict, plain, unadorned",
       examples: [
-        "راهب زندگی ساده‌ای داشت.",
-        "چهره سخت‌گیر او جدیتش را نشان داد.",
-        "اتاق ساده اما کاربردی بود."
-      ]
-    }
-  },
-  {
-    word: "Bolster",
-    definition: "Support or strengthen; prop up.",
-    synonyms: "support, reinforce, strengthen, boost",
-    examples: [
-      "The evidence bolstered her argument.",
-      "He bolstered his confidence with practice.",
-      "Bolster the team’s morale before the match."
-    ],
-    persian: {
-      word: "تقویت کردن / حمایت کردن",
-      definition: "حمایت یا تقویت کردن؛ تکیه دادن.",
-      synonyms: "حمایت کردن، تقویت کردن، پشتیبانی کردن، بالا بردن",
+        "The monk lived an austere life.",
+        "His austere expression revealed his seriousness.",
+        "The room was austere but functional."
+      ],
+      persian: {
+        word: "سخت‌گیر / ساده",
+        definition: "سخت یا جدی در رفتار، نگرش یا ظاهر؛ بدون راحتی یا تجمل.",
+        synonyms: "سخت‌گیر، جدی، ساده، بدون تزئین",
+        examples: [
+          "راهب زندگی ساده‌ای داشت.",
+          "چهره سخت‌گیر او جدیتش را نشان داد.",
+          "اتاق ساده اما کاربردی بود."
+        ]
+      }
+    },
+    {
+      word: "Bolster",
+      definition: "Support or strengthen; prop up.",
+      synonyms: "support, reinforce, strengthen, boost",
       examples: [
-        "شواهد استدلال او را تقویت کرد.",
-        "او با تمرین اعتماد به نفس خود را تقویت کرد.",
-        "روحیه تیم را قبل از مسابقه تقویت کنید."
-      ]
+        "The evidence bolstered her argument.",
+        "He bolstered his confidence with practice.",
+        "Bolster the team’s morale before the match."
+      ],
+      persian: {
+        word: "تقویت کردن / حمایت کردن",
+        definition: "حمایت یا تقویت کردن؛ تکیه دادن.",
+        synonyms: "حمایت کردن، تقویت کردن، پشتیبانی کردن، بالا بردن",
+        examples: [
+          "شواهد استدلال او را تقویت کرد.",
+          "او با تمرین اعتماد به نفس خود را تقویت کرد.",
+          "روحیه تیم را قبل از مسابقه تقویت کنید."
+        ]
+      }
     }
-  }
-],
+  ],
 
-// Day 70 - Lesson 35 (Part 2)
-[
-  {
-    word: "Cajole",
-    definition: "Persuade someone to do something by sustained coaxing or flattery.",
-    synonyms: "persuade, coax, entice, wheedle",
-    examples: [
-      "He cajoled her into attending the party.",
-      "The salesman cajoled customers with compliments.",
-      "She tried to cajole her friends into helping."
-    ],
-    persian: {
-      word: "ترغیب کردن / فریفتن",
-      definition: "متقاعد کردن کسی برای انجام کاری با چاپلوسی یا تمایل مداوم.",
-      synonyms: "متقاعد کردن، ترغیب کردن، فریفتن، تشویق کردن",
+  // Day 70 - Lesson 35 (Part 2)
+  [
+    {
+      word: "Cajole",
+      definition: "Persuade someone to do something by sustained coaxing or flattery.",
+      synonyms: "persuade, coax, entice, wheedle",
       examples: [
-        "او او را ترغیب کرد که در مهمانی شرکت کند.",
-        "فروشنده مشتریان را با تمجید فریفت.",
-        "او تلاش کرد دوستانش را به کمک ترغیب کند."
-      ]
-    }
-  },
-  {
-    word: "Clandestine",
-    definition: "Kept secret or done secretively, especially because illicit.",
-    synonyms: "secret, covert, furtive, surreptitious",
-    examples: [
-      "They held a clandestine meeting.",
-      "The operation was clandestine to avoid attention.",
-      "Clandestine activities were discovered by the authorities."
-    ],
-    persian: {
-      word: "مخفی / پنهانی",
-      definition: "مخفی نگه داشته شده یا به صورت مخفی انجام شده، به ویژه به دلیل غیرقانونی بودن.",
-      synonyms: "مخفی، پنهانی، سری، مخفیانه",
+        "He cajoled her into attending the party.",
+        "The salesman cajoled customers with compliments.",
+        "She tried to cajole her friends into helping."
+      ],
+      persian: {
+        word: "ترغیب کردن / فریفتن",
+        definition: "متقاعد کردن کسی برای انجام کاری با چاپلوسی یا تمایل مداوم.",
+        synonyms: "متقاعد کردن، ترغیب کردن، فریفتن، تشویق کردن",
+        examples: [
+          "او او را ترغیب کرد که در مهمانی شرکت کند.",
+          "فروشنده مشتریان را با تمجید فریفت.",
+          "او تلاش کرد دوستانش را به کمک ترغیب کند."
+        ]
+      }
+    },
+    {
+      word: "Clandestine",
+      definition: "Kept secret or done secretively, especially because illicit.",
+      synonyms: "secret, covert, furtive, surreptitious",
       examples: [
-        "آن‌ها جلسه‌ای مخفی برگزار کردند.",
-        "عملیات برای جلوگیری از توجه مخفی بود.",
-        "فعالیت‌های پنهانی توسط مقامات کشف شد."
-      ]
-    }
-  },
-  {
-    word: "Concur",
-    definition: "Be of the same opinion; agree.",
-    synonyms: "agree, coincide, assent, harmonize",
-    examples: [
-      "I concur with your assessment.",
-      "The committee concurred on the proposal.",
-      "Historians concur that the event was significant."
-    ],
-    persian: {
-      word: "موافق بودن / هم‌نظر بودن",
-      definition: "هم‌نظر بودن؛ توافق داشتن.",
-      synonyms: "موافق بودن، هم‌نظر بودن، تصدیق کردن، هماهنگ شدن",
+        "They held a clandestine meeting.",
+        "The operation was clandestine to avoid attention.",
+        "Clandestine activities were discovered by the authorities."
+      ],
+      persian: {
+        word: "مخفی / پنهانی",
+        definition: "مخفی نگه داشته شده یا به صورت مخفی انجام شده، به ویژه به دلیل غیرقانونی بودن.",
+        synonyms: "مخفی، پنهانی، سری، مخفیانه",
+        examples: [
+          "آن‌ها جلسه‌ای مخفی برگزار کردند.",
+          "عملیات برای جلوگیری از توجه مخفی بود.",
+          "فعالیت‌های پنهانی توسط مقامات کشف شد."
+        ]
+      }
+    },
+    {
+      word: "Concur",
+      definition: "Be of the same opinion; agree.",
+      synonyms: "agree, coincide, assent, harmonize",
       examples: [
-        "من با ارزیابی شما موافقم.",
-        "کمیته با پیشنهاد موافق بود.",
-        "تاریخ‌نگاران هم‌نظرند که این رویداد مهم بود."
-      ]
-    }
-  },
-  {
-    word: "Cordial",
-    definition: "Warm and friendly.",
-    synonyms: "friendly, warm, genial, heartfelt",
-    examples: [
-      "They had a cordial meeting.",
-      "She greeted everyone with a cordial smile.",
-      "The atmosphere was cordial and welcoming."
-    ],
-    persian: {
-      word: "صمیمی / گرم",
-      definition: "گرم و دوستانه.",
-      synonyms: "دوستانه، گرم، مهربان، صمیمی",
+        "I concur with your assessment.",
+        "The committee concurred on the proposal.",
+        "Historians concur that the event was significant."
+      ],
+      persian: {
+        word: "موافق بودن / هم‌نظر بودن",
+        definition: "هم‌نظر بودن؛ توافق داشتن.",
+        synonyms: "موافق بودن، هم‌نظر بودن، تصدیق کردن، هماهنگ شدن",
+        examples: [
+          "من با ارزیابی شما موافقم.",
+          "کمیته با پیشنهاد موافق بود.",
+          "تاریخ‌نگاران هم‌نظرند که این رویداد مهم بود."
+        ]
+      }
+    },
+    {
+      word: "Cordial",
+      definition: "Warm and friendly.",
+      synonyms: "friendly, warm, genial, heartfelt",
       examples: [
-        "آن‌ها جلسه‌ای صمیمی داشتند.",
-        "او همه را با لبخندی صمیمی خوش‌آمد گفت.",
-        "فضا صمیمی و خوش‌آمد بود."
-      ]
-    }
-  },
-  {
-    word: "Corpulent",
-    definition: "Fat; having a large, bulky body.",
-    synonyms: "obese, overweight, plump, stout",
-    examples: [
-      "The corpulent man struggled to fit through the door.",
-      "He has become corpulent over the years.",
-      "Corpulent animals often need special care."
-    ],
-    persian: {
-      word: "چاق / تنومند",
-      definition: "چاق؛ داشتن بدنی بزرگ و حجیم.",
-      synonyms: "چاق، اضافه وزن، فربه، تنومند",
+        "They had a cordial meeting.",
+        "She greeted everyone with a cordial smile.",
+        "The atmosphere was cordial and welcoming."
+      ],
+      persian: {
+        word: "صمیمی / گرم",
+        definition: "گرم و دوستانه.",
+        synonyms: "دوستانه، گرم، مهربان، صمیمی",
+        examples: [
+          "آن‌ها جلسه‌ای صمیمی داشتند.",
+          "او همه را با لبخندی صمیمی خوش‌آمد گفت.",
+          "فضا صمیمی و خوش‌آمد بود."
+        ]
+      }
+    },
+    {
+      word: "Corpulent",
+      definition: "Fat; having a large, bulky body.",
+      synonyms: "obese, overweight, plump, stout",
       examples: [
-        "مرد چاق برای عبور از درگاه مشکل داشت.",
-        "او در طول سال‌ها چاق شده است.",
-        "حیوانات چاق اغلب نیاز به مراقبت ویژه دارند."
-      ]
-    }
-  },
-  {
-    word: "Cursory",
-    definition: "Hasty and therefore not thorough or detailed.",
-    synonyms: "superficial, perfunctory, brief, quick",
-    examples: [
-      "He gave a cursory glance at the report.",
-      "The inspection was cursory and missed errors.",
-      "Cursory preparation can lead to mistakes."
-    ],
-    persian: {
-      word: "سرسری / عجولانه",
-      definition: "عجولانه و بنابراین نه کامل یا دقیق.",
-      synonyms: "سطحی، سرسری، کوتاه، سریع",
+        "The corpulent man struggled to fit through the door.",
+        "He has become corpulent over the years.",
+        "Corpulent animals often need special care."
+      ],
+      persian: {
+        word: "چاق / تنومند",
+        definition: "چاق؛ داشتن بدنی بزرگ و حجیم.",
+        synonyms: "چاق، اضافه وزن، فربه، تنومند",
+        examples: [
+          "مرد چاق برای عبور از درگاه مشکل داشت.",
+          "او در طول سال‌ها چاق شده است.",
+          "حیوانات چاق اغلب نیاز به مراقبت ویژه دارند."
+        ]
+      }
+    },
+    {
+      word: "Cursory",
+      definition: "Hasty and therefore not thorough or detailed.",
+      synonyms: "superficial, perfunctory, brief, quick",
       examples: [
-        "او نگاهی سرسری به گزارش انداخت.",
-        "بازرسی سرسری بود و اشتباهات را از دست داد.",
-        "آمادگی سرسری می‌تواند منجر به اشتباه شود."
-      ]
+        "He gave a cursory glance at the report.",
+        "The inspection was cursory and missed errors.",
+        "Cursory preparation can lead to mistakes."
+      ],
+      persian: {
+        word: "سرسری / عجولانه",
+        definition: "عجولانه و بنابراین نه کامل یا دقیق.",
+        synonyms: "سطحی، سرسری، کوتاه، سریع",
+        examples: [
+          "او نگاهی سرسری به گزارش انداخت.",
+          "بازرسی سرسری بود و اشتباهات را از دست داد.",
+          "آمادگی سرسری می‌تواند منجر به اشتباه شود."
+        ]
+      }
     }
-  }
-],
+  ],
+  // Day 71 - Lesson 36 (Part 1)
+  [
+    {
+      word: "Decorum",
+      definition: "Behavior in keeping with good taste and propriety.",
+      synonyms: "etiquette, propriety, dignity, politeness",
+      examples: [
+        "He maintained decorum during the ceremony.",
+        "Decorum requires proper dress and manners.",
+        "The meeting was conducted with decorum."
+      ],
+      persian: {
+        word: "رفتار مناسب / ادب",
+        definition: "رفتار مطابق با سلیقه خوب و شایستگی.",
+        synonyms: "ادب، شایستگی، وقار، نزاکت",
+        examples: [
+          "او در طول مراسم ادب را رعایت کرد.",
+          "ادب نیازمند لباس و رفتار مناسب است.",
+          "جلسه با رعایت ادب برگزار شد."
+        ]
+      }
+    },
+    {
+      word: "Deft",
+      definition: "Neatly skillful and quick in one's movements.",
+      synonyms: "skillful, nimble, agile, adept",
+      examples: [
+        "The pianist's fingers were deft and precise.",
+        "She gave a deft response to the question.",
+        "His deft handling of the situation impressed everyone."
+      ],
+      persian: {
+        word: "ماهر / چابک",
+        definition: "مهارت و سرعت در حرکات فردی.",
+        synonyms: "ماهر، چابک، سریع، توانا",
+        examples: [
+          "انگشتان پیانیست ماهر و دقیق بودند.",
+          "او پاسخ ماهری به سؤال داد.",
+          "کنترل ماهرانه او بر وضعیت همه را تحت تأثیر قرار داد."
+        ]
+      }
+    },
+    {
+      word: "Demeanor",
+      definition: "Outward behavior or bearing.",
+      synonyms: "behavior, conduct, manner, attitude",
+      examples: [
+        "His calm demeanor reassured everyone.",
+        "She maintained a professional demeanor.",
+        "The child's cheerful demeanor brightened the room."
+      ],
+      persian: {
+        word: "رفتار / برخورد",
+        definition: "رفتار یا حالت ظاهری.",
+        synonyms: "رفتار، کردار، طرز رفتار، نگرش",
+        examples: [
+          "رفتار آرام او همه را آرام کرد.",
+          "او رفتار حرفه‌ای حفظ کرد.",
+          "رفتار شاد کودک فضا را روشن کرد."
+        ]
+      }
+    },
+    {
+      word: "Elated",
+      definition: "Make someone ecstatically happy.",
+      synonyms: "overjoyed, thrilled, delighted, jubilant",
+      examples: [
+        "She was elated by the good news.",
+        "Winning the award left him elated.",
+        "The team was elated after the victory."
+      ],
+      persian: {
+        word: "شادمان / خوشحال",
+        definition: "کسی را فوق‌العاده خوشحال کردن.",
+        synonyms: "شادمان، خوشحال، مسرور، شاد",
+        examples: [
+          "او از شنیدن خبر خوب شادمان شد.",
+          "بردن جایزه او را شادمان کرد.",
+          "تیم بعد از پیروزی شادمان بود."
+        ]
+      }
+    },
+    {
+      word: "Falter",
+      definition: "Lose strength or momentum; speak hesitantly.",
+      synonyms: "waver, hesitate, stumble, weaken",
+      examples: [
+        "He began to falter under pressure.",
+        "Her voice faltered as she spoke.",
+        "The economy faltered during the recession."
+      ],
+      persian: {
+        word: "لرزش / تزلزل",
+        definition: "از دست دادن قدرت یا شتاب؛ با تردید صحبت کردن.",
+        synonyms: "تزلزل، تردید، لغزش، ضعیف شدن",
+        examples: [
+          "او تحت فشار شروع به تزلزل کرد.",
+          "صدای او هنگام صحبت کردن لرزید.",
+          "اقتصاد در طول رکود تزلزل کرد."
+        ]
+      }
+    },
+    {
+      word: "Feasible",
+      definition: "Possible to do easily or conveniently.",
+      synonyms: "practicable, possible, achievable, attainable",
+      examples: [
+        "It is feasible to complete the project on time.",
+        "The plan seems feasible.",
+        "Finding a feasible solution took some time."
+      ],
+      persian: {
+        word: "ممکن / عملی",
+        definition: "قابل انجام به راحتی یا به طور مناسب.",
+        synonyms: "قابل اجرا، ممکن، قابل دسترسی، شدنی",
+        examples: [
+          "انجام پروژه در زمان مقرر ممکن است.",
+          "طرح به نظر عملی می‌رسد.",
+          "پیدا کردن راه‌حل عملی کمی زمان برد."
+        ]
+      }
+    }
+  ],
 
+  // Day 72 - Lesson 36 (Part 2)
+  [
+    {
+      word: "Fluctuate",
+      definition: "Rise and fall irregularly in number or amount.",
+      synonyms: "vary, oscillate, waver, change",
+      examples: [
+        "Prices fluctuate daily.",
+        "His mood fluctuates with the weather.",
+        "Stock values fluctuate in the market."
+      ],
+      persian: {
+        word: "نوسان داشتن / تغییر کردن",
+        definition: "به طور نامنظم در عدد یا مقدار بالا و پایین رفتن.",
+        synonyms: "تغییر کردن، نوسان کردن، تزلزل داشتن، متغیر بودن",
+        examples: [
+          "قیمت‌ها هر روز نوسان دارند.",
+          "خلق و خوی او با هوا تغییر می‌کند.",
+          "ارزش سهام در بازار نوسان دارد."
+        ]
+      }
+    },
+    {
+      word: "Foster",
+      definition: "Encourage the development of something.",
+      synonyms: "promote, encourage, nurture, support",
+      examples: [
+        "The teacher fostered a love of reading.",
+        "Policies were designed to foster growth.",
+        "Parents should foster independence in their children."
+      ],
+      persian: {
+        word: "پرورش دادن / تشویق کردن",
+        definition: "تشویق یا توسعه چیزی.",
+        synonyms: "ترویج دادن، تشویق کردن، پرورش دادن، حمایت کردن",
+        examples: [
+          "معلم عشق به خواندن را پرورش داد.",
+          "سیاست‌ها برای تشویق رشد طراحی شدند.",
+          "والدین باید استقلال را در کودکان پرورش دهند."
+        ]
+      }
+    },
+    {
+      word: "Frivolous",
+      definition: "Not having any serious purpose or value.",
+      synonyms: "trivial, superficial, petty, insignificant",
+      examples: [
+        "He was criticized for his frivolous behavior.",
+        "She spends money on frivolous things.",
+        "The lawsuit was dismissed as frivolous."
+      ],
+      persian: {
+        word: "بی‌ارزش / سطحی",
+        definition: "نداشتن هدف یا ارزش جدی.",
+        synonyms: "بی‌اهمیت، سطحی، جزئی، کم‌اهمیت",
+        examples: [
+          "او به خاطر رفتار بی‌اهمیتش مورد انتقاد قرار گرفت.",
+          "او پول را صرف چیزهای بی‌اهمیت می‌کند.",
+          "این شکایت به عنوان بی‌اهمیت رد شد."
+        ]
+      }
+    },
+    {
+      word: "Furtive",
+      definition: "Attempting to avoid notice or attention; secretive.",
+      synonyms: "secretive, stealthy, sly, clandestine",
+      examples: [
+        "He cast a furtive glance at the teacher.",
+        "Their furtive meeting went unnoticed.",
+        "She spoke in a furtive whisper."
+      ],
+      persian: {
+        word: "مخفی / پنهانی",
+        definition: "تلاش برای جلوگیری از جلب توجه؛ مخفیانه.",
+        synonyms: "مخفی، پنهانی، حیله‌گر، سری",
+        examples: [
+          "او نگاهی مخفی به معلم انداخت.",
+          "جلسه پنهانی آن‌ها نادیده گرفته شد.",
+          "او با صدای مخفی صحبت کرد."
+        ]
+      }
+    },
+    {
+      word: "Galvanize",
+      definition: "Shock or excite someone into taking action.",
+      synonyms: "stimulate, motivate, spur, provoke",
+      examples: [
+        "The speech galvanized the crowd.",
+        "The crisis galvanized the government into action.",
+        "His words galvanized the team."
+      ],
+      persian: {
+        word: "برانگیختن / تحریک کردن",
+        definition: "کسی را برای اقدام برانگیختن یا تحریک کردن.",
+        synonyms: "تحریک کردن، تشویق کردن، برانگیختن، وادار کردن",
+        examples: [
+          "سخنرانی جمعیت را برانگیخت.",
+          "بحران دولت را به اقدام واداشت.",
+          "کلمات او تیم را برانگیخت."
+        ]
+      }
+    },
+    {
+      word: "Garrulous",
+      definition: "Excessively talkative, especially on trivial matters.",
+      synonyms: "talkative, loquacious, chatty, verbose",
+      examples: [
+        "He became garrulous after a few drinks.",
+        "The garrulous guide told endless stories.",
+        "She is too garrulous to keep secrets."
+      ],
+      persian: {
+        word: "پرحرف / وراج",
+        definition: "بیش از حد پرحرف، به ویژه درباره مسائل جزئی.",
+        synonyms: "پرحرف، وراج، پرحرف و چت‌مانند، پرگو",
+        examples: [
+          "او پس از چند نوشیدنی پرحرف شد.",
+          "راهنمای پرحرف داستان‌های بی‌پایان تعریف کرد.",
+          "او بیش از حد پرحرف است که بتواند رازها را حفظ کند."
+        ]
+      }
+    }
+  ],
+  // Day 73 - Lesson 37 (Part 1)
+  [
+    {
+      word: "Hapless",
+      definition: "Unfortunate; having bad luck.",
+      synonyms: "unlucky, unfortunate, ill-fated, luckless",
+      examples: [
+        "The hapless traveler lost his luggage.",
+        "She was hapless in love.",
+        "Hapless victims of the storm were evacuated."
+      ],
+      persian: {
+        word: "بدشانس / بی‌بخت",
+        definition: "بدشانس؛ داشتن شانس بد.",
+        synonyms: "بدشانس، بی‌بخت، بداقبال، شانس نیاورده",
+        examples: [
+          "مسافر بدشانس چمدانش را از دست داد.",
+          "او در عشق بدشانس بود.",
+          "قربانیان بدشانس طوفان تخلیه شدند."
+        ]
+      }
+    },
+    {
+      word: "Harangue",
+      definition: "A lengthy and aggressive speech.",
+      synonyms: "tirade, lecture, rant, diatribe",
+      examples: [
+        "The politician delivered a fiery harangue.",
+        "He gave a long harangue about corruption.",
+        "She endured his morning harangue patiently."
+      ],
+      persian: {
+        word: "سخنرانی طولانی و پرخاشگرانه",
+        definition: "سخنرانی طولانی و تهاجمی.",
+        synonyms: "تیراد، سخنرانی، غر زدن، انتقاد طولانی",
+        examples: [
+          "سیاستمدار سخنرانی آتشینی ارائه داد.",
+          "او سخنرانی طولانی درباره فساد داشت.",
+          "او سخنرانی صبحگاهی او را صبورانه تحمل کرد."
+        ]
+      }
+    },
+    {
+      word: "Impetuous",
+      definition: "Acting quickly without thought or care.",
+      synonyms: "rash, hasty, impulsive, reckless",
+      examples: [
+        "His impetuous decision caused problems.",
+        "She was impetuous in her spending.",
+        "An impetuous action can lead to disaster."
+      ],
+      persian: {
+        word: "عجول / شتاب‌زده",
+        definition: "عمل کردن سریع بدون فکر یا دقت.",
+        synonyms: "عجول، شتاب‌زده، تکانشی، بی‌ملاحظه",
+        examples: [
+          "تصمیم عجولانه او مشکلاتی ایجاد کرد.",
+          "او در خرج کردن عجول بود.",
+          "عمل عجولانه می‌تواند منجر به فاجعه شود."
+        ]
+      }
+    },
+    {
+      word: "Inane",
+      definition: "Silly, stupid, or lacking sense.",
+      synonyms: "foolish, silly, ridiculous, meaningless",
+      examples: [
+        "The movie was filled with inane jokes.",
+        "He made an inane comment.",
+        "Avoid inane arguments in serious discussions."
+      ],
+      persian: {
+        word: "احمقانه / بی‌معنی",
+        definition: "احمقانه، بی‌معنی یا بی‌فکر.",
+        synonyms: "احمقانه، بی‌معنی، مضحک، بی‌مفهوم",
+        examples: [
+          "فیلم پر از جوک‌های احمقانه بود.",
+          "او نظر بی‌معنی داد.",
+          "از بحث‌های احمقانه در مباحث جدی اجتناب کنید."
+        ]
+      }
+    },
+    {
+      word: "Indolent",
+      definition: "Wanting to avoid activity or work; lazy.",
+      synonyms: "lazy, idle, slothful, lethargic",
+      examples: [
+        "The indolent student skipped classes.",
+        "He led an indolent life.",
+        "Indolent habits can affect your health."
+      ],
+      persian: {
+        word: "تنبل / بی‌کار",
+        definition: "تمایل به اجتناب از فعالیت یا کار؛ تنبل.",
+        synonyms: "تنبل، بیکار، کاهل، کم‌تحرک",
+        examples: [
+          "دانش‌آموز تنبل کلاس‌ها را ترک کرد.",
+          "او زندگی تنبلی داشت.",
+          "عادت‌های تنبل می‌تواند سلامت شما را تحت تأثیر قرار دهد."
+        ]
+      }
+    },
+    {
+      word: "Lament",
+      definition: "A passionate expression of grief or sorrow.",
+      synonyms: "mourn, grieve, wail, bewail",
+      examples: [
+        "They lamented the loss of their friend.",
+        "He lamented his mistakes.",
+        "Lament the passing of a great era."
+      ],
+      persian: {
+        word: "سوگواری / افسوس خوردن",
+        definition: "ابراز شدید غم یا اندوه.",
+        synonyms: "سوگواری کردن، غمگین شدن، زاری کردن، افسوس خوردن",
+        examples: [
+          "آن‌ها از دست دادن دوست خود سوگواری کردند.",
+          "او از اشتباهات خود افسوس خورد.",
+          "افسوس دوران بزرگ گذشته را بخورید."
+        ]
+      }
+    }
+  ],
 
+  // Day 74 - Lesson 37 (Part 2)
+  [
+    {
+      word: "Malleable",
+      definition: "Easily influenced; capable of being shaped or molded.",
+      synonyms: "pliable, adaptable, flexible, impressionable",
+      examples: [
+        "Children are malleable and learn quickly.",
+        "The metal is malleable under heat.",
+        "Her opinions were malleable in discussions."
+      ],
+      persian: {
+        word: "قابل انعطاف / تحت تأثیر",
+        definition: "به راحتی تحت تأثیر قرار گرفتن؛ قادر به شکل‌گیری یا قالب‌گیری.",
+        synonyms: "انعطاف‌پذیر، سازگار، قابل شکل‌دهی، تأثیرپذیر",
+        examples: [
+          "کودکان قابل انعطاف هستند و سریع یاد می‌گیرند.",
+          "فلز در حرارت قابل انعطاف است.",
+          "نظرات او در مباحث تحت تأثیر قرار می‌گرفت."
+        ]
+      }
+    },
+    {
+      word: "Meticulous",
+      definition: "Showing great attention to detail; very careful and precise.",
+      synonyms: "careful, thorough, precise, diligent",
+      examples: [
+        "She is meticulous in her work.",
+        "Meticulous planning prevents errors.",
+        "He maintained meticulous records."
+      ],
+      persian: {
+        word: "موشکاف / دقیق",
+        definition: "توجه زیاد به جزئیات؛ بسیار مراقب و دقیق.",
+        synonyms: "دقیق، موشکاف، محتاط، کوشا",
+        examples: [
+          "او در کار خود دقیق است.",
+          "برنامه‌ریزی موشکافانه از اشتباهات جلوگیری می‌کند.",
+          "او سوابق دقیقی نگه می‌داشت."
+        ]
+      }
+    },
+    {
+      word: "Nefarious",
+      definition: "Wicked or criminal.",
+      synonyms: "evil, wicked, villainous, heinous",
+      examples: [
+        "The villain had a nefarious plan.",
+        "Nefarious activities were uncovered by the police.",
+        "The plot was utterly nefarious."
+      ],
+      persian: {
+        word: "شرور / شنیع",
+        definition: "شرور یا مجرمانه.",
+        synonyms: "شرور، شنیع، جنایتکارانه، بدطینت",
+        examples: [
+          "شرور نقشه‌ای شنیع داشت.",
+          "فعالیت‌های شرورانه توسط پلیس کشف شد.",
+          "نقشه کاملاً شنیع بود."
+        ]
+      }
+    },
+    {
+      word: "Oblivious",
+      definition: "Not aware of or concerned about what is happening.",
+      synonyms: "unaware, ignorant, heedless, inattentive",
+      examples: [
+        "He was oblivious to the noise around him.",
+        "She seemed oblivious to the time.",
+        "Oblivious drivers caused an accident."
+      ],
+      persian: {
+        word: "بی‌خبر / ناآگاه",
+        definition: "از آنچه در حال رخ دادن است آگاه یا نگران نبودن.",
+        synonyms: "بی‌خبر، ناآگاه، بی‌توجه، غافل",
+        examples: [
+          "او نسبت به سر و صدا اطرافش بی‌خبر بود.",
+          "به نظر می‌رسید او نسبت به زمان بی‌توجه است.",
+          "رانندگان بی‌خبر باعث تصادف شدند."
+        ]
+      }
+    },
+    {
+      word: "Ostentatious",
+      definition: "Characterized by vulgar or pretentious display; designed to impress.",
+      synonyms: "showy, flashy, pretentious, flamboyant",
+      examples: [
+        "He wore an ostentatious gold watch.",
+        "The mansion was ostentatious.",
+        "Her dress was overly ostentatious."
+      ],
+      persian: {
+        word: "نمایشی / پرزرق و برق",
+        definition: "مشخصه با نمایش غیرمعمول یا پرطمطراق؛ طراحی شده برای تحت تأثیر قرار دادن.",
+        synonyms: "نمایشی، پرزرق و برق، خودنما، جلوه‌گر",
+        examples: [
+          "او ساعت طلای نمایشی پوشیده بود.",
+          "عمارت پرزرق و برق بود.",
+          "لباس او بیش از حد نمایشی بود."
+        ]
+      }
+    },
+    {
+      word: "Paragon",
+      definition: "A model of excellence or perfection.",
+      synonyms: "exemplar, ideal, model, epitome",
+      examples: [
+        "She is a paragon of virtue.",
+        "The building is a paragon of modern architecture.",
+        "His courage is a paragon for others."
+      ],
+      persian: {
+        word: "نمونه / الگو",
+        definition: "نمونه‌ای از برتری یا کمال.",
+        synonyms: "الگو، نمونه، معیار، تجسم",
+        examples: [
+          "او نمونه‌ای از فضیلت است.",
+          "ساختمان نمونه‌ای از معماری مدرن است.",
+          "شجاعت او الگو برای دیگران است."
+        ]
+      }
+    }
+  ],
+  // Day 75 - Lesson 38 (Part 1)
+  [
+    {
+      word: "Plausible",
+      definition: "Seeming reasonable or probable.",
+      synonyms: "credible, believable, reasonable, likely",
+      examples: [
+        "Her explanation sounded plausible.",
+        "The detective presented a plausible theory.",
+        "It’s a plausible excuse for being late."
+      ],
+      persian: {
+        word: "قابل قبول / منطقی",
+        definition: "به نظر معقول یا محتمل می‌رسد.",
+        synonyms: "قابل قبول، باورپذیر، منطقی، محتمل",
+        examples: [
+          "توضیح او منطقی به نظر می‌رسید.",
+          "کارآگاه نظریه‌ای منطقی ارائه داد.",
+          "این بهانه‌ای منطقی برای دیر رسیدن است."
+        ]
+      }
+    },
+    {
+      word: "Poignant",
+      definition: "Evoking a keen sense of sadness or regret; touching.",
+      synonyms: "touching, moving, affecting, emotional",
+      examples: [
+        "The movie had a poignant ending.",
+        "Her speech was deeply poignant.",
+        "A poignant memory came to mind."
+      ],
+      persian: {
+        word: "تکان‌دهنده / دردناک",
+        definition: "برانگیختن احساس شدید غم یا تأسف؛ تأثیرگذار.",
+        synonyms: "تکان‌دهنده، مؤثر، احساسی، تأثیرگذار",
+        examples: [
+          "فیلم پایانی تکان‌دهنده داشت.",
+          "سخنرانی او بسیار تأثیرگذار بود.",
+          "یک خاطره دردناک به ذهن آمد."
+        ]
+      }
+    },
+    {
+      word: "Pragmatic",
+      definition: "Dealing with things sensibly and realistically.",
+      synonyms: "practical, realistic, sensible, logical",
+      examples: [
+        "She took a pragmatic approach to solving the problem.",
+        "A pragmatic solution is often better than an idealistic one.",
+        "He is pragmatic in his business decisions."
+      ],
+      persian: {
+        word: "عملگرایانه / واقع‌بینانه",
+        definition: "پرداختن به مسائل به صورت منطقی و واقعی.",
+        synonyms: "عملگرایانه، واقع‌بینانه، منطقی، عقلانی",
+        examples: [
+          "او رویکرد عملی برای حل مشکل اتخاذ کرد.",
+          "راه‌حل عملی اغلب بهتر از ایده‌آل‌گرایانه است.",
+          "او در تصمیمات تجاری خود واقع‌بین است."
+        ]
+      }
+    },
+    {
+      word: "Precocious",
+      definition: "Having developed certain abilities at an earlier age than usual.",
+      synonyms: "advanced, mature, talented, forward",
+      examples: [
+        "The precocious child could read at age four.",
+        "She showed precocious talent in music.",
+        "His precocious intellect impressed his teachers."
+      ],
+      persian: {
+        word: "باهوش / زودرس",
+        definition: "داشتن توانایی‌های خاص در سنین پایین‌تر از معمول.",
+        synonyms: "پیشرفته، بالغ، بااستعداد، جلوتر",
+        examples: [
+          "کودک باهوش در چهار سالگی قادر به خواندن بود.",
+          "او استعداد زودرس در موسیقی نشان داد.",
+          "هوش زودرس او معلمانش را تحت تأثیر قرار داد."
+        ]
+      }
+    },
+    {
+      word: "Procrastinate",
+      definition: "Delay or postpone action; put off doing something.",
+      synonyms: "delay, postpone, defer, stall",
+      examples: [
+        "He tends to procrastinate when it comes to homework.",
+        "Don’t procrastinate on important tasks.",
+        "She procrastinated until the last minute."
+      ],
+      persian: {
+        word: "به تعویق انداختن / تنبلی کردن",
+        definition: "تأخیر یا به تعویق انداختن عمل؛ انجام ندادن کاری به موقع.",
+        synonyms: "به تعویق انداختن، تأخیر کردن، عقب انداختن، دست نگه داشتن",
+        examples: [
+          "او هنگام انجام تکالیف تمایل به به تعویق انداختن دارد.",
+          "در کارهای مهم تعلل نکنید.",
+          "او تا آخرین لحظه به تعویق انداخت."
+        ]
+      }
+    },
+    {
+      word: "Prosaic",
+      definition: "Commonplace; unromantic; dull.",
+      synonyms: "ordinary, mundane, dull, unimaginative",
+      examples: [
+        "His writing style is prosaic.",
+        "The story was prosaic and predictable.",
+        "A prosaic routine can be boring."
+      ],
+      persian: {
+        word: "پیش پا افتاده / کسل‌کننده",
+        definition: "معمولی؛ غیررمانتیک؛ کسل‌کننده.",
+        synonyms: "معمولی، پیش پا افتاده، کسل‌کننده، بی‌تصور",
+        examples: [
+          "سبک نوشتن او پیش پا افتاده است.",
+          "داستان پیش پا افتاده و قابل پیش‌بینی بود.",
+          "روال پیش پا افتاده می‌تواند خسته‌کننده باشد."
+        ]
+      }
+    }
+  ],
+
+  // Day 76 - Lesson 38 (Part 2)
+  [
+    {
+      word: "Quaint",
+      definition: "Attractively unusual or old-fashioned.",
+      synonyms: "charming, picturesque, old-fashioned, unusual",
+      examples: [
+        "They stayed in a quaint cottage.",
+        "The town has a quaint charm.",
+        "Her quaint manner of speaking amused everyone."
+      ],
+      persian: {
+        word: "دلفریب / قدیمی و خاص",
+        definition: "جذاب، غیرمعمول یا قدیمی.",
+        synonyms: "دل‌نشین، چشم‌نواز، قدیمی، غیرمعمول",
+        examples: [
+          "آن‌ها در کلبه‌ای دلفریب اقامت کردند.",
+          "شهر جذابیت قدیمی دارد.",
+          "طرز صحبت کردن قدیمی او همه را سرگرم کرد."
+        ]
+      }
+    },
+    {
+      word: "Querulous",
+      definition: "Complaining in a petulant or whining manner.",
+      synonyms: "complaining, petulant, fretful, peevish",
+      examples: [
+        "The querulous child complained constantly.",
+        "He has a querulous tone in his voice.",
+        "Don’t be querulous about minor issues."
+      ],
+      persian: {
+        word: "شکایت‌آمیز / غرغرو",
+        definition: "شکایت کردن به شکل کم‌حوصلگی یا ناله‌آمیز.",
+        synonyms: "شکایت‌آمیز، کم‌حوصلگی، نگران، بدخلق",
+        examples: [
+          "کودک غرغرو دائماً شکایت می‌کرد.",
+          "صدای او کمی غرغرو بود.",
+          "در مورد مسائل جزئی غرغر نکنید."
+        ]
+      }
+    },
+    {
+      word: "Rancor",
+      definition: "Bitterness or resentfulness, especially when long-standing.",
+      synonyms: "bitterness, spite, animosity, hatred",
+      examples: [
+        "There was rancor between the two families.",
+        "He spoke without rancor.",
+        "Rancor can poison relationships."
+      ],
+      persian: {
+        word: "کینه / خصومت",
+        definition: "تلخی یا کینه، به ویژه وقتی طولانی مدت باشد.",
+        synonyms: "تلخی، کینه، خصومت، نفرت",
+        examples: [
+          "بین دو خانواده کینه وجود داشت.",
+          "او بدون کینه صحبت کرد.",
+          "کینه می‌تواند روابط را مسموم کند."
+        ]
+      }
+    },
+    {
+      word: "Reclusive",
+      definition: "Avoiding the company of others; solitary.",
+      synonyms: "solitary, isolated, withdrawn, introverted",
+      examples: [
+        "The writer lived a reclusive life.",
+        "He became reclusive after the scandal.",
+        "Reclusive habits can lead to loneliness."
+      ],
+      persian: {
+        word: "گوشه‌گیر / منزوی",
+        definition: "اجتناب از جمع دیگران؛ تنهازیستن.",
+        synonyms: "تنها، منزوی، گوشه‌گیر، درون‌گرا",
+        examples: [
+          "نویسنده زندگی گوشه‌گیری داشت.",
+          "او بعد از رسوایی گوشه‌گیر شد.",
+          "عادت‌های گوشه‌گیری می‌تواند منجر به تنهایی شود."
+        ]
+      }
+    },
+    {
+      word: "Relinquish",
+      definition: "Voluntarily give up something.",
+      synonyms: "give up, renounce, surrender, abandon",
+      examples: [
+        "He relinquished control of the company.",
+        "She relinquished her claim to the property.",
+        "Relinquish old habits to improve your life."
+      ],
+      persian: {
+        word: "کنار گذاشتن / رها کردن",
+        definition: "داوطلبانه چیزی را واگذار کردن.",
+        synonyms: "واگذار کردن، ترک کردن، تسلیم شدن، رها کردن",
+        examples: [
+          "او کنترل شرکت را رها کرد.",
+          "او ادعای خود نسبت به ملک را کنار گذاشت.",
+          "برای بهبود زندگی، عادت‌های قدیمی را رها کنید."
+        ]
+      }
+    },
+    {
+      word: "Sagacious",
+      definition: "Having or showing keen mental discernment and good judgment.",
+      synonyms: "wise, shrewd, insightful, astute",
+      examples: [
+        "The sagacious leader earned everyone’s respect.",
+        "Sagacious advice can prevent mistakes.",
+        "She is sagacious in financial matters."
+      ],
+      persian: {
+        word: "عاقل / زیرک",
+        definition: "داشتن یا نشان دادن درک ذهنی دقیق و قضاوت خوب.",
+        synonyms: "عاقل، زیرک، باهوش، دقیق",
+        examples: [
+          "رهبر عاقل احترام همه را کسب کرد.",
+          "نصیحت عاقلانه می‌تواند از اشتباه جلوگیری کند.",
+          "او در مسائل مالی زیرک است."
+        ]
+      }
+    }
+  ],
+  // Day 77 - Lesson 39 (Part 1)
+  [
+    {
+      word: "Scrutinize",
+      definition: "Examine or inspect closely and thoroughly.",
+      synonyms: "inspect, examine, analyze, study",
+      examples: [
+        "The scientist scrutinized the samples carefully.",
+        "He scrutinized every detail of the contract.",
+        "Scrutinize the data before making conclusions."
+      ],
+      persian: {
+        word: "موشکافی کردن / بررسی دقیق",
+        definition: "بررسی یا بازرسی دقیق و کامل.",
+        synonyms: "بررسی کردن، موشکافی کردن، تجزیه و تحلیل، مطالعه کردن",
+        examples: [
+          "دانشمند نمونه‌ها را با دقت موشکافی کرد.",
+          "او هر جزئیات قرارداد را بررسی کرد.",
+          "قبل از نتیجه‌گیری داده‌ها را موشکافی کنید."
+        ]
+      }
+    },
+    {
+      word: "Sporadic",
+      definition: "Occurring at irregular intervals; scattered or isolated.",
+      synonyms: "occasional, irregular, infrequent, intermittent",
+      examples: [
+        "Sporadic rainfall affected the crops.",
+        "His visits were sporadic and unpredictable.",
+        "Sporadic errors appeared in the system."
+      ],
+      persian: {
+        word: "ناگهانی / پراکنده",
+        definition: "رخ دادن در فواصل نامنظم؛ پراکنده یا جداگانه.",
+        synonyms: "گاه‌به‌گاه، نامنظم، نادر، متناوب",
+        examples: [
+          "بارش‌های پراکنده محصولات را تحت تأثیر قرار داد.",
+          "بازدیدهای او نادر و غیرقابل پیش‌بینی بود.",
+          "خطاهای پراکنده در سیستم ظاهر شدند."
+        ]
+      }
+    },
+    {
+      word: "Spurious",
+      definition: "Not being what it purports to be; false or fake.",
+      synonyms: "false, fake, bogus, counterfeit",
+      examples: [
+        "The argument was based on spurious claims.",
+        "He was accused of spurious behavior.",
+        "Spurious evidence was rejected in court."
+      ],
+      persian: {
+        word: "جعلی / دروغین",
+        definition: "نبودن آنچه ادعا می‌شود؛ نادرست یا تقلبی.",
+        synonyms: "جعلی، دروغین، ساختگی، قلابی",
+        examples: [
+          "استدلال بر اساس ادعاهای جعلی بود.",
+          "او متهم به رفتار دروغین شد.",
+          "شواهد جعلی در دادگاه رد شد."
+        ]
+      }
+    },
+    {
+      word: "Stagnant",
+      definition: "Not flowing or moving; inactive or dull.",
+      synonyms: "inactive, motionless, dull, sluggish",
+      examples: [
+        "The stagnant water was dirty and smelled bad.",
+        "The economy remained stagnant for years.",
+        "His career became stagnant due to lack of growth."
+      ],
+      persian: {
+        word: "ساکن / راکد",
+        definition: "عدم جریان یا حرکت؛ غیرفعال یا کسل‌کننده.",
+        synonyms: "غیرفعال، بدون حرکت، کسل‌کننده، کند",
+        examples: [
+          "آب راکد کثیف بود و بوی بد می‌داد.",
+          "اقتصاد سال‌ها راکد ماند.",
+          "حرفه او به دلیل نبود پیشرفت راکد شد."
+        ]
+      }
+    },
+    {
+      word: "Superfluous",
+      definition: "Unnecessary, especially through being more than enough.",
+      synonyms: "excessive, redundant, extra, needless",
+      examples: [
+        "The report contained superfluous details.",
+        "Avoid superfluous spending.",
+        "His comments were superfluous to the discussion."
+      ],
+      persian: {
+        word: "اضافی / غیرضروری",
+        definition: "غیرضروری، به ویژه وقتی بیش از حد کافی باشد.",
+        synonyms: "اضافی، زائد، اضافی، غیرضروری",
+        examples: [
+          "گزارش جزئیات اضافی داشت.",
+          "از هزینه‌های اضافی اجتناب کنید.",
+          "اظهارات او برای بحث غیرضروری بود."
+        ]
+      }
+    },
+    {
+      word: "Terse",
+      definition: "Sparingly using words; abrupt or concise.",
+      synonyms: "concise, brief, succinct, curt",
+      examples: [
+        "His terse reply surprised everyone.",
+        "She gave a terse explanation.",
+        "A terse message can sometimes be misunderstood."
+      ],
+      persian: {
+        word: "مختصر / کوتاه",
+        definition: "استفاده کم از کلمات؛ مختصر یا مستقیم.",
+        synonyms: "مختصر، کوتاه، موجز، کوتاه و محکم",
+        examples: [
+          "پاسخ کوتاه او همه را شگفت‌زده کرد.",
+          "او توضیح مختصری داد.",
+          "پیام کوتاه گاهی می‌تواند اشتباه فهمیده شود."
+        ]
+      }
+    }
+  ],
+
+  // Day 78 - Lesson 39 (Part 2)
+  [
+    {
+      word: "Trivial",
+      definition: "Of little value or importance; insignificant.",
+      synonyms: "minor, unimportant, insignificant, petty",
+      examples: [
+        "They argued over trivial matters.",
+        "Don’t worry about trivial details.",
+        "Trivial problems can be distracting."
+      ],
+      persian: {
+        word: "جزئی / کم‌اهمیت",
+        definition: "کم ارزش یا اهمیت؛ بی‌اهمیت.",
+        synonyms: "جزئی، کم‌اهمیت، بی‌اهمیت، کوچک",
+        examples: [
+          "آن‌ها بر سر مسائل جزئی بحث کردند.",
+          "به جزئیات کم‌اهمیت نگران نباشید.",
+          "مشکلات جزئی می‌توانند حواس‌پرت‌کن باشند."
+        ]
+      }
+    },
+    {
+      word: "Undermine",
+      definition: "To weaken or damage something gradually.",
+      synonyms: "weaken, sabotage, erode, impair",
+      examples: [
+        "His actions undermined the team’s morale.",
+        "Criticism can undermine confidence.",
+        "Corruption undermines trust in government."
+      ],
+      persian: {
+        word: "تضعیف کردن / خراب کردن",
+        definition: "تضعیف یا آسیب رساندن به چیزی به مرور.",
+        synonyms: "تضعیف کردن، خراب کردن، فرسایش دادن، آسیب زدن",
+        examples: [
+          "اقدامات او روحیه تیم را تضعیف کرد.",
+          "انتقاد می‌تواند اعتماد به نفس را تضعیف کند.",
+          "فساد اعتماد به دولت را تضعیف می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Venerate",
+      definition: "Regard with great respect; revere.",
+      synonyms: "respect, revere, honor, admire",
+      examples: [
+        "The people venerate their elders.",
+        "She was venerated for her contributions.",
+        "Venerate traditions that bring wisdom."
+      ],
+      persian: {
+        word: "احترام گذاشتن / تکریم کردن",
+        definition: "با احترام فراوان نگاه کردن؛ تکریم کردن.",
+        synonyms: "احترام گذاشتن، تکریم کردن، تقدیر کردن، تحسین کردن",
+        examples: [
+          "مردم برای سالمندان خود احترام قائلند.",
+          "او به خاطر مشارکت‌هایش تکریم شد.",
+          "سنت‌هایی که حکمت می‌آورند تکریم کنید."
+        ]
+      }
+    },
+    {
+      word: "Verbose",
+      definition: "Using more words than needed; wordy.",
+      synonyms: "wordy, long-winded, loquacious, prolix",
+      examples: [
+        "His verbose explanation confused everyone.",
+        "Avoid verbose writing in reports.",
+        "She is too verbose in conversations."
+      ],
+      persian: {
+        word: "پرحرف / طولانی",
+        definition: "استفاده بیش از حد از کلمات؛ طولانی و پرحرف.",
+        synonyms: "پرگو، طولانی، وراج، پرحرف",
+        examples: [
+          "توضیح طولانی او همه را گیج کرد.",
+          "از نوشتن طولانی در گزارش‌ها اجتناب کنید.",
+          "او در گفتگوها بیش از حد پرحرف است."
+        ]
+      }
+    },
+    {
+      word: "Wary",
+      definition: "Feeling or showing caution about possible dangers.",
+      synonyms: "cautious, careful, alert, vigilant",
+      examples: [
+        "Be wary of strangers.",
+        "He is wary when making decisions.",
+        "They were wary of potential risks."
+      ],
+      persian: {
+        word: "محتاط / هوشیار",
+        definition: "احساس یا نشان دادن احتیاط در مورد خطرات احتمالی.",
+        synonyms: "محتاط، با دقت، هشیار، هوشیار",
+        examples: [
+          "از غریبه‌ها محتاط باشید.",
+          "او هنگام تصمیم‌گیری محتاط است.",
+          "آن‌ها نسبت به خطرات احتمالی محتاط بودند."
+        ]
+      }
+    },
+    {
+      word: "Zealous",
+      definition: "Having or showing great energy or enthusiasm.",
+      synonyms: "enthusiastic, fervent, passionate, ardent",
+      examples: [
+        "She is zealous about her work.",
+        "A zealous supporter can inspire others.",
+        "He approached the project with zealous dedication."
+      ],
+      persian: {
+        word: "مشتاق / پرانرژی",
+        definition: "داشتن یا نشان دادن انرژی یا اشتیاق زیاد.",
+        synonyms: "مشتاق، پرشور، باعلاقه، پرانرژی",
+        examples: [
+          "او نسبت به کار خود مشتاق است.",
+          "یک حامی مشتاق می‌تواند دیگران را الهام بخشد.",
+          "او پروژه را با تعهد مشتاقانه انجام داد."
+        ]
+      }
+    }
+  ],
+  // Day 79 - Lesson 40 (Part 1)
+  [
+    {
+      word: "Abate",
+      definition: "To reduce in amount, degree, or intensity.",
+      synonyms: "diminish, decrease, lessen, subside",
+      examples: [
+        "The storm finally abated.",
+        "His anger abated over time.",
+        "The noise from the construction did not abate."
+      ],
+      persian: {
+        word: "کاهش یافتن / فروکش کردن",
+        definition: "کاهش در مقدار، درجه یا شدت.",
+        synonyms: "کاهش یافتن، کم شدن، کمتر شدن، فروکش کردن",
+        examples: [
+          "طوفان در نهایت فروکش کرد.",
+          "خشم او با گذشت زمان کاهش یافت.",
+          "سر و صدای ساخت و ساز کاهش نیافت."
+        ]
+      }
+    },
+    {
+      word: "Acrid",
+      definition: "Having a strong, unpleasant taste or smell.",
+      synonyms: "pungent, bitter, sharp, caustic",
+      examples: [
+        "The acrid smoke made it hard to breathe.",
+        "He made an acrid remark about the service.",
+        "The acrid taste of the medicine was unbearable."
+      ],
+      persian: {
+        word: "تند / زننده",
+        definition: "داشتن طعم یا بوی قوی و ناخوشایند.",
+        synonyms: "تند، زننده، تلخ، تیز",
+        examples: [
+          "دود تند باعث سختی تنفس شد.",
+          "او نظر تندی درباره خدمات داد.",
+          "طعم تند دارو غیرقابل تحمل بود."
+        ]
+      }
+    },
+    {
+      word: "Adamant",
+      definition: "Refusing to be persuaded or to change one’s mind.",
+      synonyms: "unyielding, firm, inflexible, resolute",
+      examples: [
+        "She was adamant about her decision.",
+        "He remained adamant despite objections.",
+        "The teacher was adamant about deadlines."
+      ],
+      persian: {
+        word: "سرسخت / لجوج",
+        definition: "امتناع از قانع شدن یا تغییر نظر.",
+        synonyms: "سرسخت، محکم، انعطاف‌ناپذیر، مصمم",
+        examples: [
+          "او در مورد تصمیم خود سرسخت بود.",
+          "او با وجود مخالفت‌ها سرسخت ماند.",
+          "معلم در مورد مهلت‌ها سرسخت بود."
+        ]
+      }
+    },
+    {
+      word: "Alleviate",
+      definition: "To make (something) less severe.",
+      synonyms: "relieve, ease, mitigate, reduce",
+      examples: [
+        "The medicine helped alleviate the pain.",
+        "Measures were taken to alleviate traffic congestion.",
+        "She tried to alleviate the stress of her coworkers."
+      ],
+      persian: {
+        word: "تسکین دادن / کاهش دادن",
+        definition: "کاهش شدت (چیزی).",
+        synonyms: "تسکین دادن، کاهش دادن، سبک کردن، کاهش شدت",
+        examples: [
+          "دارو به کاهش درد کمک کرد.",
+          "اقداماتی برای کاهش ترافیک انجام شد.",
+          "او سعی کرد استرس همکارانش را کاهش دهد."
+        ]
+      }
+    },
+    {
+      word: "Aloof",
+      definition: "Not friendly or forthcoming; distant.",
+      synonyms: "distant, detached, reserved, indifferent",
+      examples: [
+        "He remained aloof during the meeting.",
+        "She kept aloof from office gossip.",
+        "An aloof attitude can seem cold."
+      ],
+      persian: {
+        word: "کناره‌گیر / دور",
+        definition: "غیر دوستانه یا دور؛ فاصله گرفتن.",
+        synonyms: "دور، جدا، محفوظ، بی‌تفاوت",
+        examples: [
+          "او در طول جلسه دور ماند.",
+          "او از شایعات دفتر دوری کرد.",
+          "رفتار کناره‌گیر می‌تواند سرد به نظر برسد."
+        ]
+      }
+    },
+    {
+      word: "Ambiguous",
+      definition: "Open to more than one interpretation; unclear.",
+      synonyms: "unclear, vague, equivocal, indistinct",
+      examples: [
+        "The instructions were ambiguous.",
+        "His statement was deliberately ambiguous.",
+        "Ambiguous signs can confuse people."
+      ],
+      persian: {
+        word: "مبهم / دوپهلو",
+        definition: "قابل تفسیر به بیش از یک معنا؛ نامشخص.",
+        synonyms: "نامشخص، مبهم، دوپهلو، نامعلوم",
+        examples: [
+          "دستورالعمل‌ها مبهم بودند.",
+          "اظهارات او عمداً دوپهلو بود.",
+          "نشانه‌های مبهم می‌توانند مردم را گیج کنند."
+        ]
+      }
+    }
+  ],
+
+  // Day 80 - Lesson 40 (Part 2)
+  [
+    {
+      word: "Apathy",
+      definition: "Lack of interest, enthusiasm, or concern.",
+      synonyms: "indifference, unconcern, lethargy, disinterest",
+      examples: [
+        "Voter apathy is a problem in many countries.",
+        "He showed apathy toward the project.",
+        "Apathy can harm personal relationships."
+      ],
+      persian: {
+        word: "بی‌علاقگی / بی‌تفاوتی",
+        definition: "کمبود علاقه، شور یا نگرانی.",
+        synonyms: "بی‌تفاوتی، بی‌اهمیت بودن، رخوت، بی‌علاقگی",
+        examples: [
+          "بی‌تفاوتی رأی‌دهندگان در بسیاری از کشورها مشکل است.",
+          "او نسبت به پروژه بی‌تفاوت بود.",
+          "بی‌تفاوتی می‌تواند به روابط شخصی آسیب بزند."
+        ]
+      }
+    },
+    {
+      word: "Arduous",
+      definition: "Involving or requiring strenuous effort; difficult and tiring.",
+      synonyms: "difficult, strenuous, taxing, laborious",
+      examples: [
+        "Climbing the mountain was an arduous task.",
+        "She completed an arduous training program.",
+        "Arduous work requires patience."
+      ],
+      persian: {
+        word: "سخت / طاقت‌فرسا",
+        definition: "شامل یا نیازمند تلاش شدید؛ دشوار و خسته‌کننده.",
+        synonyms: "دشوار، طاقت‌فرسا، سخت، پرزحمت",
+        examples: [
+          "صعود کوه کاری سخت بود.",
+          "او برنامه تمرینی طاقت‌فرسا را کامل کرد.",
+          "کار طاقت‌فرسا نیاز به صبر دارد."
+        ]
+      }
+    },
+    {
+      word: "Assiduous",
+      definition: "Showing great care and perseverance.",
+      synonyms: "diligent, meticulous, persistent, careful",
+      examples: [
+        "She is assiduous in her studies.",
+        "Assiduous efforts lead to success.",
+        "He worked assiduously on the project."
+      ],
+      persian: {
+        word: "کوشا / پیگیر",
+        definition: "نشان دادن مراقبت و پشتکار زیاد.",
+        synonyms: "کوشا، دقیق، پیگیر، مراقب",
+        examples: [
+          "او در مطالعات خود کوشا است.",
+          "تلاش‌های پیگیر منجر به موفقیت می‌شود.",
+          "او به طور پیگیر روی پروژه کار کرد."
+        ]
+      }
+    },
+    {
+      word: "Astute",
+      definition: "Having or showing sharp judgment; clever.",
+      synonyms: "shrewd, sharp, perceptive, clever",
+      examples: [
+        "The astute businessman made profitable deals.",
+        "Her astute observations helped solve the problem.",
+        "An astute student asks smart questions."
+      ],
+      persian: {
+        word: "زیرک / باهوش",
+        definition: "داشتن یا نشان دادن قضاوت دقیق؛ باهوش.",
+        synonyms: "زیرک، دقیق، باهوش، تیزهوش",
+        examples: [
+          "تاجر زیرک معاملات سودآوری انجام داد.",
+          "مشاهدات دقیق او به حل مشکل کمک کرد.",
+          "دانش‌آموز زیرک سوالات هوشمندانه می‌پرسد."
+        ]
+      }
+    },
+    {
+      word: "Audacious",
+      definition: "Showing a willingness to take bold risks.",
+      synonyms: "bold, daring, fearless, adventurous",
+      examples: [
+        "The audacious plan succeeded unexpectedly.",
+        "He made an audacious move in the game.",
+        "Audacious leaders inspire others."
+      ],
+      persian: {
+        word: "جسور / بی‌باک",
+        definition: "نشان دادن تمایل به ریسک‌های جسورانه.",
+        synonyms: "جسور، شجاع، بی‌باک، ماجراجو",
+        examples: [
+          "طرح جسورانه به طور غیرمنتظره موفق شد.",
+          "او در بازی حرکت جسورانه‌ای انجام داد.",
+          "رهبران جسور دیگران را الهام می‌بخشند."
+        ]
+      }
+    },
+    {
+      word: "Benevolent",
+      definition: "Well-meaning and kindly.",
+      synonyms: "kind, charitable, good-hearted, generous",
+      examples: [
+        "The benevolent man donated to the poor.",
+        "She has a benevolent nature.",
+        "A benevolent ruler cares for the people."
+      ],
+      persian: {
+        word: "خیرخواه / نیکوکار",
+        definition: "خوب‌نیت و مهربان.",
+        synonyms: "مهربان، نیکوکار، خوش‌قلب، بخشنده",
+        examples: [
+          "مرد خیرخواه به فقرا کمک کرد.",
+          "او طبیعتی خیرخواه دارد.",
+          "یک حاکم نیکوکار از مردم مراقبت می‌کند."
+        ]
+      }
+    }
+  ],
+   // Day 81 - Lesson 41 (Part 1)
+   [
+    {
+      word: "Cajole",
+      definition: "Persuade someone to do something by flattery or gentle urging.",
+      synonyms: "persuade, coax, entice, wheedle",
+      examples: [
+        "He managed to cajole her into attending the party.",
+        "She cajoled him to help with the project.",
+        "Politicians often cajole voters with promises."
+      ],
+      persian: {
+        word: "چرب‌زبانی / ترغیب کردن",
+        definition: "ترغیب کردن کسی به انجام کاری با چاپلوسی یا تشویق ملایم.",
+        synonyms: "ترغیب کردن، قانع کردن، تشویق، چرب‌زبانی",
+        examples: [
+          "او موفق شد او را برای شرکت در مهمانی ترغیب کند.",
+          "او او را برای کمک به پروژه تشویق کرد.",
+          "سیاستمداران اغلب با وعده‌ها رأی‌دهندگان را ترغیب می‌کنند."
+        ]
+      }
+    },
+    {
+      word: "Capricious",
+      definition: "Given to sudden and unaccountable changes of mood or behavior.",
+      synonyms: "fickle, unpredictable, impulsive, whimsical",
+      examples: [
+        "The weather here is capricious.",
+        "She is known for her capricious decisions.",
+        "A capricious boss can create instability."
+      ],
+      persian: {
+        word: "دمدمی / بی‌ثبات",
+        definition: "تمایل به تغییرات ناگهانی و غیرقابل پیش‌بینی در خلق یا رفتار.",
+        synonyms: "دمدمی، غیرقابل پیش‌بینی، تکانشی، هوس‌باز",
+        examples: [
+          "هوای اینجا دمدمی است.",
+          "او به خاطر تصمیمات دمدمی شناخته شده است.",
+          "رئیس دمدمی می‌تواند بی‌ثباتی ایجاد کند."
+        ]
+      }
+    },
+    {
+      word: "Caustic",
+      definition: "Sarcastic in a scathing and bitter way; capable of burning.",
+      synonyms: "corrosive, biting, sharp, sarcastic",
+      examples: [
+        "His caustic comments offended many people.",
+        "The chemical is highly caustic.",
+        "She has a caustic sense of humor."
+      ],
+      persian: {
+        word: "نیش‌دار / تند",
+        definition: "طعنه‌آمیز به شکل تلخ و تند؛ قادر به سوختن.",
+        synonyms: "خورنده، نیش‌دار، تیز، طعنه‌آمیز",
+        examples: [
+          "اظهارات نیش‌دار او بسیاری را آزرده کرد.",
+          "این ماده شیمیایی بسیار خورنده است.",
+          "او طنز نیش‌داری دارد."
+        ]
+      }
+    },
+    {
+      word: "Chastise",
+      definition: "Reprimand or punish severely.",
+      synonyms: "scold, reprimand, punish, berate",
+      examples: [
+        "The teacher chastised the students for being late.",
+        "He was chastised for his behavior.",
+        "Parents sometimes chastise children to teach discipline."
+      ],
+      persian: {
+        word: "تنبیه کردن / سرزنش کردن",
+        definition: "شدیداً سرزنش یا تنبیه کردن.",
+        synonyms: "سرزنش کردن، توبیخ کردن، تنبیه کردن، نکوهش کردن",
+        examples: [
+          "معلم دانش‌آموزان را به خاطر دیر رسیدن تنبیه کرد.",
+          "او به خاطر رفتار خود سرزنش شد.",
+          "والدین گاهی برای آموزش انضباط کودکان را تنبیه می‌کنند."
+        ]
+      }
+    },
+    {
+      word: "Circumspect",
+      definition: "Wary and unwilling to take risks; cautious.",
+      synonyms: "cautious, careful, prudent, vigilant",
+      examples: [
+        "He was circumspect in his financial dealings.",
+        "Circumspect behavior can prevent mistakes.",
+        "The diplomat was circumspect in his statements."
+      ],
+      persian: {
+        word: "محتاط / دوراندیش",
+        definition: "محتاط و تمایل نداشتن به ریسک؛ بااحتیاط.",
+        synonyms: "محتاط، با دقت، عاقل، هوشیار",
+        examples: [
+          "او در معاملات مالی خود محتاط بود.",
+          "رفتار محتاط می‌تواند از اشتباه جلوگیری کند.",
+          "دیپلمات در اظهارات خود محتاط بود."
+        ]
+      }
+    },
+    {
+      word: "Coerce",
+      definition: "Persuade an unwilling person to do something by using force or threats.",
+      synonyms: "compel, force, pressure, intimidate",
+      examples: [
+        "They coerced him into signing the agreement.",
+        "No one should be coerced into working.",
+        "The criminal tried to coerce the witness."
+      ],
+      persian: {
+        word: "وادار کردن / مجبور کردن",
+        definition: "ترغیب کردن یک فرد بی‌میل به انجام کاری با استفاده از زور یا تهدید.",
+        synonyms: "وادار کردن، مجبور کردن، فشار آوردن، تهدید کردن",
+        examples: [
+          "آن‌ها او را مجبور به امضای قرارداد کردند.",
+          "هیچ‌کس نباید وادار به کار کردن شود.",
+          "مجرم سعی کرد شاهد را مجبور کند."
+        ]
+      }
+    }
+  ],
+
+  // Day 82 - Lesson 41 (Part 2)
+  [
+    {
+      word: "Cogent",
+      definition: "Clear, logical, and convincing.",
+      synonyms: "convincing, compelling, persuasive, forceful",
+      examples: [
+        "She made a cogent argument for her proposal.",
+        "The lawyer presented cogent evidence.",
+        "A cogent explanation clarifies complex ideas."
+      ],
+      persian: {
+        word: "قانع‌کننده / محکم",
+        definition: "واضح، منطقی و متقاعدکننده.",
+        synonyms: "قانع‌کننده، محکم، متقاعدکننده، اثرگذار",
+        examples: [
+          "او استدلال قانع‌کننده‌ای برای پیشنهاد خود ارائه داد.",
+          "وکیل شواهد محکم ارائه کرد.",
+          "یک توضیح قانع‌کننده ایده‌های پیچیده را روشن می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Complacent",
+      definition: "Showing smug or uncritical satisfaction with oneself or achievements.",
+      synonyms: "self-satisfied, smug, contented, unconcerned",
+      examples: [
+        "He became complacent after his success.",
+        "Don’t be complacent about safety regulations.",
+        "Complacent attitudes can hinder progress."
+      ],
+      persian: {
+        word: "از خود راضی / بی‌تفاوت",
+        definition: "نشان دادن رضایت خودخواهانه یا غیرانتقادی از خود یا دستاوردها.",
+        synonyms: "از خود راضی، خودبین، راضی، بی‌تفاوت",
+        examples: [
+          "او پس از موفقیت خود از خود راضی شد.",
+          "در مورد مقررات ایمنی بی‌تفاوت نباشید.",
+          "نگرش‌های از خود راضی می‌توانند پیشرفت را کند کنند."
+        ]
+      }
+    },
+    {
+      word: "Concur",
+      definition: "Agree or have the same opinion.",
+      synonyms: "agree, coincide, correspond, assent",
+      examples: [
+        "I concur with your assessment.",
+        "The committee concurred on the decision.",
+        "Experts concur that climate change is real."
+      ],
+      persian: {
+        word: "موافق بودن / هم‌نظر بودن",
+        definition: "موافق بودن یا داشتن همان نظر.",
+        synonyms: "موافق بودن، هم‌نظر بودن، منطبق بودن، تأیید کردن",
+        examples: [
+          "من با ارزیابی شما موافقم.",
+          "کمیته در مورد تصمیم موافقت کرد.",
+          "کارشناسان موافقند که تغییرات آب و هوایی واقعی است."
+        ]
+      }
+    },
+    {
+      word: "Conspicuous",
+      definition: "Easily seen or noticed; attracting attention.",
+      synonyms: "obvious, noticeable, prominent, striking",
+      examples: [
+        "Her bright dress made her conspicuous.",
+        "The error was conspicuous in the report.",
+        "A conspicuous sign warned drivers of danger."
+      ],
+      persian: {
+        word: "مشهود / برجسته",
+        definition: "به راحتی دیده یا متوجه می‌شود؛ جلب توجه می‌کند.",
+        synonyms: "مشهود، قابل توجه، برجسته، چشمگیر",
+        examples: [
+          "لباس روشن او او را مشهود می‌کرد.",
+          "خطا در گزارش مشهود بود.",
+          "یک تابلو برجسته رانندگان را از خطر آگاه کرد."
+        ]
+      }
+    },
+    {
+      word: "Constituent",
+      definition: "Being a part of a whole; a component.",
+      synonyms: "component, element, part, ingredient",
+      examples: [
+        "Oxygen is a constituent of air.",
+        "Each constituent of the team has a role.",
+        "Understanding constituents helps analyze the system."
+      ],
+      persian: {
+        word: "جزء / تشکیل‌دهنده",
+        definition: "بخشی از یک کل؛ یک عنصر.",
+        synonyms: "عنصر، جزء، بخش، ترکیب",
+        examples: [
+          "اکسیژن یکی از اجزای هوا است.",
+          "هر جزء تیم نقشی دارد.",
+          "درک اجزا به تحلیل سیستم کمک می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Constraint",
+      definition: "A limitation or restriction.",
+      synonyms: "limitation, restriction, restraint, curb",
+      examples: [
+        "Time constraints affected the project.",
+        "Financial constraints limited their options.",
+        "Constraints can sometimes stimulate creativity."
+      ],
+      persian: {
+        word: "محدودیت / قیود",
+        definition: "یک محدودیت یا قید.",
+        synonyms: "محدودیت، قید، مانع، محدودسازی",
+        examples: [
+          "محدودیت‌های زمانی پروژه را تحت تأثیر قرار داد.",
+          "محدودیت‌های مالی گزینه‌های آن‌ها را محدود کرد.",
+          "محدودیت‌ها گاهی خلاقیت را تحریک می‌کنند."
+        ]
+      }
+    }
+  ],
+  // Day 83 - Lesson 42 (Part 1)
+  [
+    {
+      word: "Corroborate",
+      definition: "Confirm or give support to a statement, theory, or finding.",
+      synonyms: "confirm, support, verify, substantiate",
+      examples: [
+        "The witness corroborated the suspect's alibi.",
+        "Evidence corroborates the scientist’s findings.",
+        "Multiple sources corroborated the story."
+      ],
+      persian: {
+        word: "تأیید کردن / مستند کردن",
+        definition: "تأیید یا حمایت از یک بیانیه، نظریه یا یافته.",
+        synonyms: "تأیید کردن، حمایت کردن، تصدیق کردن، مستند کردن",
+        examples: [
+          "شاهد بی‌گناهی مظنون را تأیید کرد.",
+          "شواهد یافته‌های دانشمند را تأیید می‌کند.",
+          "چندین منبع داستان را تأیید کردند."
+        ]
+      }
+    },
+    {
+      word: "Culminate",
+      definition: "Reach a climax or point of highest development.",
+      synonyms: "climax, peak, conclude, terminate",
+      examples: [
+        "The festival culminated in a fireworks display.",
+        "Years of research culminated in a groundbreaking discovery.",
+        "The negotiations culminated with a signed agreement."
+      ],
+      persian: {
+        word: "به اوج رسیدن / خاتمه یافتن",
+        definition: "رسیدن به اوج یا نقطه بالاترین توسعه.",
+        synonyms: "اوج گرفتن، به اوج رسیدن، پایان یافتن، خاتمه یافتن",
+        examples: [
+          "جشنواره با نمایش آتش‌بازی به اوج رسید.",
+          "سال‌ها تحقیق به کشف شگفت‌انگیز ختم شد.",
+          "مذاکرات با امضای توافقنامه به پایان رسید."
+        ]
+      }
+    },
+    {
+      word: "Cursory",
+      definition: "Hasty and therefore not thorough or detailed.",
+      synonyms: "superficial, brief, quick, perfunctory",
+      examples: [
+        "He gave a cursory glance at the report.",
+        "A cursory review may miss important details.",
+        "The inspector’s cursory examination failed to reveal problems."
+      ],
+      persian: {
+        word: "سرسری / سطحی",
+        definition: "عجول و بنابراین نه دقیق یا جزئی.",
+        synonyms: "سطحی، مختصر، سریع، سرسری",
+        examples: [
+          "او نگاهی سرسری به گزارش انداخت.",
+          "مرور سطحی ممکن است جزئیات مهم را از دست بدهد.",
+          "بازرسی سرسری بازرسان مشکلات را نشان نداد."
+        ]
+      }
+    },
+    {
+      word: "Debilitate",
+      definition: "Make someone weak and infirm.",
+      synonyms: "weaken, enfeeble, sap, incapacitate",
+      examples: [
+        "The illness debilitated him for weeks.",
+        "Stress can debilitate mental health.",
+        "Poor nutrition can debilitate the body."
+      ],
+      persian: {
+        word: "ضعیف کردن / ناتوان کردن",
+        definition: "ضعیف و ناتوان کردن کسی.",
+        synonyms: "ضعیف کردن، ناتوان کردن، تحلیل بردن، فلج کردن",
+        examples: [
+          "بیماری او را هفته‌ها ضعیف کرد.",
+          "استرس می‌تواند سلامت روان را تضعیف کند.",
+          "تغذیه ضعیف می‌تواند بدن را ناتوان کند."
+        ]
+      }
+    },
+    {
+      word: "Defer",
+      definition: "Postpone or delay.",
+      synonyms: "postpone, delay, put off, adjourn",
+      examples: [
+        "The meeting was deferred until next week.",
+        "He deferred his decision for a few days.",
+        "Sometimes it’s wise to defer judgment."
+      ],
+      persian: {
+        word: "به تعویق انداختن / دیرکردن",
+        definition: "به تأخیر انداختن یا تعویق انداختن.",
+        synonyms: "به تعویق انداختن، دیرکردن، عقب انداختن، موکول کردن",
+        examples: [
+          "جلسه تا هفته آینده به تعویق افتاد.",
+          "او تصمیم خود را چند روز به تأخیر انداخت.",
+          "گاهی عاقلانه است که قضاوت را به تأخیر انداخت."
+        ]
+      }
+    },
+    {
+      word: "Diligent",
+      definition: "Having or showing care and conscientiousness in work or duties.",
+      synonyms: "hardworking, industrious, meticulous, assiduous",
+      examples: [
+        "She is diligent in completing her tasks.",
+        "Diligent students achieve better results.",
+        "A diligent worker earns respect."
+      ],
+      persian: {
+        word: "کوشا / دقیق",
+        definition: "داشتن یا نشان دادن دقت و مسئولیت‌پذیری در کار یا وظایف.",
+        synonyms: "کوشا، سخت‌کوش، دقیق، پیگیر",
+        examples: [
+          "او در انجام وظایف خود کوشا است.",
+          "دانش‌آموزان کوشا نتایج بهتری کسب می‌کنند.",
+          "یک کارگر کوشا احترام می‌گیرد."
+        ]
+      }
+    }
+  ],
+
+  // Day 84 - Lesson 42 (Part 2)
+  [
+    {
+      word: "Discrepancy",
+      definition: "A lack of compatibility or similarity between two or more facts.",
+      synonyms: "difference, inconsistency, mismatch, variation",
+      examples: [
+        "There was a discrepancy in the financial report.",
+        "Discrepancies between statements caused confusion.",
+        "The audit revealed several discrepancies."
+      ],
+      persian: {
+        word: "اختلاف / ناسازگاری",
+        definition: "کمبود سازگاری یا شباهت بین دو یا چند واقعیت.",
+        synonyms: "اختلاف، ناسازگاری، عدم تطابق، تفاوت",
+        examples: [
+          "اختلافی در گزارش مالی وجود داشت.",
+          "ناسازگاری بین بیانیه‌ها باعث سردرگمی شد.",
+          "حسابرسی چند اختلاف را نشان داد."
+        ]
+      }
+    },
+    {
+      word: "Disdain",
+      definition: "The feeling that someone or something is unworthy of consideration or respect.",
+      synonyms: "contempt, scorn, derision, disrespect",
+      examples: [
+        "He looked at the messy room with disdain.",
+        "She showed disdain for the rude comment.",
+        "Politicians often face public disdain."
+      ],
+      persian: {
+        word: "تحقیر / بی‌احترامی",
+        definition: "احساس اینکه کسی یا چیزی شایسته توجه یا احترام نیست.",
+        synonyms: "تحقیر، تمسخر، سرزنش، بی‌احترامی",
+        examples: [
+          "او به اتاق نامرتب با تحقیر نگاه کرد.",
+          "او برای نظر بی‌ادبانه تحقیر نشان داد.",
+          "سیاستمداران اغلب با تحقیر عمومی مواجه می‌شوند."
+        ]
+      }
+    },
+    {
+      word: "Dissent",
+      definition: "Hold or express opinions that are at variance with those previously, commonly, or officially expressed.",
+      synonyms: "disagreement, objection, protest, opposition",
+      examples: [
+        "Several members dissented from the majority opinion.",
+        "He voiced his dissent at the meeting.",
+        "Dissent is a vital part of democracy."
+      ],
+      persian: {
+        word: "مخالفت / اعتراض",
+        definition: "داشتن یا ابراز نظراتی که با نظرات پیشین، رایج یا رسمی متفاوت است.",
+        synonyms: "مخالفت، اعتراض، اعتراض رسمی، مخالفت",
+        examples: [
+          "چندین عضو با نظر اکثریت مخالفت کردند.",
+          "او مخالفت خود را در جلسه ابراز کرد.",
+          "مخالفت بخش مهمی از دموکراسی است."
+        ]
+      }
+    },
+    {
+      word: "Divulge",
+      definition: "Make known (private or sensitive information).",
+      synonyms: "reveal, disclose, expose, betray",
+      examples: [
+        "She refused to divulge her sources.",
+        "The company divulged financial information.",
+        "Divulging secrets can be risky."
+      ],
+      persian: {
+        word: "افشا کردن / فاش کردن",
+        definition: "آگاه ساختن (اطلاعات خصوصی یا حساس).",
+        synonyms: "افشا کردن، فاش کردن، نشان دادن، لو دادن",
+        examples: [
+          "او از افشای منابع خود امتناع کرد.",
+          "شرکت اطلاعات مالی را افشا کرد.",
+          "افشای اسرار می‌تواند پرخطر باشد."
+        ]
+      }
+    },
+    {
+      word: "Dogmatic",
+      definition: "Inclined to lay down principles as incontrovertibly true.",
+      synonyms: "opinionated, rigid, inflexible, doctrinaire",
+      examples: [
+        "He has a dogmatic approach to teaching.",
+        "Dogmatic rules can limit creativity.",
+        "Being dogmatic often discourages discussion."
+      ],
+      persian: {
+        word: "جبری / دگماتیک",
+        definition: "تمایل به ارائه اصول به عنوان حقیقت غیرقابل بحث.",
+        synonyms: "متعصب، سختگیر، انعطاف‌ناپذیر، اصولی",
+        examples: [
+          "او رویکرد دگماتیک در تدریس دارد.",
+          "قوانین دگماتیک می‌توانند خلاقیت را محدود کنند.",
+          "متعصب بودن اغلب بحث را دلسرد می‌کند."
+        ]
+      }
+    },
+    {
+      word: "Dubious",
+      definition: "Hesitating or doubting; not to be relied upon.",
+      synonyms: "doubtful, uncertain, questionable, suspicious",
+      examples: [
+        "He was dubious about the plan.",
+        "The offer seemed dubious.",
+        "Dubious claims require verification."
+      ],
+      persian: {
+        word: "مشکوک / دو دل",
+        definition: "در حال تردید یا دودل بودن؛ قابل اعتماد نیست.",
+        synonyms: "مشکوک، نامطمئن، قابل سؤال، مشکوک",
+        examples: [
+          "او درباره این طرح دودل بود.",
+          "این پیشنهاد مشکوک به نظر می‌رسید.",
+          "ادعاهای مشکوک نیاز به تأیید دارند."
+        ]
+      }
+    }
+  ]
 ];
